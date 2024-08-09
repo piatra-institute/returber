@@ -18,6 +18,10 @@ import {
     currencyMap,
 } from '@/data/index';
 
+import {
+    closeX,
+} from '@/data/icons';
+
 import LinkButton from '@/components/LinkButton';
 import Camera from '@/components/Camera';
 
@@ -53,6 +57,11 @@ export default function Call() {
     ] = useState(0);
 
     const [
+        returnablesMultiplier,
+        setReturnablesMultiplier,
+    ] = useState(0.25);
+
+    const [
         startPickTime,
         setStartPickTime,
     ] = useState(0);
@@ -86,28 +95,15 @@ export default function Call() {
         <div
             className="grid place-items-center min-h-screen h-full"
         >
-            <div
-                // className="absolute"
-            >
-                <div
-                    id="map"
-                    style={{
-                        height: '200px',
-                        width: '200px',
-                    }}
-                >
-                    map
-                </div>
-            </div>
-
-
             {!image && (
-                <LinkButton
-                    text={localization[language].callTakePicture}
+                <button
+                    className="lg:text-3xl font-bold select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
                     onClick={() => {
                         setShowCamera(true);
                     }}
-                />
+                >
+                    {localization[language].callTakePicture}
+                </button>
             )}
 
             {showCamera && (
@@ -124,7 +120,21 @@ export default function Call() {
             {image && (
                 <>
                     <div
-                        className="relative"
+                        // className="absolute"
+                    >
+                        <div
+                            id="map"
+                            // style={{
+                            //     height: '200px',
+                            //     width: '200px',
+                            // }}
+                        >
+                            map
+                        </div>
+                    </div>
+
+                    <div
+                        className="relative mb-8"
                     >
                         <Image
                             src={image}
@@ -133,27 +143,33 @@ export default function Call() {
                             width={400}
                             priority={false}
                             draggable={false}
-                            className="rounded-full select-none"
+                            className="rounded-full select-none max-h-[400px] w-auto"
                         />
 
                         <button
-                            className="absolute top-0 left-[50%] -translate-x-[50%] text-2xl p-2 bg-[#f0f4ed] rounded-b-full"
+                            className="select-none absolute top-0 left-[50%] -translate-x-[50%] text-2xl p-2 bg-[#f0f4ed] rounded-b-full"
                             onClick={() => {
                                 setImage(null);
                             }}
                         >
-                            &#128938;
+                            {closeX}
                         </button>
                     </div>
 
                     <div
-                        className="flex flex-col gap-2 text-center"
+                        className="flex flex-col gap-2 text-center mb-8"
                     >
                         <input
                             placeholder="overwrite"
                             value={returnables}
                             onChange={(e) => {
-                                setReturnables(parseInt(e.target.value));
+                                const value = parseInt(e.target.value);
+                                if (isNaN(value)) {
+                                    setReturnables(0);
+                                    return;
+                                }
+
+                                setReturnables(value);
                             }}
                             className="text-center w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
                         />
@@ -163,12 +179,12 @@ export default function Call() {
                         </div>
 
                         <div>
-                            {returnables * 0.25} {currencyMap[language]}
+                            {returnables * returnablesMultiplier} {currencyMap[language]}
                         </div>
                     </div>
 
                     <div
-                        className="flex flex-col gap-2 text-center"
+                        className="flex flex-col gap-2 text-center mb-8"
                     >
                         <div>
                             {localization[language].callPickTime}

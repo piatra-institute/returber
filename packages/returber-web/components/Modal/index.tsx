@@ -2,6 +2,10 @@
 
 import { useRouter } from 'next/navigation';
 
+import {
+    closeX,
+} from '@/data/icons';
+
 
 
 export default function Modal({
@@ -13,7 +17,7 @@ export default function Modal({
 
     return (
         <div
-            className="absolute bg-[#f0f4ed] top-0 left-0 w-full h-full z-40"
+            className="absolute bg-[#f0f4ed] top-0 left-0 w-full h-full z-30"
         >
             <div
                 className="fixed top-0 left-0 p-2 z-50"
@@ -24,8 +28,7 @@ export default function Modal({
                         router.back();
                     }}
                 >
-                    {/* 🞪 */}
-                    &#128938;
+                    {closeX}
                 </button>
             </div>
 
