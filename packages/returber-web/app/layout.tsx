@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
+
 import './globals.css';
 
 import AppWrapper from '@/components/AppWrapper';
@@ -22,7 +23,9 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html
+            lang="en"
+        >
             <body className={font.className}>
                 <AppWrapper>
                     <>
