@@ -41,73 +41,78 @@ export const languageMap: Record<typeof languages[number], string> = {
 export type Language = typeof languages[number];
 
 
-export const localization = {
+export interface Localization {
+    mainPageButtonCall: string;
+    mainPageButtonCollect: string;
+}
+
+export const localization: Record<typeof languages[number], Localization> = {
     en: {
-        mainPageButtonCall: 'call a returber collector',
-        mainPageButtonCollect: 'or collect returnable waste',
+        mainPageButtonCall: 'call returber collector',
+        mainPageButtonCollect: 'collect returnable waste',
     },
     da: {
-        mainPageButtonCall: 'ring en returber samler',
-        mainPageButtonCollect: 'eller indsamle returbart affald',
+        mainPageButtonCall: 'ring Returber-samleren',
+        mainPageButtonCollect: 'indsamle returbare affald',
     },
     de: {
-        mainPageButtonCall: 'rufen Sie einen Returber-Sammler an',
-        mainPageButtonCollect: 'oder sammeln Sie rückführbaren Abfall',
+        mainPageButtonCall: 'rufen Sie den Returber-Sammler an',
+        mainPageButtonCollect: 'sammeln Sie pfandfähigen Abfall',
     },
     et: {
-        mainPageButtonCall: 'helista Returberi kogujale',
-        mainPageButtonCollect: 'või koguge tagastatavat jäätet',
+        mainPageButtonCall: 'kutsuge Returberi koguja',
+        mainPageButtonCollect: 'koguge tagastatav jäätmed',
     },
     fi: {
         mainPageButtonCall: 'soita Returber-kerääjälle',
-        mainPageButtonCollect: 'tai kerää palautettavaa jätettä',
+        mainPageButtonCollect: 'kerää palautettava jäte',
     },
     he: {
-        mainPageButtonCall: 'קרא לאוסף Returber',
-        mainPageButtonCollect: 'או לאסוף פסולת מוחזרת',
+        mainPageButtonCall: 'קרא לאספן של רטורבר',
+        mainPageButtonCollect: 'אסוף פסולת מוחזרת',
     },
     hr: {
-        mainPageButtonCall: 'nazovi sakupljača Returber',
-        mainPageButtonCollect: 'ili sakupiti otpad koji se može vratiti',
+        mainPageButtonCall: 'nazovite sakupljača Returber',
+        mainPageButtonCollect: 'skupljajte povratni otpad',
     },
     is: {
-        mainPageButtonCall: 'hafa samband við Returber safnara',
-        mainPageButtonCollect: 'eða safna endurvinnanlegu úrgangi',
+        mainPageButtonCall: 'hafðu samband við Returber safnarann',
+        mainPageButtonCollect: 'safna endurvinnanlegu úrgangi',
     },
     ko: {
-        mainPageButtonCall: 'Returber 수집가에게 전화',
-        mainPageButtonCollect: '또는 반환 가능한 폐기물 수집',
+        mainPageButtonCall: 'Returber 수집기에 전화하세요',
+        mainPageButtonCollect: '반품 가능한 폐기물 수집',
     },
     lt: {
-        mainPageButtonCall: 'paskambinkite Returber rinkėjui',
-        mainPageButtonCollect: 'arba surinkite grąžinamą atlieką',
+        mainPageButtonCall: 'paskambinkite Returber surinkėjui',
+        mainPageButtonCollect: 'rinkite grąžintinį atliekas',
     },
     lv: {
-        mainPageButtonCall: 'zvaniet Returber kolekcionāram',
-        mainPageButtonCollect: 'vai savāciet atgriezeniskos atkritumus',
+        mainPageButtonCall: 'zvaniet atpakaļuzņēmējam Returber',
+        mainPageButtonCollect: 'savāciet atkārtoti izmantojamo atkritumu',
     },
     nl: {
-        mainPageButtonCall: 'bel een Returber-verzamelaar',
-        mainPageButtonCollect: 'of verzamel retourafval',
+        mainPageButtonCall: 'bel de Returber-verzamelaar',
+        mainPageButtonCollect: 'verzamel statiegeldafval',
     },
     no: {
-        mainPageButtonCall: 'ring en Returber-samler',
-        mainPageButtonCollect: 'eller samle returbart avfall',
+        mainPageButtonCall: 'ring Returber-samleren',
+        mainPageButtonCollect: 'samle pantbart avfall',
     },
     pl: {
         mainPageButtonCall: 'zadzwoń do zbieracza Returber',
-        mainPageButtonCollect: 'lub zbierz odpady zwracalne',
+        mainPageButtonCollect: 'zbieraj odpady zwrotne',
     },
     ro: {
-        mainPageButtonCall: 'cheamă un colector Returber',
-        mainPageButtonCollect: 'sau colectează deșeuri returnabile',
+        mainPageButtonCall: 'cheamă colector Returber',
+        mainPageButtonCollect: 'colectează deșeuri returnabile',
     },
     sk: {
-        mainPageButtonCall: 'zavolajte zberačovi Returber',
-        mainPageButtonCollect: 'alebo zozbierajte vrátený odpad',
+        mainPageButtonCall: 'zavolajte zberača Returber',
+        mainPageButtonCollect: 'zbierajte vrátený odpad',
     },
     sv: {
-        mainPageButtonCall: 'ring en Returber-samlare',
-        mainPageButtonCollect: 'eller samla returnerbar avfall',
+        mainPageButtonCall: 'ring Returber-samlaren',
+        mainPageButtonCollect: 'samla in returavfall',
     },
 };
