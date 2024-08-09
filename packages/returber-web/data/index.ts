@@ -65,7 +65,7 @@ export type Language = typeof languages[number];
 export interface Localization {
     mainPageButtonCall: string;
     mainPageButtonCollect: string;
-    callTakePicture: string;
+    callPictureReturnables: string;
     callReturnables: string;
     callPickTime: string;
     cancel: string;
@@ -75,7 +75,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     en: {
         mainPageButtonCall: 'call returber collector',
         mainPageButtonCollect: 'collect returnable waste',
-        callTakePicture: 'take picture of returnables',
+        callPictureReturnables: 'picture the returnables',
         callReturnables: 'returnables',
         callPickTime: 'pick time',
         cancel: 'cancel',
@@ -83,7 +83,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     da: {
         mainPageButtonCall: 'ring Returber-samleren',
         mainPageButtonCollect: 'indsamle returbare affald',
-        callTakePicture: 'tag billede af returbare',
+        callPictureReturnables: 'tag billede af returbare',
         callReturnables: 'returbare',
         callPickTime: 'vælg tid',
         cancel: 'annuller',
@@ -91,7 +91,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     de: {
         mainPageButtonCall: 'rufen Sie den Returber-Sammler an',
         mainPageButtonCollect: 'sammeln Sie pfandfähigen Abfall',
-        callTakePicture: 'machen Sie ein Bild von Pfandflaschen',
+        callPictureReturnables: 'Bild der Pfandflaschen',
         callReturnables: 'Pfandflaschen',
         callPickTime: 'Zeit auswählen',
         cancel: 'stornieren',
@@ -99,7 +99,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     et: {
         mainPageButtonCall: 'kutsuge Returberi koguja',
         mainPageButtonCollect: 'koguge tagastatav jäätmed',
-        callTakePicture: 'tehke pilt tagastatavatest',
+        callPictureReturnables: 'pildistage tagastatavad',
         callReturnables: 'tagastatavad',
         callPickTime: 'vali aeg',
         cancel: 'tühistama',
@@ -107,7 +107,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     fi: {
         mainPageButtonCall: 'soita Returber-kerääjälle',
         mainPageButtonCollect: 'kerää palautettava jäte',
-        callTakePicture: 'ota kuva palautettavista',
+        callPictureReturnables: 'ota kuva palautettavista',
         callReturnables: 'palautettavat',
         callPickTime: 'valitse aika',
         cancel: 'peruuttaa',
@@ -115,7 +115,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     he: {
         mainPageButtonCall: 'קרא לאספן של רטורבר',
         mainPageButtonCollect: 'אסוף פסולת מוחזרת',
-        callTakePicture: 'צלם תמונה של פסולת מוחזרת',
+        callPictureReturnables: 'צלם תמונה של פסולת מוחזרת',
         callReturnables: 'פסולת מוחזרת',
         callPickTime: 'בחר זמן',
         cancel: 'לְבַטֵל',
@@ -123,7 +123,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     hr: {
         mainPageButtonCall: 'nazovite sakupljača Returber',
         mainPageButtonCollect: 'skupljajte povratni otpad',
-        callTakePicture: 'snimite sliku povratnih',
+        callPictureReturnables: 'snimite sliku povratnih',
         callReturnables: 'povratnih',
         callPickTime: 'odaberite vrijeme',
         cancel: 'otkazati',
@@ -131,7 +131,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     is: {
         mainPageButtonCall: 'hafðu samband við Returber safnarann',
         mainPageButtonCollect: 'safna endurvinnanlegu úrgangi',
-        callTakePicture: 'taktu mynd af endurvinnanlegu',
+        callPictureReturnables: 'taktu mynd af endurvinnanlegu',
         callReturnables: 'endurvinnanlegu',
         callPickTime: 'veldu tíma',
         cancel: 'hætta við',
@@ -139,7 +139,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     ko: {
         mainPageButtonCall: 'Returber 수집기에 전화하세요',
         mainPageButtonCollect: '반품 가능한 폐기물 수집',
-        callTakePicture: '반품 가능한 사진 찍기',
+        callPictureReturnables: '반품 가능한 사진 찍기',
         callReturnables: '반품 가능한',
         callPickTime: '시간 선택',
         cancel: '취소',
@@ -147,7 +147,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     lt: {
         mainPageButtonCall: 'paskambinkite Returber surinkėjui',
         mainPageButtonCollect: 'rinkite grąžintinį atliekas',
-        callTakePicture: 'padarykite nuotrauką grąžintinės',
+        callPictureReturnables: 'padarykite nuotrauką grąžintinės',
         callReturnables: 'grąžintinės',
         callPickTime: 'pasirinkite laiką',
         cancel: 'atšaukti',
@@ -155,7 +155,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     lv: {
         mainPageButtonCall: 'zvaniet atpakaļuzņēmējam Returber',
         mainPageButtonCollect: 'savāciet atkārtoti izmantojamo atkritumu',
-        callTakePicture: 'uzņemiet attēlu atkārtoti izmantojamā',
+        callPictureReturnables: 'uzņemiet attēlu atkārtoti izmantojamā',
         callReturnables: 'atkārtoti izmantojamā',
         callPickTime: 'izvēlieties laiku',
         cancel: 'atcelt',
@@ -163,7 +163,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     nl: {
         mainPageButtonCall: 'bel de Returber-verzamelaar',
         mainPageButtonCollect: 'verzamel statiegeldafval',
-        callTakePicture: 'maak een foto van statiegeld',
+        callPictureReturnables: 'maak een foto van statiegeld',
         callReturnables: 'statiegeld',
         callPickTime: 'tijd kiezen',
         cancel: 'annuleren',
@@ -171,7 +171,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     no: {
         mainPageButtonCall: 'ring Returber-samleren',
         mainPageButtonCollect: 'samle pantbart avfall',
-        callTakePicture: 'ta bilde av pantbart',
+        callPictureReturnables: 'ta bilde av pantbart',
         callReturnables: 'pantbart',
         callPickTime: 'velg tid',
         cancel: 'avbryt',
@@ -179,7 +179,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     pl: {
         mainPageButtonCall: 'zadzwoń do zbieracza Returber',
         mainPageButtonCollect: 'zbieraj odpady zwrotne',
-        callTakePicture: 'zrób zdjęcie zwrotnych',
+        callPictureReturnables: 'zrób zdjęcie zwrotnych',
         callReturnables: 'zwrotne',
         callPickTime: 'wybierz czas',
         cancel: 'anuluj',
@@ -187,7 +187,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     ro: {
         mainPageButtonCall: 'cheamă colector Returber',
         mainPageButtonCollect: 'colectează deșeuri returnabile',
-        callTakePicture: 'fă o poză cu returnabile',
+        callPictureReturnables: 'pozează returnabile',
         callReturnables: 'returnabile',
         callPickTime: 'alege timpul',
         cancel: 'anulare',
@@ -195,7 +195,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     sk: {
         mainPageButtonCall: 'zavolajte zberača Returber',
         mainPageButtonCollect: 'zbierajte vrátený odpad',
-        callTakePicture: 'fotografujte vrátené',
+        callPictureReturnables: 'fotografujte vrátené',
         callReturnables: 'vrátené',
         callPickTime: 'vyberte čas',
         cancel: 'zrušiť',
@@ -203,7 +203,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     sv: {
         mainPageButtonCall: 'ring Returber-samlaren',
         mainPageButtonCollect: 'samla in returavfall',
-        callTakePicture: 'ta bild av returavfall',
+        callPictureReturnables: 'ta bild av returavfall',
         callReturnables: 'returavfall',
         callPickTime: 'välj tid',
         cancel: 'avbryt',

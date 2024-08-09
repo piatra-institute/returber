@@ -102,7 +102,7 @@ export default function Call() {
                         setShowCamera(true);
                     }}
                 >
-                    {localization[language].callTakePicture}
+                    {localization[language].callPictureReturnables}
                 </button>
             )}
 
