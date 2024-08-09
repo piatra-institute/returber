@@ -26,7 +26,7 @@ export default function Collect() {
 
     return (
         <div
-            className="grid place-items-center min-h-screen h-full"
+            className="grid place-items-center h-dvh"
         >
             <div>
                 map / select pickup task

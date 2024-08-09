@@ -93,7 +93,7 @@ export default function Call() {
 
     return (
         <div
-            className="grid place-items-center min-h-screen"
+            className="grid place-items-center h-dvh"
         >
             {!image && (
                 <button
