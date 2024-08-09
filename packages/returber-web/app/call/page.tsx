@@ -93,11 +93,11 @@ export default function Call() {
 
     return (
         <div
-            className="grid place-items-center min-h-screen h-full"
+            className="grid place-items-center min-h-screen"
         >
             {!image && (
                 <button
-                    className="lg:text-3xl font-bold select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
+                    className="lg:min-w-[500px] lg:text-3xl font-bold select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
                     onClick={() => {
                         setShowCamera(true);
                     }}
@@ -201,7 +201,7 @@ export default function Call() {
 
                     {returnables > 0 && (
                         <button
-                            className="select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
+                            className="mb-8 lg:min-w-[500px] lg:text-3xl select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
                         >
                             returber
                         </button>
