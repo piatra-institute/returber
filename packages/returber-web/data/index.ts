@@ -99,7 +99,7 @@ export const localization = {
         mainPageButtonCollect: 'lub zbierz odpady zwracalne',
     },
     ro: {
-        mainPageButtonCall: 'sună un colector Returber',
+        mainPageButtonCall: 'cheamă un colector Returber',
         mainPageButtonCollect: 'sau colectează deșeuri returnabile',
     },
     sk: {
