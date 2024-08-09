@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
 import './globals.css';
 
+import AppWrapper from '@/components/AppWrapper';
+
 
 
 const font = Nunito({ subsets: ['latin'] });
@@ -19,7 +21,11 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={font.className}>{children}</body>
+            <body className={font.className}>
+                <AppWrapper>
+                    {children}
+                </AppWrapper>
+            </body>
         </html>
     );
 }
