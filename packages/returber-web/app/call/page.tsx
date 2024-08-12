@@ -195,7 +195,7 @@ export default function Call() {
                         <button
                             className={pickTimeType === 'next-24hrs'
                                 ? 'select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out'
-                                : 'select-none py-2 px-8 rounded-full'
+                                : 'select-none py-2 px-8 font-bold rounded-full'
                             }
                             onClick={() => {
                                 setPickTimeType('next-24hrs');
@@ -209,7 +209,7 @@ export default function Call() {
                         <button
                             className={pickTimeType === 'custom'
                                 ? 'select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out'
-                                : 'select-none py-2 px-8 rounded-full'
+                                : 'select-none py-2 px-8 font-bold rounded-full'
                             }
                             onClick={() => {
                                 setPickTimeType('custom');
