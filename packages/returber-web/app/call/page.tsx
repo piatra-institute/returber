@@ -169,6 +169,17 @@ export default function Call() {
                             {returnablesMultiplier}
                         </div>
 
+                        <input
+                            type="range"
+                            min={0}
+                            max={0.5}
+                            step={0.05}
+                            value={returnablesMultiplier}
+                            onChange={(e) => {
+                                setReturnablesMultiplier(parseFloat(e.target.value));
+                            }}
+                        />
+
                         <div
                             className="text-xl"
                         >
