@@ -22,7 +22,6 @@ import {
     closeX,
 } from '@/data/icons';
 
-import LinkButton from '@/components/LinkButton';
 import Camera from '@/components/Camera';
 
 
@@ -62,14 +61,9 @@ export default function Call() {
     ] = useState(0.25);
 
     const [
-        startPickTime,
-        setStartPickTime,
-    ] = useState(0);
-
-    const [
-        endPickTime,
-        setEndPickTime,
-    ] = useState(0);
+        customTimeText,
+        setCustomTimeText,
+    ] = useState('');
 
     const [
         pickTimeType,
@@ -82,12 +76,6 @@ export default function Call() {
             return;
         }
         mounted.current = true;
-    }, []);
-
-
-    useEffect(() => {
-        setStartPickTime(Date.now());
-        setEndPickTime(Date.now() + 1000 * 60 * 60 * 24);
     }, []);
 
 
@@ -160,7 +148,6 @@ export default function Call() {
                         className="flex flex-col gap-2 text-center mb-8"
                     >
                         <input
-                            placeholder="overwrite"
                             value={returnables}
                             onChange={(e) => {
                                 const value = parseInt(e.target.value);
@@ -171,7 +158,7 @@ export default function Call() {
 
                                 setReturnables(value);
                             }}
-                            className="text-center w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
+                            className="text-center lg:min-w-[250px] px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
                         />
 
                         <div>
@@ -179,6 +166,12 @@ export default function Call() {
                         </div>
 
                         <div>
+                            {returnablesMultiplier}
+                        </div>
+
+                        <div
+                            className="text-xl"
+                        >
                             {returnables * returnablesMultiplier} {currencyMap[language]}
                         </div>
                     </div>
@@ -194,13 +187,11 @@ export default function Call() {
 
                         <button
                             className={pickTimeType === 'next-24hrs'
-                                ? 'select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out'
+                                ? 'select-none lg:min-w-[250px] bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out'
                                 : 'select-none py-2 px-8 font-bold rounded-full'
                             }
                             onClick={() => {
                                 setPickTimeType('next-24hrs');
-                                setStartPickTime(Date.now());
-                                setEndPickTime(Date.now() + 1000 * 60 * 60 * 24);
                             }}
                         >
                             {localization[language].callNext24Hours}
@@ -208,7 +199,7 @@ export default function Call() {
 
                         <button
                             className={pickTimeType === 'custom'
-                                ? 'select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out'
+                                ? 'select-none lg:min-w-[250px] bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out'
                                 : 'select-none py-2 px-8 font-bold rounded-full'
                             }
                             onClick={() => {
@@ -217,6 +208,17 @@ export default function Call() {
                         >
                             {localization[language].callCustom}
                         </button>
+
+                        {pickTimeType === 'custom' && (
+                            <input
+                                placeholder="in 2 hours, next Tuesday, etc."
+                                value={customTimeText}
+                                onChange={(e) => {
+                                    setCustomTimeText(e.target.value);
+                                }}
+                                className="text-center lg:min-w-[250px] px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 mt-4"
+                            />
+                        )}
                     </div>
 
                     {returnables > 0 ? (
