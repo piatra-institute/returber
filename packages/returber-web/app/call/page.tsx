@@ -81,11 +81,11 @@ export default function Call() {
 
     return (
         <div
-            className="grid place-items-center h-dvh"
+            className="grid place-content-center max-w-[500px] m-auto h-dvh"
         >
             {!image && (
                 <button
-                    className="lg:min-w-[500px] lg:text-3xl font-bold select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
+                    className="min-w-[300px] lg:min-w-[500px] lg:text-3xl font-bold select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
                     onClick={() => {
                         setShowCamera(true);
                     }}
@@ -148,7 +148,9 @@ export default function Call() {
                         className="flex flex-col gap-2 text-center mb-8"
                     >
                         <input
-                            value={returnables}
+                            value={returnables.toString()}
+                            type="number"
+                            inputMode="numeric"
                             onChange={(e) => {
                                 const value = parseInt(e.target.value);
                                 if (isNaN(value)) {
@@ -183,7 +185,7 @@ export default function Call() {
                         <div
                             className="text-xl"
                         >
-                            {returnables * returnablesMultiplier} {currencyMap[language]}
+                            {(returnables * returnablesMultiplier).toFixed(2)} {currencyMap[language]}
                         </div>
                     </div>
 

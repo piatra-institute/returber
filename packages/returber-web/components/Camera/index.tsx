@@ -20,9 +20,12 @@ export default function CameraContainer({
 }) {
     useUnscrollable();
 
+
     return (
         <div
-            className="h-dvh p-2 bg-black fixed top-0 left-0 right-0 bottom-0 z-50 flex justify-center items-center"
+            className={
+                'h-dvh p-2 bg-black fixed top-0 left-0 right-0 bottom-0 z-50 flex justify-center items-center'
+            }
         >
             <div
                 className="fixed m-auto top-12 z-40 left-0 right-0 flex justify-center m-4"
