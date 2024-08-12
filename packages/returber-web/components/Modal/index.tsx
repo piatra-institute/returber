@@ -20,7 +20,7 @@ export default function Modal({
             className="absolute bg-[#f0f4ed] top-0 left-0 w-full h-full z-30"
         >
             <div
-                className="fixed top-0 left-0 p-2 z-50"
+                className="fixed top-0 left-0 p-4 z-50"
             >
                 <button
                     className="text-2xl"

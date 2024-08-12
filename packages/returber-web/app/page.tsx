@@ -40,7 +40,7 @@ export default function Home() {
                     draggable={false}
                 >
                     <button
-                        className="lg:min-w-[500px] select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
+                        className="min-w-[250px] lg:min-w-[500px] select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
                     >
                         {localization[language].mainPageButtonCall}
                     </button>
@@ -63,7 +63,7 @@ export default function Home() {
                     draggable={false}
                 >
                     <button
-                        className="lg:min-w-[500px] select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
+                        className="min-w-[250px] lg:min-w-[500px] select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
                     >
                         {localization[language].mainPageButtonCollect}
                     </button>
