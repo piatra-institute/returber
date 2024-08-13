@@ -42,11 +42,12 @@ export default function CameraContainer({
                 onTakePhoto={(dataUri) => {
                     handleImage(dataUri);
                 }}
+                imageType="png"
+                imageCompression={1}
                 idealFacingMode="environment"
                 isMaxResolution={true}
                 isFullscreen={false}
-                imageType="png"
-                imageCompression={1}
+                isSilentMode={true}
             />
         </div>
     );

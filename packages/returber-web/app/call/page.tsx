@@ -81,17 +81,21 @@ export default function Call() {
 
     return (
         <div
-            className="grid place-content-center max-w-[500px] m-auto h-dvh"
+            className="max-w-[300px] md:max-w-[400px] m-auto h-dvh"
         >
             {!image && (
-                <button
-                    className="min-w-[300px] lg:min-w-[500px] lg:text-3xl font-bold select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
-                    onClick={() => {
-                        setShowCamera(true);
-                    }}
+                <div
+                    className="grid place-content-center h-dvh"
                 >
-                    {localization[language].callPictureReturnables}
-                </button>
+                    <button
+                        className="min-w-[300px] lg:min-w-[400px] lg:text-3xl font-bold select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
+                        onClick={() => {
+                            setShowCamera(true);
+                        }}
+                    >
+                        {localization[language].callPictureReturnables}
+                    </button>
+                </div>
             )}
 
             {showCamera && (
@@ -108,7 +112,12 @@ export default function Call() {
             {image && (
                 <>
                     <div
+                        className="mb-8"
+                    />
+
+                    <div
                         // className="absolute"
+                        className="mb-8"
                     >
                         <div
                             id="map"
@@ -122,7 +131,7 @@ export default function Call() {
                     </div>
 
                     <div
-                        className="relative mb-8"
+                        className="relative mb-8 flex flex-col items-center"
                     >
                         <Image
                             src={image}
@@ -236,13 +245,13 @@ export default function Call() {
 
                     {returnables > 0 ? (
                         <button
-                            className="mb-8 lg:min-w-[500px] lg:text-3xl select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
+                            className="mt-8 mb-24 w-full text-xl lg:text-3xl select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
                         >
                             returber
                         </button>
                     ) : (
                         <div
-                            className="mb-8 h-[52px]"
+                            className="mt-8 mb-24 h-[52px]"
                         />
                     )}
                 </>
