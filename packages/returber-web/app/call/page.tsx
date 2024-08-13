@@ -22,6 +22,7 @@ import {
     closeX,
 } from '@/data/icons';
 
+import Map from '@/components/Map/dynamic';
 import Camera from '@/components/Camera';
 
 
@@ -33,6 +34,7 @@ export default function Call() {
 
 
     const mounted = useRef(false);
+    const map = useRef<any>();
 
 
     const [
@@ -131,14 +133,18 @@ export default function Call() {
                         className="h-14"
                     />
 
-                    {location && (
+                    {location ? (
                         <div
-                            className="mb-8"
-                            id="map"
-                            // style={{
-                            //     height: '200px',
-                            //     width: '200px',
-                            // }}
+                            className="grid place-content-center mb-12"
+                        >
+                            <Map
+                                location={location}
+                                map={map}
+                            />
+                        </div>
+                    ) : (
+                        <div
+                            className="h-[300px] w-[300px] md:h-[400px] md:w-[400px] mb-12"
                         />
                     )}
 
