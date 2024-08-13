@@ -140,6 +140,13 @@ export default function Call() {
                             <Map
                                 location={location}
                                 map={map}
+                                atNewLocation={(newLocation) => {
+                                    setLocation({
+                                        ...location,
+                                        latitude: newLocation.lat,
+                                        longitude: newLocation.lng,
+                                    });
+                                }}
                             />
                         </div>
                     ) : (
