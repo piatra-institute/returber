@@ -1,19 +1,24 @@
 import {
     useRef,
     useMemo,
-    useState,
-    useCallback,
 } from 'react';
+
+import L from 'leaflet';
 
 import {
     MapContainer,
     TileLayer,
     Marker,
-    Popup,
     useMapEvents,
 } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
+
+
+const markerIcon = L.icon({
+    iconUrl: '/marker-icon.png',
+    shadowUrl: '/marker-shadow.png',
+});
 
 
 function DraggableMarker({
@@ -60,9 +65,9 @@ function DraggableMarker({
             draggable={true}
             eventHandlers={eventHandlers}
             position={center}
+            icon={markerIcon}
             ref={markerRef}
-        >
-        </Marker>
+        />
     );
 }
 

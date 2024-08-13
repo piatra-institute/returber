@@ -165,7 +165,7 @@ export default function Call() {
                             width={400}
                             priority={false}
                             draggable={false}
-                            className="rounded-full select-none max-h-[400px] w-auto"
+                            className="rounded-full select-none max-h-[400px] shadow-xl w-auto"
                         />
 
                         <button
