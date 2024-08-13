@@ -124,6 +124,7 @@ export default function Call() {
                         setShowCamera(false);
                     }}
                     setShowCamera={setShowCamera}
+                    setReturnables={setReturnables}
                 />
             )}
 
