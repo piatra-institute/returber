@@ -258,11 +258,12 @@ export default function Call() {
 
                         {pickTimeType === 'custom' && (
                             <input
-                                placeholder="in 2 hours, next Tuesday, etc."
+                                placeholder={localization[language].callCustomPlaceholder}
                                 value={customTimeText}
                                 onChange={(e) => {
                                     setCustomTimeText(e.target.value);
                                 }}
+                                autoCapitalize="none"
                                 className="text-center lg:min-w-[250px] px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 mt-4"
                             />
                         )}

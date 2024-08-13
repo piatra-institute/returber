@@ -70,6 +70,7 @@ export interface Localization {
     callPickTime: string;
     callNext24Hours: string;
     callCustom: string;
+    callCustomPlaceholder: string;
     cancel: string;
 }
 
@@ -82,6 +83,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         callPickTime: 'pick time',
         callNext24Hours: 'next 24 hours',
         callCustom: 'custom',
+        callCustomPlaceholder: 'in 2 hours, next Tuesday, etc.',
         cancel: 'cancel',
     },
     da: {
@@ -92,6 +94,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         callPickTime: 'vælg tid',
         callNext24Hours: 'næste 24 timer',
         callCustom: 'tilpasset',
+        callCustomPlaceholder: 'om 2 timer, næste tirsdag, osv.',
         cancel: 'annuller',
     },
     de: {
@@ -102,6 +105,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         callPickTime: 'Zeit auswählen',
         callNext24Hours: 'nächsten 24 Stunden',
         callCustom: 'benutzerdefiniert',
+        callCustomPlaceholder: 'in 2 Stunden, nächsten Dienstag, usw.',
         cancel: 'stornieren',
     },
     et: {
@@ -112,6 +116,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         callPickTime: 'vali aeg',
         callNext24Hours: 'järgmised 24 tundi',
         callCustom: 'kohandatud',
+        callCustomPlaceholder: '2 tunni pärast, järgmisel teisipäeval jne',
         cancel: 'tühistama',
     },
     fi: {
@@ -122,6 +127,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         callPickTime: 'valitse aika',
         callNext24Hours: 'seuraavat 24 tuntia',
         callCustom: 'mukautettu',
+        callCustomPlaceholder: '2 tunnin kuluttua, ensi tiistaina jne.',
         cancel: 'peruuttaa',
     },
     he: {
@@ -132,6 +138,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         callPickTime: 'בחר זמן',
         callNext24Hours: '24 השעות הבאות',
         callCustom: 'המותאם אישית',
+        callCustomPlaceholder: 'בעוד 2 שעות, ביום שלישי הבא וכו',
         cancel: 'לְבַטֵל',
     },
     hr: {
@@ -142,6 +149,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         callPickTime: 'odaberite vrijeme',
         callNext24Hours: 'sljedećih 24 sata',
         callCustom: 'prilagođeno',
+        callCustomPlaceholder: 'za 2 sata, sljedeći utorak itd.',
         cancel: 'otkazati',
     },
     is: {
@@ -152,6 +160,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         callPickTime: 'veldu tíma',
         callNext24Hours: 'næstu 24 klukkustundir',
         callCustom: 'sérsniðið',
+        callCustomPlaceholder: 'eftir 2 klukkustundir, næsta þriðjudag o.fl.',
         cancel: 'hætta við',
     },
     ko: {
@@ -162,6 +171,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         callPickTime: '시간 선택',
         callNext24Hours: '다음 24 시간',
         callCustom: '사용자 정의',
+        callCustomPlaceholder: '2 시간 후, 다음 화요일 등',
         cancel: '취소',
     },
     lt: {
@@ -172,6 +182,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         callPickTime: 'pasirinkite laiką',
         callNext24Hours: 'kitą 24 valandas',
         callCustom: 'pasirinktinai',
+        callCustomPlaceholder: 'po 2 valandų, kitą antradienį ir t.t.',
         cancel: 'atšaukti',
     },
     lv: {
@@ -182,6 +193,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         callPickTime: 'izvēlieties laiku',
         callNext24Hours: 'nākamās 24 stundas',
         callCustom: 'pielāgots',
+        callCustomPlaceholder: 'pēc 2 stundām, nākamajā otrdienā utt.',
         cancel: 'atcelt',
     },
     nl: {
@@ -192,6 +204,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         callPickTime: 'tijd kiezen',
         callNext24Hours: 'volgende 24 uur',
         callCustom: 'aangepast',
+        callCustomPlaceholder: 'over 2 uur, volgende dinsdag, enz.',
         cancel: 'annuleren',
     },
     no: {
@@ -202,6 +215,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         callPickTime: 'velg tid',
         callNext24Hours: 'neste 24 timer',
         callCustom: 'tilpasset',
+        callCustomPlaceholder: 'om 2 timer, neste tirsdag, osv.',
         cancel: 'avbryt',
     },
     pl: {
@@ -212,6 +226,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         callPickTime: 'wybierz czas',
         callNext24Hours: 'następne 24 godziny',
         callCustom: 'niestandardowy',
+        callCustomPlaceholder: 'za 2 godziny, w następny wtorek itp.',
         cancel: 'anuluj',
     },
     ro: {
@@ -222,6 +237,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         callPickTime: 'alege timpul',
         callNext24Hours: 'următoarele 24 de ore',
         callCustom: 'personalizat',
+        callCustomPlaceholder: 'în 2 ore, marțea viitoare etc.',
         cancel: 'anulare',
     },
     sk: {
@@ -232,6 +248,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         callPickTime: 'vyberte čas',
         callNext24Hours: 'nasledujúcich 24 hodín',
         callCustom: 'prispôsobené',
+        callCustomPlaceholder: 'o 2 hodiny, budúci utorok atď.',
         cancel: 'zrušiť',
     },
     sv: {
@@ -242,6 +259,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         callPickTime: 'välj tid',
         callNext24Hours: 'nästa 24 timmar',
         callCustom: 'anpassad',
+        callCustomPlaceholder: 'om 2 timmar, nästa tisdag osv.',
         cancel: 'avbryt',
     },
 };
