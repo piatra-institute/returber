@@ -43,7 +43,7 @@ export default function Call() {
     const [
         location,
         setLocation,
-    ] = useState(null);
+    ] = useState<GeolocationCoordinates | null>(null);
 
     const [
         image,
@@ -77,6 +77,22 @@ export default function Call() {
         }
         mounted.current = true;
     }, []);
+
+    useEffect(() => {
+        if (!image) {
+            return;
+        }
+
+        const loadLocation = () => {
+            window.navigator.geolocation.getCurrentPosition((data) => {
+                setLocation(data.coords);
+            });
+        }
+
+        loadLocation();
+    }, [
+        image,
+    ]);
 
 
     return (
@@ -112,23 +128,19 @@ export default function Call() {
             {image && (
                 <>
                     <div
-                        className="mb-8"
+                        className="h-14"
                     />
 
-                    <div
-                        // className="absolute"
-                        className="mb-8"
-                    >
+                    {location && (
                         <div
+                            className="mb-8"
                             id="map"
                             // style={{
                             //     height: '200px',
                             //     width: '200px',
                             // }}
-                        >
-                            map
-                        </div>
-                    </div>
+                        />
+                    )}
 
                     <div
                         className="relative mb-8 flex flex-col items-center"
