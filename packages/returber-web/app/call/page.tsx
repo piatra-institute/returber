@@ -16,6 +16,7 @@ import {
 import {
     localization,
     currencyMap,
+    PickTimeType,
 } from '@/data/index';
 
 import {
@@ -24,6 +25,7 @@ import {
 
 import Map from '@/components/Map/dynamic';
 import Camera from '@/components/Camera';
+import TimePicker from '@/components/TimePicker';
 
 
 
@@ -70,7 +72,7 @@ export default function Call() {
     const [
         pickTimeType,
         setPickTimeType,
-    ] = useState<'next-24hrs' | 'custom'>('next-24hrs');
+    ] = useState<PickTimeType>('next-24hrs');
 
 
     const returber = () => {
@@ -240,51 +242,12 @@ export default function Call() {
                         </div>
                     </div>
 
-                    <div
-                        className="flex flex-col gap-2 text-center mb-8"
-                    >
-                        <div
-                            className="mb-2"
-                        >
-                            {localization[language].callPickTime}
-                        </div>
-
-                        <button
-                            className={pickTimeType === 'next-24hrs'
-                                ? 'select-none lg:min-w-[250px] bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out'
-                                : 'select-none py-2 px-8 font-bold rounded-full'
-                            }
-                            onClick={() => {
-                                setPickTimeType('next-24hrs');
-                            }}
-                        >
-                            {localization[language].callNext24Hours}
-                        </button>
-
-                        <button
-                            className={pickTimeType === 'custom'
-                                ? 'select-none lg:min-w-[250px] bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out'
-                                : 'select-none py-2 px-8 font-bold rounded-full'
-                            }
-                            onClick={() => {
-                                setPickTimeType('custom');
-                            }}
-                        >
-                            {localization[language].callCustom}
-                        </button>
-
-                        {pickTimeType === 'custom' && (
-                            <input
-                                placeholder={localization[language].callCustomPlaceholder}
-                                value={customTimeText}
-                                onChange={(e) => {
-                                    setCustomTimeText(e.target.value);
-                                }}
-                                autoCapitalize="none"
-                                className="text-center lg:min-w-[250px] px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 mt-4"
-                            />
-                        )}
-                    </div>
+                    <TimePicker
+                        pickTimeType={pickTimeType}
+                        setPickTimeType={setPickTimeType}
+                        customTimeText={customTimeText}
+                        setCustomTimeText={setCustomTimeText}
+                    />
 
                     {returnables > 0 ? (
                         <button

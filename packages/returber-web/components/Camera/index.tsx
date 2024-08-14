@@ -11,7 +11,10 @@ import {
     useUnscrollable,
 } from '@/logic/hooks';
 
-import yoloClasses from '@/data/yoloClasses';
+import {
+    yoloClasses,
+} from '@/data/index';
+
 import * as runModelUtils from '@/logic/yolo/runModel';
 
 

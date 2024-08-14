@@ -1,0 +1,41 @@
+export const languages = [
+    'en',
+    'da',
+    'de',
+    'et',
+    'fi',
+    'he',
+    'hr',
+    'is',
+    'ko',
+    'lt',
+    'lv',
+    'nl',
+    'no',
+    'pl',
+    'ro',
+    'sk',
+    'sv',
+] as const;
+
+export const languageMap: Record<typeof languages[number], string> = {
+    en: 'English',
+    da: 'Dansk',
+    de: 'Deutsch',
+    et: 'Eesti',
+    fi: 'Suomi',
+    he: 'עברית',
+    hr: 'Hrvatski',
+    is: 'Íslenska',
+    ko: '한국어',
+    lt: 'Lietuvių',
+    lv: 'Latviešu',
+    nl: 'Nederlands',
+    no: 'Norsk',
+    pl: 'Polski',
+    ro: 'Română',
+    sk: 'Slovenský',
+    sv: 'Svenska',
+};
+
+export type Language = typeof languages[number];

@@ -1,4 +1,4 @@
-const yoloClasses = [
+export const yoloClasses = [
     'person',
     'bicycle',
     'car',
@@ -80,6 +80,3 @@ const yoloClasses = [
     'hair drier',
     'toothbrush',
 ];
-
-
-export default yoloClasses;
