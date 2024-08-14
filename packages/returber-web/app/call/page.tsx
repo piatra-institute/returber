@@ -99,7 +99,7 @@ export default function Call() {
             return;
         }
 
-        const loadLocation = () => {
+        const loadLocation = async () => {
             window.navigator.geolocation.getCurrentPosition((data) => {
                 setLocation(data.coords);
             });

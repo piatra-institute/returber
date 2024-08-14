@@ -32,7 +32,10 @@ export default function LanguageSelector() {
                 onChange={(event) => setLanguage(event.target.value as Language)}
                 name="language-selector"
             >
-                {languages.map((lg) => (
+                {[
+                    language,
+                    ...languages.filter((lg) => lg !== language),
+                ].map((lg) => (
                     <option
                         key={lg}
                         value={lg}

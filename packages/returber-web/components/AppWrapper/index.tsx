@@ -28,6 +28,10 @@ export default function AppWrapper({
         language,
         setLanguage,
     ] = useState<Language>('en');
+    const [
+        languageSet,
+        setLanguageSet,
+    ] = useState(false);
 
 
     useEffect(() => {
@@ -43,15 +47,20 @@ export default function AppWrapper({
                 } else {
                     setLanguage('en');
                 }
+                setLanguageSet(true);
             } catch (error) {
-                console.error('Error detecting language:', error);
                 setLanguage('en');
+                setLanguageSet(true);
             }
         }
 
         detectLanguage();
     }, []);
 
+
+    if (!languageSet) {
+        return
+    }
 
     return (
         <LanguageContext.Provider

@@ -58,6 +58,16 @@ function DraggableMarker({
                 lng: center.lng,
             });
         },
+        locationfound(e) {
+            atNewLocation({
+                lat: e.latlng.lat,
+                lng: e.latlng.lng,
+            });
+            map.flyTo(e.latlng, map.getZoom());
+        },
+        dblclick(e) {
+            map.locate();
+        },
     });
 
     return (
