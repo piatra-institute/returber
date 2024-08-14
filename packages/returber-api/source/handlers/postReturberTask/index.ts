@@ -19,6 +19,12 @@ export default async function handler(
 ) {
     try {
         const {
+            image,
+            location,
+            returnables,
+            pickTimeType,
+            customTimeText,
+            language,
         } = request.body;
 
         response.json({
