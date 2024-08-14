@@ -16,6 +16,7 @@ import {
 import {
     localization,
     PickTimeType,
+    returnPrices,
 } from '@/data/index';
 
 import {
@@ -72,11 +73,8 @@ export default function Call() {
     ] = useState([
         {
             count: 0,
-            multiplier: 0.25,
-        },
-        {
-            count: 5,
-            multiplier: 0.5,
+            multiplier: returnPrices[language] / 2,
+            max: returnPrices[language],
         },
     ]);
 
@@ -109,6 +107,18 @@ export default function Call() {
         }
         mounted.current = true;
     }, []);
+
+    useEffect(() => {
+        setReturnables([
+            {
+                count: 0,
+                multiplier: returnPrices[language] / 2,
+                max: returnPrices[language],
+            },
+        ]);
+    }, [
+        language,
+    ]);
 
     useEffect(() => {
         if (!image) {
@@ -237,6 +247,12 @@ export default function Call() {
                             setReturnables={(value) => {
                                 const newReturnables = [...returnables];
                                 newReturnables[index].count = value;
+                                setReturnables(newReturnables);
+                            }}
+                            returnableMaxValue={returnable.max}
+                            setReturnablesMaxValue={(value) => {
+                                const newReturnables = [...returnables];
+                                newReturnables[index].max = value;
                                 setReturnables(newReturnables);
                             }}
                             returnablesMultiplier={returnable.multiplier}

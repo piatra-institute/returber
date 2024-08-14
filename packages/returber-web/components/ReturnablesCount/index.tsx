@@ -18,14 +18,18 @@ import {
 export default function ReturnablesCount({
     returnables,
     setReturnables,
+    returnableMaxValue,
+    setReturnablesMaxValue,
     returnablesMultiplier,
     setReturnablesMultiplier,
     type,
 } : {
-    returnables: number,
-    setReturnables: (value: number) => void,
-    returnablesMultiplier: number,
-    setReturnablesMultiplier: (value: number) => void,
+    returnables: number;
+    setReturnables: (value: number) => void;
+    returnableMaxValue: number;
+    setReturnablesMaxValue: (value: number) => void;
+    returnablesMultiplier: number;
+    setReturnablesMultiplier: (value: number) => void;
     type?: string;
 }) {
     const {
@@ -60,14 +64,37 @@ export default function ReturnablesCount({
             </div>
 
             <div>
-                {returnablesMultiplier}
+                <span>
+                    {new Intl.NumberFormat(language).format(returnablesMultiplier)} {currencyMap[language]} {localization[language].callPerPiece}
+                </span>
+
+                <input
+                    value={returnableMaxValue}
+                    min={0}
+                    step={0.1}
+                    type="number"
+                    inputMode="numeric"
+                    onChange={(e) => {
+                        const value = parseFloat(e.target.value);
+                        if (isNaN(value)) {
+                            return;
+                        }
+
+                        setReturnablesMaxValue(value);
+                    }}
+                    className="w-[70px] mx-2 text-right px-2 rounded-full"
+                />
+
+                <span>
+                    {currencyMap[language]}
+                </span>
             </div>
 
             <input
                 type="range"
                 min={0}
-                max={0.5}
-                step={0.05}
+                max={returnableMaxValue}
+                step={returnableMaxValue / 10}
                 value={returnablesMultiplier}
                 onChange={(e) => {
                     setReturnablesMultiplier(parseFloat(e.target.value));
@@ -77,7 +104,9 @@ export default function ReturnablesCount({
             <div
                 className="text-xl"
             >
-                {(returnables * returnablesMultiplier).toFixed(2)} {currencyMap[language]}
+                {new Intl.NumberFormat(language).format(
+                    (returnables * returnablesMultiplier)
+                )} {currencyMap[language]}
             </div>
         </div>
     );

@@ -38,6 +38,7 @@ export default function CameraContainer({
     setReturnables: React.Dispatch<React.SetStateAction<{
         count: number;
         multiplier: number;
+        max: number;
     }[]>>;
 }) {
     useUnscrollable();
