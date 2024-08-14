@@ -18,6 +18,9 @@ export const languages = [
     'sv',
 ] as const;
 
+export type Language = typeof languages[number];
+
+
 export const languageMap: Record<typeof languages[number], string> = {
     en: 'English',
     da: 'Dansk',
@@ -38,4 +41,23 @@ export const languageMap: Record<typeof languages[number], string> = {
     sv: 'Svenska',
 };
 
-export type Language = typeof languages[number];
+
+export const countryToLanguage: { [key: string]: Language } = {
+    us: 'en', gb: 'en', // English
+    dk: 'da', // Danish
+    de: 'de', at: 'de', ch: 'de', // German
+    ee: 'et', // Estonian
+    fi: 'fi', // Finnish
+    il: 'he', // Hebrew
+    hr: 'hr', // Croatian
+    is: 'is', // Icelandic
+    kr: 'ko', // Korean
+    lt: 'lt', // Lithuanian
+    lv: 'lv', // Latvian
+    nl: 'nl', be: 'nl', // Dutch
+    no: 'no', // Norwegian
+    pl: 'pl', // Polish
+    ro: 'ro', // Romanian
+    sk: 'sk', // Slovak
+    se: 'sv', // Swedish
+};

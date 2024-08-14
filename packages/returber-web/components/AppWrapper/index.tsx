@@ -2,6 +2,7 @@
 
 import React, {
     useState,
+    useEffect,
 } from 'react';
 
 import {
@@ -10,6 +11,8 @@ import {
 
 import {
     Language,
+    languages,
+    countryToLanguage,
 } from '@/data/index';
 
 import LanguageSelector from '@/components/LanguageSelector';
@@ -25,6 +28,30 @@ export default function AppWrapper({
         language,
         setLanguage,
     ] = useState<Language>('en');
+
+
+    useEffect(() => {
+        async function detectLanguage() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                const country = data.country_code.toLowerCase();
+
+                const detectedLanguage = countryToLanguage[country];
+                if (detectedLanguage && languages.includes(detectedLanguage)) {
+                    setLanguage(detectedLanguage);
+                } else {
+                    setLanguage('en');
+                }
+            } catch (error) {
+                console.error('Error detecting language:', error);
+                setLanguage('en');
+            }
+        }
+
+        detectLanguage();
+    }, []);
+
 
     return (
         <LanguageContext.Provider
