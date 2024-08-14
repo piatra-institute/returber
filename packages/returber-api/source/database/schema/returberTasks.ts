@@ -12,6 +12,12 @@ export const returberTasks = sqliteTable(
     {
         id: text('id').notNull().primaryKey(),
         createdAt: text('created_at').notNull(),
+
+        image: text('image').notNull(),
+        pickTimeType: text('pick_time_type').notNull(),
+        customTimeText: text('custom_time_text').notNull(),
+        language:  text('language').notNull(),
+
         createdBy: text('created_by').notNull(),
         name: text('name').notNull(),
         address: text('address').notNull(),

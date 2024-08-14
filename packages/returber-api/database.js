@@ -34,6 +34,12 @@ const tables = [
 `CREATE TABLE IF NOT EXISTS returberTasks (
     id TEXT NOT NULL PRIMARY KEY,
     created_at TEXT NOT NULL,
+
+    image TEXT NOT NULL,
+    pick_time_type TEXT NOT NULL,
+    custom_time_text TEXT NOT NULL,
+    language TEXT NOT NULL,
+
     created_by TEXT NOT NULL,
     name TEXT NOT NULL,
     address TEXT NOT NULL,

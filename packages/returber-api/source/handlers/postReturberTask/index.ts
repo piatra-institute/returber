@@ -3,9 +3,14 @@ import type {
     Response,
 } from 'express';
 
+import { v4 as uuid } from 'uuid';
+
 import { sql } from 'drizzle-orm';
 
 import database from '../../database';
+import {
+    returberTasks,
+} from '../../database/schema/returberTasks';
 
 import {
     logger,
@@ -26,6 +31,39 @@ export default async function handler(
             customTimeText,
             language,
         } = request.body;
+
+
+        const {
+            name,
+            address,
+            postalCode,
+            city,
+            region,
+            country,
+        } = location;
+
+        await database.insert(returberTasks).values({
+            id: uuid(),
+            createdAt: new Date().toISOString(),
+
+            image,
+            pickTimeType,
+            customTimeText,
+            language,
+
+            createdBy: '',
+            name,
+            address,
+            postalCode,
+            city,
+            region,
+            country,
+            locationIndexID: location.id,
+            returnables,
+            rate: 0,
+            status: 'pending',
+        });
+
 
         response.json({
             status: true,
