@@ -28,7 +28,10 @@ export default function CameraContainer({
     cancelText: string;
     handleImage: (dataUri: string) => void;
     setShowCamera: (showCamera: boolean) => void;
-    setReturnables: (returnables: number) => void;
+    setReturnables: React.Dispatch<React.SetStateAction<{
+        count: number;
+        multiplier: number;
+    }[]>>;
 }) {
     useUnscrollable();
 
@@ -129,7 +132,12 @@ export default function CameraContainer({
         }
 
 
-        setReturnables(returnables);
+        setReturnables(r => [
+            {
+                ...r[0],
+                count: returnables,
+            },
+        ]);
     }
 
 

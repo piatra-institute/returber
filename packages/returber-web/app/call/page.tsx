@@ -15,7 +15,6 @@ import {
 
 import {
     localization,
-    currencyMap,
     PickTimeType,
 } from '@/data/index';
 
@@ -25,6 +24,7 @@ import {
 
 import Map from '@/components/Map/dynamic';
 import Camera from '@/components/Camera';
+import ReturnablesCount from '@/components/ReturnablesCount';
 import TimePicker from '@/components/TimePicker';
 
 
@@ -57,12 +57,12 @@ export default function Call() {
     const [
         returnables,
         setReturnables,
-    ] = useState(0);
-
-    const [
-        returnablesMultiplier,
-        setReturnablesMultiplier,
-    ] = useState(0.25);
+    ] = useState([
+        {
+            count: 0,
+            multiplier: 0.25,
+        },
+    ]);
 
     const [
         customTimeText,
@@ -80,7 +80,6 @@ export default function Call() {
             image,
             location,
             returnables,
-            returnablesMultiplier,
             pickTimeType,
             customTimeText,
             language,
@@ -194,53 +193,23 @@ export default function Call() {
                         </button>
                     </div>
 
-                    <div
-                        className="flex flex-col gap-2 text-center mb-8"
-                    >
-                        <input
-                            value={returnables.toString()}
-                            type="number"
-                            inputMode="numeric"
-                            min="0"
-                            onChange={(e) => {
-                                const value = parseInt(e.target.value);
-                                if (isNaN(value)) {
-                                    setReturnables(0);
-                                    return;
-                                }
-
-                                setReturnables(
-                                    Math.abs(value)
-                                );
+                    {returnables.map((returnable, index) => (
+                        <ReturnablesCount
+                            key={index}
+                            returnables={returnable.count}
+                            setReturnables={(value) => {
+                                const newReturnables = [...returnables];
+                                newReturnables[index].count = value;
+                                setReturnables(newReturnables);
                             }}
-                            className="text-center lg:min-w-[250px] px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
-                        />
-
-                        <div>
-                            {localization[language].callReturnables}
-                        </div>
-
-                        <div>
-                            {returnablesMultiplier}
-                        </div>
-
-                        <input
-                            type="range"
-                            min={0}
-                            max={0.5}
-                            step={0.05}
-                            value={returnablesMultiplier}
-                            onChange={(e) => {
-                                setReturnablesMultiplier(parseFloat(e.target.value));
+                            returnablesMultiplier={returnable.multiplier}
+                            setReturnablesMultiplier={(value) => {
+                                const newReturnables = [...returnables];
+                                newReturnables[index].multiplier = value;
+                                setReturnables(newReturnables);
                             }}
                         />
-
-                        <div
-                            className="text-xl"
-                        >
-                            {(returnables * returnablesMultiplier).toFixed(2)} {currencyMap[language]}
-                        </div>
-                    </div>
+                    ))}
 
                     <TimePicker
                         pickTimeType={pickTimeType}
@@ -249,7 +218,7 @@ export default function Call() {
                         setCustomTimeText={setCustomTimeText}
                     />
 
-                    {returnables > 0 ? (
+                    {returnables[0].count > 0 ? (
                         <button
                             className="mt-8 mb-24 w-full text-xl lg:text-3xl select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
                             onClick={() => returber()}
