@@ -26,6 +26,7 @@ import Map from '@/components/Map/dynamic';
 import Camera from '@/components/Camera';
 import ReturnablesCount from '@/components/ReturnablesCount';
 import TimePicker from '@/components/TimePicker';
+import MapLoader from '@/components/MapLoader';
 
 
 
@@ -42,6 +43,17 @@ export default function Call() {
     const [
         showCamera,
         setShowCamera,
+    ] = useState(false);
+
+    // Only wait for camera loading once.
+    const [
+        cameraLoaded,
+        setCameraLoaded,
+    ] = useState(false);
+
+    const [
+        showLoadingCamera,
+        setShowLoadingCamera,
     ] = useState(false);
 
     const [
@@ -61,6 +73,10 @@ export default function Call() {
         {
             count: 0,
             multiplier: 0.25,
+        },
+        {
+            count: 5,
+            multiplier: 0.5,
         },
     ]);
 
@@ -115,13 +131,16 @@ export default function Call() {
         <div
             className="max-w-[300px] md:max-w-[400px] m-auto h-dvh"
         >
-            {!image && (
+            {!image
+            && !showLoadingCamera
+            && (
                 <div
                     className="grid place-content-center h-dvh"
                 >
                     <button
                         className="min-w-[300px] lg:min-w-[400px] lg:text-3xl font-bold select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
                         onClick={() => {
+                            setShowLoadingCamera(true);
                             setShowCamera(true);
                         }}
                     >
@@ -132,14 +151,34 @@ export default function Call() {
 
             {showCamera && (
                 <Camera
+                    cameraLoaded={cameraLoaded}
                     cancelText={localization[language].cancel}
+                    cancelAction={() => {
+                        setShowLoadingCamera(false);
+                        setShowCamera(false);
+
+                        setCameraLoaded(true);
+                    }}
                     handleImage={(image) => {
                         setImage(image);
+
+                        setShowLoadingCamera(false);
                         setShowCamera(false);
+
+                        setCameraLoaded(true);
                     }}
-                    setShowCamera={setShowCamera}
                     setReturnables={setReturnables}
                 />
+            )}
+
+            {showLoadingCamera && (
+                <div
+                    className="grid place-content-center"
+                >
+                    <div
+                        className="mt-4 animate-spin rounded-full h-24 w-24 border-t-2 border-b-2 border-blue-300"
+                    />
+                </div>
             )}
 
             {image && (
@@ -165,9 +204,7 @@ export default function Call() {
                             />
                         </div>
                     ) : (
-                        <div
-                            className="h-[300px] w-[300px] md:h-[400px] md:w-[400px] mb-12"
-                        />
+                        <MapLoader />
                     )}
 
                     <div
@@ -208,6 +245,7 @@ export default function Call() {
                                 newReturnables[index].multiplier = value;
                                 setReturnables(newReturnables);
                             }}
+                            type={returnables.length > 1 ? `#${index + 1}` : undefined}
                         />
                     ))}
 

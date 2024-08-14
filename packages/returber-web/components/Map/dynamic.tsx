@@ -1,11 +1,13 @@
 import dynamic from 'next/dynamic';
 
+import MapLoader from '@/components/MapLoader';
+
 
 
 const DynamicMap = dynamic(() => import('./index'), {
     loading: () => (
-        <div
-            className="h-[252px] w-[252px] md:h-[352px] md:w-[352px] mb-12"
+        <MapLoader
+            heights="h-[254px] w-[254px] md:h-[354px] md:w-[354px]"
         />
     ),
     ssr: false,

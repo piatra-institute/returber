@@ -2,6 +2,11 @@ import { Tensor } from 'onnxruntime-web';
 import ndarray from 'ndarray';
 import ops from 'ndarray-ops';
 
+import {
+    useState,
+    useEffect,
+} from 'react';
+
 import Camera from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 
@@ -20,20 +25,27 @@ import * as runModelUtils from '@/logic/yolo/runModel';
 
 
 export default function CameraContainer({
+    cameraLoaded,
     cancelText,
+    cancelAction,
     handleImage,
-    setShowCamera,
     setReturnables,
 } : {
+    cameraLoaded: boolean;
     cancelText: string;
+    cancelAction: () => void;
     handleImage: (dataUri: string) => void;
-    setShowCamera: (showCamera: boolean) => void;
     setReturnables: React.Dispatch<React.SetStateAction<{
         count: number;
         multiplier: number;
     }[]>>;
 }) {
     useUnscrollable();
+
+    const [
+        loaded,
+        setLoaded,
+    ] = useState(false);
 
 
     const analyzeImage = async (dataUri: string) => {
@@ -141,19 +153,48 @@ export default function CameraContainer({
     }
 
 
+    useEffect(() => {
+        const load = async () => {
+            if (cameraLoaded) {
+                setLoaded(true);
+                return;
+            }
+
+            await new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(true);
+                }, 1500);
+            });
+
+            setLoaded(true);
+        }
+
+        load();
+    }, [
+        cameraLoaded,
+    ]);
+
+
     return (
         <div
             className={
                 'h-dvh p-2 bg-black fixed top-0 left-0 right-0 bottom-0 z-50 flex justify-center items-center'
             }
+            style={{
+                position: loaded ? 'fixed' : 'absolute',
+                top: loaded ? '0' : '-10000px',
+                left: loaded ? '0' : '-10000px',
+                right: loaded ? '0' : '10000px',
+                bottom: loaded ? '0' : '10000px',
+            }}
         >
             <div
-                className="fixed m-auto top-12 z-40 left-0 right-0 flex justify-center m-4"
+                className="fixed m-auto top-12 left-0 right-0 flex justify-center m-4 z-40"
             >
                 <LinkButton
                     text={cancelText}
                     onClick={() => {
-                        setShowCamera(false);
+                        cancelAction();
                     }}
                 />
             </div>

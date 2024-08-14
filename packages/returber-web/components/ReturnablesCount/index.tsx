@@ -20,11 +20,13 @@ export default function ReturnablesCount({
     setReturnables,
     returnablesMultiplier,
     setReturnablesMultiplier,
+    type,
 } : {
     returnables: number,
     setReturnables: (value: number) => void,
     returnablesMultiplier: number,
     setReturnablesMultiplier: (value: number) => void,
+    type?: string;
 }) {
     const {
         language,
@@ -54,7 +56,7 @@ export default function ReturnablesCount({
             />
 
             <div>
-                {localization[language].callReturnables}
+                {localization[language].callReturnables} {type ? type : ''}
             </div>
 
             <div>
