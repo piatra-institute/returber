@@ -14,7 +14,10 @@ export interface Localization {
     callNext24Hours: string;
     callCustom: string;
     callCustomPlaceholder: string;
+    callReturberSuccess: string;
+    callNewReturber: string;
     cancel: string;
+    somethingWentWrongTryAgain: string;
 }
 
 export const localization: Record<typeof languages[number], Localization> = {
@@ -28,7 +31,10 @@ export const localization: Record<typeof languages[number], Localization> = {
         callNext24Hours: 'next 24 hours',
         callCustom: 'custom',
         callCustomPlaceholder: 'in 2 hours, next Tuesday, etc.',
+        callReturberSuccess: 'returber task has been posted',
+        callNewReturber: 'new returber',
         cancel: 'cancel',
+        somethingWentWrongTryAgain: 'something went wrong, try again',
     },
     da: {
         mainPageButtonCall: 'ring returber-samleren',
@@ -40,7 +46,10 @@ export const localization: Record<typeof languages[number], Localization> = {
         callNext24Hours: 'næste 24 timer',
         callCustom: 'tilpasset',
         callCustomPlaceholder: 'om 2 timer, næste tirsdag, osv.',
+        callReturberSuccess: 'returber-opgave er blevet oprettet',
+        callNewReturber: 'ny returber',
         cancel: 'annuller',
+        somethingWentWrongTryAgain: 'noget gik galt, prøv igen',
     },
     de: {
         mainPageButtonCall: 'rufen Sie den returber-Sammler an',
@@ -52,7 +61,10 @@ export const localization: Record<typeof languages[number], Localization> = {
         callNext24Hours: 'nächsten 24 Stunden',
         callCustom: 'benutzerdefiniert',
         callCustomPlaceholder: 'in 2 Stunden, nächsten Dienstag, usw.',
+        callReturberSuccess: 'returber-Aufgabe wurde erstellt',
+        callNewReturber: 'neuer returber',
         cancel: 'stornieren',
+        somethingWentWrongTryAgain: 'etwas ist schief gelaufen, versuchen Sie es erneut',
     },
     et: {
         mainPageButtonCall: 'kutsuge returberi koguja',
@@ -64,7 +76,10 @@ export const localization: Record<typeof languages[number], Localization> = {
         callNext24Hours: 'järgmised 24 tundi',
         callCustom: 'kohandatud',
         callCustomPlaceholder: '2 tunni pärast, järgmisel teisipäeval jne',
+        callReturberSuccess: 'returber ülesanne on postitatud',
+        callNewReturber: 'uus returber',
         cancel: 'tühistama',
+        somethingWentWrongTryAgain: 'midagi läks valesti, proovige uuesti',
     },
     fi: {
         mainPageButtonCall: 'soita returber-kerääjälle',
@@ -76,7 +91,10 @@ export const localization: Record<typeof languages[number], Localization> = {
         callNext24Hours: 'seuraavat 24 tuntia',
         callCustom: 'mukautettu',
         callCustomPlaceholder: '2 tunnin kuluttua, ensi tiistaina jne.',
+        callReturberSuccess: 'returber-tehtävä on lähetetty',
+        callNewReturber: 'uusi returber',
         cancel: 'peruuttaa',
+        somethingWentWrongTryAgain: 'jotain meni pieleen, yritä uudelleen',
     },
     he: {
         mainPageButtonCall: 'קרא לאספן של רטורבר',
@@ -88,7 +106,10 @@ export const localization: Record<typeof languages[number], Localization> = {
         callNext24Hours: '24 השעות הבאות',
         callCustom: 'המותאם אישית',
         callCustomPlaceholder: 'בעוד 2 שעות, ביום שלישי הבא וכו',
+        callReturberSuccess: 'המשימה של רטורבר פורסמה',
+        callNewReturber: 'רטורבר חדש',
         cancel: 'לְבַטֵל',
+        somethingWentWrongTryAgain: 'משהו השתבש, נסה שוב',
     },
     hr: {
         mainPageButtonCall: 'nazovite sakupljača returber',
@@ -100,7 +121,10 @@ export const localization: Record<typeof languages[number], Localization> = {
         callNext24Hours: 'sljedećih 24 sata',
         callCustom: 'prilagođeno',
         callCustomPlaceholder: 'za 2 sata, sljedeći utorak itd.',
+        callReturberSuccess: 'returber zadatak je objavljen',
+        callNewReturber: 'novi returber',
         cancel: 'otkazati',
+        somethingWentWrongTryAgain: 'nešto je pošlo po zlu, pokušajte ponovo',
     },
     is: {
         mainPageButtonCall: 'hafðu samband við returber safnarann',
@@ -112,7 +136,10 @@ export const localization: Record<typeof languages[number], Localization> = {
         callNext24Hours: 'næstu 24 klukkustundir',
         callCustom: 'sérsniðið',
         callCustomPlaceholder: 'eftir 2 klukkustundir, næsta þriðjudag o.fl.',
+        callReturberSuccess: 'returber verkefni hefur verið bókað',
+        callNewReturber: 'nýr returber',
         cancel: 'hætta við',
+        somethingWentWrongTryAgain: 'eitthvað fór úrskeiðis, reyndu aftur',
     },
     ko: {
         mainPageButtonCall: 'returber 수집기에 전화하세요',
@@ -124,7 +151,10 @@ export const localization: Record<typeof languages[number], Localization> = {
         callNext24Hours: '다음 24 시간',
         callCustom: '사용자 정의',
         callCustomPlaceholder: '2 시간 후, 다음 화요일 등',
+        callReturberSuccess: 'returber 작업이 게시되었습니다',
+        callNewReturber: '새로운 returber',
         cancel: '취소',
+        somethingWentWrongTryAgain: '문제가 발생했습니다. 다시 시도하세요',
     },
     lt: {
         mainPageButtonCall: 'paskambinkite returber surinkėjui',
@@ -136,7 +166,10 @@ export const localization: Record<typeof languages[number], Localization> = {
         callNext24Hours: 'kitą 24 valandas',
         callCustom: 'pasirinktinai',
         callCustomPlaceholder: 'po 2 valandų, kitą antradienį ir t.t.',
+        callReturberSuccess: 'returber užduotis paskelbta',
+        callNewReturber: 'naujas returber',
         cancel: 'atšaukti',
+        somethingWentWrongTryAgain: 'kažkas nepavyko, bandykite dar kartą',
     },
     lv: {
         mainPageButtonCall: 'zvaniet atpakaļuzņēmējam returber',
@@ -148,7 +181,10 @@ export const localization: Record<typeof languages[number], Localization> = {
         callNext24Hours: 'nākamās 24 stundas',
         callCustom: 'pielāgots',
         callCustomPlaceholder: 'pēc 2 stundām, nākamajā otrdienā utt.',
+        callReturberSuccess: 'returber uzdevums ir izveidots',
+        callNewReturber: 'jauns returber',
         cancel: 'atcelt',
+        somethingWentWrongTryAgain: 'kas nogāja greizi, mēģiniet vēlreiz',
     },
     nl: {
         mainPageButtonCall: 'bel de returber-verzamelaar',
@@ -160,7 +196,10 @@ export const localization: Record<typeof languages[number], Localization> = {
         callNext24Hours: 'volgende 24 uur',
         callCustom: 'aangepast',
         callCustomPlaceholder: 'over 2 uur, volgende dinsdag, enz.',
+        callReturberSuccess: 'returber taak is geplaatst',
+        callNewReturber: 'nieuwe returber',
         cancel: 'annuleren',
+        somethingWentWrongTryAgain: 'er is iets misgegaan, probeer opnieuw',
     },
     no: {
         mainPageButtonCall: 'ring returber-samleren',
@@ -172,7 +211,10 @@ export const localization: Record<typeof languages[number], Localization> = {
         callNext24Hours: 'neste 24 timer',
         callCustom: 'tilpasset',
         callCustomPlaceholder: 'om 2 timer, neste tirsdag, osv.',
+        callReturberSuccess: 'returber-oppgaven er lagt ut',
+        callNewReturber: 'ny returber',
         cancel: 'avbryt',
+        somethingWentWrongTryAgain: 'noe gikk galt, prøv igjen',
     },
     pl: {
         mainPageButtonCall: 'zadzwoń do zbieracza returber',
@@ -184,7 +226,10 @@ export const localization: Record<typeof languages[number], Localization> = {
         callNext24Hours: 'następne 24 godziny',
         callCustom: 'niestandardowy',
         callCustomPlaceholder: 'za 2 godziny, w następny wtorek itp.',
+        callReturberSuccess: 'zadanie returber zostało opublikowane',
+        callNewReturber: 'nowy returber',
         cancel: 'anuluj',
+        somethingWentWrongTryAgain: 'coś poszło nie tak, spróbuj ponownie',
     },
     ro: {
         mainPageButtonCall: 'cheamă colector returber',
@@ -196,7 +241,10 @@ export const localization: Record<typeof languages[number], Localization> = {
         callNext24Hours: 'următoarele 24 de ore',
         callCustom: 'personalizat',
         callCustomPlaceholder: 'în 2 ore, marțea viitoare etc.',
+        callReturberSuccess: 'sarcina returber a fost postată',
+        callNewReturber: 'returber nou',
         cancel: 'anulare',
+        somethingWentWrongTryAgain: 'ceva nu a mers bine, încearcă din nou',
     },
     sk: {
         mainPageButtonCall: 'zavolajte zberača returber',
@@ -208,7 +256,10 @@ export const localization: Record<typeof languages[number], Localization> = {
         callNext24Hours: 'nasledujúcich 24 hodín',
         callCustom: 'prispôsobené',
         callCustomPlaceholder: 'o 2 hodiny, budúci utorok atď.',
+        callReturberSuccess: 'úloha returber bola zverejnená',
+        callNewReturber: 'nový returber',
         cancel: 'zrušiť',
+        somethingWentWrongTryAgain: 'niečo sa pokazilo, skúste to znova',
     },
     sv: {
         mainPageButtonCall: 'ring returber-samlaren',
@@ -220,6 +271,9 @@ export const localization: Record<typeof languages[number], Localization> = {
         callNext24Hours: 'nästa 24 timmar',
         callCustom: 'anpassad',
         callCustomPlaceholder: 'om 2 timmar, nästa tisdag osv.',
+        callReturberSuccess: 'returber-uppgiften har publicerats',
+        callNewReturber: 'ny returber',
         cancel: 'avbryt',
+        somethingWentWrongTryAgain: 'något gick fel, försök igen',
     },
 };

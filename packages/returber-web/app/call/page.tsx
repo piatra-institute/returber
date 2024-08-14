@@ -17,6 +17,7 @@ import {
     localization,
     PickTimeType,
     returnPrices,
+    environment,
 } from '@/data/index';
 
 import {
@@ -28,6 +29,7 @@ import Camera from '@/components/Camera';
 import ReturnablesCount from '@/components/ReturnablesCount';
 import TimePicker from '@/components/TimePicker';
 import MapLoader from '@/components/MapLoader';
+import LinkButton from '@/components/LinkButton';
 
 
 
@@ -88,16 +90,58 @@ export default function Call() {
         setPickTimeType,
     ] = useState<PickTimeType>('next-24hrs');
 
+    const [
+        returberErrors,
+        setReturberErrors,
+    ] = useState('');
 
-    const returber = () => {
-        const data = {
-            image,
-            location,
-            returnables,
-            pickTimeType,
-            customTimeText,
-            language,
-        };
+    const [
+        returberCall,
+        setReturberCall,
+    ] = useState(false);
+
+    const [
+        returberSuccess,
+        setReturberSuccess,
+    ] = useState(false);
+
+
+    const returber = async () => {
+        setReturberCall(true);
+
+        try {
+            const data = {
+                image,
+                location,
+                returnables,
+                pickTimeType,
+                customTimeText,
+                language,
+            };
+
+            const request = await fetch(environment.API + '/post-returber-task', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            const response = await request.json();
+
+            if (!response.status) {
+                setReturberErrors(
+                    localization[language].somethingWentWrongTryAgain,
+                );
+                setReturberSuccess(false);
+            } else {
+                setReturberSuccess(true);
+            }
+        } catch (error) {
+            setReturberErrors(
+                localization[language].somethingWentWrongTryAgain,
+            );
+            setReturberSuccess(false);
+        }
     }
 
 
@@ -136,6 +180,46 @@ export default function Call() {
         image,
     ]);
 
+
+    if (returberCall) {
+        return (
+            <div
+                className="max-w-[320px] md:max-w-[400px] m-auto h-dvh grid place-content-center gap-12"
+            >
+                {returberErrors && (
+                    <div>
+                        {returberErrors}
+                    </div>
+                )}
+
+                {returberSuccess && (
+                    <div>
+                        {localization[language].callReturberSuccess}
+                    </div>
+                )}
+
+                <LinkButton
+                    text={localization[language].callNewReturber}
+                    onClick={() => {
+                        setImage(null);
+                        setReturnables([
+                            {
+                                count: 0,
+                                multiplier: returnPrices[language] / 2,
+                                max: returnPrices[language],
+                            },
+                        ]);
+                        setCustomTimeText('');
+                        setPickTimeType('next-24hrs');
+
+                        setReturberErrors('');
+                        setReturberCall(false);
+                        setReturberSuccess(false);
+                    }}
+                />
+            </div>
+        );
+    }
 
     return (
         <div
