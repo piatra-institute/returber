@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 
+
+html,
+body {
+    overscroll-behavior: none;
+}
+
 body {
     color: black;
     background: #f0f4ed;

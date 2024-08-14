@@ -1,6 +1,7 @@
 import {
     useRef,
     useMemo,
+    useEffect,
 } from 'react';
 
 import L from 'leaflet';
@@ -94,7 +95,7 @@ export default function Map({
     return (
         <MapContainer
             center={[location.latitude, location.longitude]}
-            zoom={14}
+            zoom={20}
             scrollWheelZoom={true}
             zoomControl={false}
             className="shadow-xl h-[300px] w-[300px] md:h-[400px] md:w-[400px] rounded-full"
