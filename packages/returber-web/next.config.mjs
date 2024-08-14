@@ -38,8 +38,19 @@ const nextConfig = {
                         to: 'static/chunks/',
                     },
                     {
+                        from: './node_modules/onnxruntime-web/dist/ort-wasm.wasm',
+                        to: 'static/chunks/app/@modal/(.)call/',
+                    }, {
+                        from: './node_modules/onnxruntime-web/dist/ort-wasm-simd.wasm',
+                        to: 'static/chunks/app/@modal/(.)call/',
+                    },
+                    {
                         from: './models',
                         to: 'static/chunks/',
+                    },
+                    {
+                        from: './models',
+                        to: 'static/chunks/app/@modal/(.)call/',
                     },
                 ],
             }),
