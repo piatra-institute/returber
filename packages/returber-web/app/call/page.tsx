@@ -118,7 +118,6 @@ export default function Call() {
                 customTimeText,
                 language,
             };
-            console.log(data);
 
             const request = await fetch(environment.API + '/post-returber-task', {
                 method: 'POST',
