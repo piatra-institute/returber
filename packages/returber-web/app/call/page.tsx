@@ -139,7 +139,7 @@ export default function Call() {
 
     return (
         <div
-            className="max-w-[300px] md:max-w-[400px] m-auto h-dvh"
+            className="max-w-[320px] md:max-w-[400px] m-auto h-dvh"
         >
             {!image
             && !showLoadingCamera
@@ -148,7 +148,7 @@ export default function Call() {
                     className="grid place-content-center h-dvh"
                 >
                     <button
-                        className="min-w-[300px] lg:min-w-[400px] lg:text-3xl font-bold select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
+                        className="min-w-[310px] lg:min-w-[400px] lg:text-3xl font-bold select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
                         onClick={() => {
                             setShowLoadingCamera(true);
                             setShowCamera(true);

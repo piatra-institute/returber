@@ -73,7 +73,8 @@ export default function ReturnablesCount({
                     min={0}
                     step={0.1}
                     type="number"
-                    inputMode="numeric"
+                    inputMode="decimal"
+                    lang="en"
                     onChange={(e) => {
                         const value = parseFloat(e.target.value);
                         if (isNaN(value)) {
