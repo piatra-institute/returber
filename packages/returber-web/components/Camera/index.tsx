@@ -158,6 +158,7 @@ export default function CameraContainer({
                 isMaxResolution={true}
                 isFullscreen={false}
                 isSilentMode={true}
+                sizeFactor={0.5}
             />
         </div>
     );

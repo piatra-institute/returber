@@ -73,6 +73,19 @@ export default function Call() {
     ] = useState<'next-24hrs' | 'custom'>('next-24hrs');
 
 
+    const returber = () => {
+        const data = {
+            image,
+            location,
+            returnables,
+            returnablesMultiplier,
+            pickTimeType,
+            customTimeText,
+            language,
+        };
+    }
+
+
     useEffect(() => {
         if (mounted.current) {
             return;
@@ -186,6 +199,7 @@ export default function Call() {
                             value={returnables.toString()}
                             type="number"
                             inputMode="numeric"
+                            min="0"
                             onChange={(e) => {
                                 const value = parseInt(e.target.value);
                                 if (isNaN(value)) {
@@ -193,7 +207,9 @@ export default function Call() {
                                     return;
                                 }
 
-                                setReturnables(value);
+                                setReturnables(
+                                    Math.abs(value)
+                                );
                             }}
                             className="text-center lg:min-w-[250px] px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
                         />
@@ -273,6 +289,7 @@ export default function Call() {
                     {returnables > 0 ? (
                         <button
                             className="mt-8 mb-24 w-full text-xl lg:text-3xl select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
+                            onClick={() => returber()}
                         >
                             returber
                         </button>
