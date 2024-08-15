@@ -3,9 +3,9 @@ import type {
     Response,
 } from 'express';
 
-import { v4 as uuid } from 'uuid';
-
 import { sql } from 'drizzle-orm';
+
+import { v4 as uuid } from 'uuid';
 
 import database from '../../database';
 import {
@@ -13,8 +13,13 @@ import {
 } from '../../database/schema/returberTasks';
 
 import {
+    getReverseGeocode,
+} from '../../services/geocoder';
+
+import {
     logger,
 } from '../../utilities';
+
 
 
 
@@ -33,36 +38,34 @@ export default async function handler(
         } = request.body;
 
 
+        const locationData = await getReverseGeocode(location);
+        console.log(locationData);
+
         const {
-            name,
-            address,
-            postalCode,
-            city,
-            region,
-            country,
-        } = location;
+            countryCode,
+        } = locationData;
 
-        await database.insert(returberTasks).values({
-            id: uuid(),
-            createdAt: new Date().toISOString(),
+        // await database.insert(returberTasks).values({
+        //     id: uuid(),
+        //     createdAt: new Date().toISOString(),
 
-            image,
-            pickTimeType,
-            customTimeText,
-            language,
+        //     image,
+        //     pickTimeType,
+        //     customTimeText,
+        //     language,
 
-            createdBy: '',
-            name,
-            address,
-            postalCode,
-            city,
-            region,
-            country,
-            locationIndexID: location.id,
-            returnables,
-            rate: 0,
-            status: 'pending',
-        });
+        //     createdBy: '',
+        //     name: '',
+        //     address: '',
+        //     postalCode: '',
+        //     city: '',
+        //     region: '',
+        //     country: '',
+        //     locationIndexID: location.id,
+        //     returnables,
+        //     rate: 0,
+        //     status: 'pending',
+        // });
 
 
         response.json({
