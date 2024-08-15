@@ -110,6 +110,11 @@ export default function Call() {
         setReturberCall(true);
 
         try {
+            if (!location || !image || !returnables.reduce((acc, item) => acc + item.count, 0)) {
+                return;
+            }
+
+
             const data = {
                 image,
                 location,
