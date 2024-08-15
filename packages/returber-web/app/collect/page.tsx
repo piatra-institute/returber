@@ -6,6 +6,10 @@ import {
     useEffect,
 } from 'react';
 
+import {
+    ReturberLocation,
+} from '@/data/index';
+
 import Map from '@/components/Map/dynamic';
 import MapLoader from '@/components/MapLoader';
 
@@ -18,7 +22,8 @@ export default function Collect() {
     const [
         locations,
         setLocations,
-    ] = useState([]);
+    ] = useState<ReturberLocation[]>([
+    ]);
 
     const [
         selectedLocation,
@@ -65,6 +70,7 @@ export default function Collect() {
                             });
                         }}
                         draggableMarker={false}
+                        markers={locations}
                     />
                 </div>
             ) : (

@@ -9,16 +9,31 @@ import {
     MapContainer,
     TileLayer,
     Marker,
+    Popup,
     useMapEvents,
 } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
+import {
+    ReturberLocation,
+} from '@/data/index';
+
+import LinkButton from '@/components/LinkButton';
+
 
 
 const markerIcon = L.icon({
-    iconAnchor: [12, 41],
     iconUrl: '/marker-icon.png',
     shadowUrl: '/marker-shadow.png',
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -40],
+});
+
+const markerCollectIcon = L.icon({
+    iconUrl: '/marker-icon-original.png',
+    shadowUrl: '/marker-shadow.png',
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -40],
 });
 
 
@@ -89,11 +104,13 @@ export default function Map({
     map,
     atNewLocation,
     draggableMarker,
+    markers,
 }: {
     location: GeolocationCoordinates;
     map: React.RefObject<L.Map>;
     atNewLocation: (location: { lat: number; lng: number }) => void;
     draggableMarker?: boolean;
+    markers?: ReturberLocation[];
 }) {
     return (
         <MapContainer
@@ -126,6 +143,32 @@ export default function Map({
                     icon={markerIcon}
                 />
             )}
+
+            {markers && markers.map((marker, index) => (
+                <Marker
+                    key={index}
+                    position={{
+                        lat: marker.latitude,
+                        lng: marker.longitude,
+                    }}
+                    icon={markerCollectIcon}
+                >
+                    <Popup>
+                        <div
+                            className="grid place-items-center gap-4"
+                        >
+                            <h2>
+                                {marker.title}
+                            </h2>
+
+                            <LinkButton
+                                text="collect"
+                                onClick={() => {}}
+                            />
+                        </div>
+                    </Popup>
+                </Marker>
+            ))}
         </MapContainer>
     );
 }
