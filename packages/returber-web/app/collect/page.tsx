@@ -28,7 +28,7 @@ export default function Collect() {
     const [
         selectedLocation,
         setSelectedLocation,
-    ] = useState(null);
+    ] = useState<number | null>(null);
 
     const [
         location,
@@ -71,21 +71,23 @@ export default function Collect() {
                         }}
                         draggableMarker={false}
                         markers={locations}
+                        atMarkerClick={(index) => {
+                            setSelectedLocation(index);
+                        }}
                     />
                 </div>
             ) : (
                 <MapLoader />
             )}
 
-
-            {selectedLocation && (
-                <>
-                    <button
-                        className="select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
-                    >
-                        collect
-                    </button>
-                </>
+            {selectedLocation !== null && (
+                <div
+                    className="grid place-items-center"
+                >
+                    <h2>
+                        {locations[selectedLocation].title}
+                    </h2>
+                </div>
             )}
         </div>
     );

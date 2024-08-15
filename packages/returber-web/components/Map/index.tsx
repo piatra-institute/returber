@@ -105,12 +105,14 @@ export default function Map({
     atNewLocation,
     draggableMarker,
     markers,
+    atMarkerClick,
 }: {
     location: GeolocationCoordinates;
     map: React.RefObject<L.Map>;
     atNewLocation: (location: { lat: number; lng: number }) => void;
     draggableMarker?: boolean;
     markers?: ReturberLocation[];
+    atMarkerClick?: (index: number) => void;
 }) {
     return (
         <MapContainer
@@ -163,7 +165,13 @@ export default function Map({
 
                             <LinkButton
                                 text="collect"
-                                onClick={() => {}}
+                                onClick={() => {
+                                    if (!atMarkerClick) {
+                                        return;
+                                    }
+
+                                    atMarkerClick(index);
+                                }}
                             />
                         </div>
                     </Popup>
