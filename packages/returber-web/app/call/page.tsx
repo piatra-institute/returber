@@ -25,10 +25,10 @@ import {
 } from '@/data/icons';
 
 import Map from '@/components/Map/dynamic';
+import MapLoader from '@/components/MapLoader';
 import Camera from '@/components/Camera';
 import ReturnablesCount from '@/components/ReturnablesCount';
 import TimePicker from '@/components/TimePicker';
-import MapLoader from '@/components/MapLoader';
 import LinkButton from '@/components/LinkButton';
 
 
@@ -300,6 +300,7 @@ export default function Call() {
                                         longitude: newLocation.lng,
                                     });
                                 }}
+                                draggableMarker={true}
                             />
                         </div>
                     ) : (

@@ -1,7 +1,6 @@
 import {
     useRef,
     useMemo,
-    useEffect,
 } from 'react';
 
 import L from 'leaflet';
@@ -17,6 +16,7 @@ import 'leaflet/dist/leaflet.css';
 
 
 const markerIcon = L.icon({
+    iconAnchor: [12, 41],
     iconUrl: '/marker-icon.png',
     shadowUrl: '/marker-shadow.png',
 });
@@ -83,14 +83,17 @@ function DraggableMarker({
 }
 
 
+
 export default function Map({
     location,
     map,
     atNewLocation,
+    draggableMarker,
 }: {
     location: GeolocationCoordinates;
     map: React.RefObject<L.Map>;
     atNewLocation: (location: { lat: number; lng: number }) => void;
+    draggableMarker?: boolean;
 }) {
     return (
         <MapContainer
@@ -106,13 +109,23 @@ export default function Map({
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
 
-            <DraggableMarker
-                center={{
-                    lat: location.latitude,
-                    lng: location.longitude,
-                }}
-                atNewLocation={atNewLocation}
-            />
+            {draggableMarker ? (
+                <DraggableMarker
+                    center={{
+                        lat: location.latitude,
+                        lng: location.longitude,
+                    }}
+                    atNewLocation={atNewLocation}
+                />
+            ) : (
+                <Marker
+                    position={{
+                        lat: location.latitude,
+                        lng: location.longitude
+                    }}
+                    icon={markerIcon}
+                />
+            )}
         </MapContainer>
     );
 }

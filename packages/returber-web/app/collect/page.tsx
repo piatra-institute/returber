@@ -1,13 +1,20 @@
 'use client';
 
 import {
+    useRef,
     useState,
     useEffect,
 } from 'react';
 
+import Map from '@/components/Map/dynamic';
+import MapLoader from '@/components/MapLoader';
+
 
 
 export default function Collect() {
+    const map = useRef<any>();
+
+
     const [
         locations,
         setLocations,
@@ -18,6 +25,21 @@ export default function Collect() {
         setSelectedLocation,
     ] = useState(null);
 
+    const [
+        location,
+        setLocation,
+    ] = useState<GeolocationCoordinates | null>(null);
+
+
+    useEffect(() => {
+        const loadLocation = async () => {
+            window.navigator.geolocation.getCurrentPosition((data) => {
+                setLocation(data.coords);
+            });
+        }
+
+        loadLocation();
+    }, []);
 
     useEffect(() => {
         // load locations
@@ -28,9 +50,27 @@ export default function Collect() {
         <div
             className="grid place-items-center h-dvh"
         >
-            <div>
-                map / select pickup task
-            </div>
+            {location ? (
+                <div
+                    className="grid place-content-center mb-12"
+                >
+                    <Map
+                        location={location}
+                        map={map}
+                        atNewLocation={(newLocation) => {
+                            setLocation({
+                                ...location,
+                                latitude: newLocation.lat,
+                                longitude: newLocation.lng,
+                            });
+                        }}
+                        draggableMarker={false}
+                    />
+                </div>
+            ) : (
+                <MapLoader />
+            )}
+
 
             {selectedLocation && (
                 <>
