@@ -26,7 +26,10 @@ export const getReverseGeocode = async (location: any) => {
 
 
 export const initializeGeocoder = async () => {
-    reverseGeocoder.init({}, function () {
+    reverseGeocoder.init({
+        // countries: ['GB'],
+    }, async function () {
         // geocoder is loaded and ready to run
+        await getReverseGeocode({ latitude: 51.4934, longitude: 0.0098 });
     });
 }
