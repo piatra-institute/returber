@@ -6,11 +6,16 @@ import {
     logout,
     googleLogin,
     checkoutSessions,
+
     getReturberTasks,
     postReturberTask,
     acceptReturberTask,
     completeReturberTask,
     cancelReturberTask,
+
+    createReturberPoint,
+    updateReturberPoint,
+    markForDeletionReturberPoint,
 } from './handlers';
 
 import {
@@ -52,6 +57,10 @@ const main = async () => {
     app.post('/accept-returber-task', acceptReturberTask);
     app.post('/complete-returber-task', completeReturberTask);
     app.post('/cancel-returber-task', cancelReturberTask);
+
+    app.post('/create-returber-point', createReturberPoint);
+    app.post('/update-returber-point', updateReturberPoint);
+    app.post('/mark-for-deletion-returber-point', markForDeletionReturberPoint);
 
     app.listen(port, () => {
         console.log(`Server started on ${port}`);

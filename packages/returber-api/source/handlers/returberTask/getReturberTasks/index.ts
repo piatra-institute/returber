@@ -5,11 +5,11 @@ import type {
 
 import { sql } from 'drizzle-orm';
 
-import database from '../../database';
+import database from '../../../database';
 
 import {
     logger,
-} from '../../utilities';
+} from '../../../utilities';
 
 
 
@@ -31,25 +31,25 @@ export default async function handler(
             return;
         }
 
-        const locations = await database.query.venueLocationIndex.findMany({
-            where: sql`minX<=${longitude} AND maxX>=${longitude} AND minY<=${latitude} AND maxY>=${latitude};`,
-        });
+        // const locations = await database.query.venueLocationIndex.findMany({
+        //     where: sql`minX<=${longitude} AND maxX>=${longitude} AND minY<=${latitude} AND maxY>=${latitude};`,
+        // });
 
-        const venues = [];
-        for (const location of locations) {
-            const venue = await database.query.venues.findFirst({
-                where: sql`location_index_id = ${location.id}`,
-            });
-            if (!venue) {
-                continue;
-            }
+        // const venues = [];
+        // for (const location of locations) {
+        //     const venue = await database.query.venues.findFirst({
+        //         where: sql`location_index_id = ${location.id}`,
+        //     });
+        //     if (!venue) {
+        //         continue;
+        //     }
 
-            venues.push(venue);
-        }
+        //     venues.push(venue);
+        // }
 
         response.json({
             status: true,
-            data: venues,
+            data: [],
         });
     } catch (error) {
         logger('error', error);

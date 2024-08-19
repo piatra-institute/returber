@@ -5,11 +5,11 @@ import type {
 
 import { sql } from 'drizzle-orm';
 
-import database from '../../database';
+import database from '../../../database';
 
 import {
     logger,
-} from '../../utilities';
+} from '../../../utilities';
 
 
 
