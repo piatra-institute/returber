@@ -22,6 +22,12 @@ const tables = [
     minY, maxY
 );`,
 
+`CREATE VIRTUAL TABLE IF NOT EXISTS return_point_location_index USING rtree(
+    id INTEGER PRIMARY KEY,
+    minX, maxX,
+    minY, maxY
+);`,
+
 `CREATE TABLE IF NOT EXISTS users (
     id TEXT NOT NULL PRIMARY KEY,
     created_at TEXT NOT NULL,
@@ -58,7 +64,7 @@ const tables = [
 );`,
 `CREATE INDEX IF NOT EXISTS nameIdx ON returberTasks (name);`,
 
-`CREATE TABLE IF NOT EXISTS returnLocations (
+`CREATE TABLE IF NOT EXISTS returnPoints (
     id TEXT NOT NULL PRIMARY KEY,
     created_at TEXT NOT NULL,
     created_by TEXT NOT NULL,
@@ -68,7 +74,7 @@ const tables = [
     status TEXT NOT NULL,
     queue INTEGER NOT NULL,
 );`,
-`CREATE INDEX IF NOT EXISTS nameIdx ON returnLocations (name);`,
+`CREATE INDEX IF NOT EXISTS nameIdx ON returnPoints (name);`,
 ];
 
 

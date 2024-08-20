@@ -19,7 +19,13 @@ export default async function handler(
 ) {
     try {
         const {
+
         } = request.body;
+
+        const createdAt = new Date().toISOString();
+        const createdBy = 'system';
+
+
 
         response.json({
             status: true,

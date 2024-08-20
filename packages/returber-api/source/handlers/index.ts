@@ -9,9 +9,9 @@ import acceptReturberTask from './returberTask/acceptReturberTask';
 import completeReturberTask from './returberTask/completeReturberTask';
 import cancelReturberTask from './returberTask/cancelReturberTask';
 
-import createReturnLocation from './returnLocation/createReturnLocation';
-import updateReturnLocation from './returnLocation/updateReturnLocation';
-import markForDeletionReturnLocation from './returnLocation/markForDeletionReturnLocation';
+import createReturnPoint from './returnPoint/createReturnPoint';
+import updateReturnPoint from './returnPoint/updateReturnPoint';
+import markForDeletionReturnPoint from './returnPoint/markForDeletionReturnPoint';
 
 
 
@@ -27,7 +27,7 @@ export {
     completeReturberTask,
     cancelReturberTask,
 
-    createReturnLocation,
-    updateReturnLocation,
-    markForDeletionReturnLocation,
+    createReturnPoint,
+    updateReturnPoint,
+    markForDeletionReturnPoint,
 };

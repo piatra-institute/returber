@@ -13,9 +13,9 @@ import {
     completeReturberTask,
     cancelReturberTask,
 
-    createReturnLocation,
-    updateReturnLocation,
-    markForDeletionReturnLocation,
+    createReturnPoint,
+    updateReturnPoint,
+    markForDeletionReturnPoint,
 } from './handlers';
 
 import {
@@ -58,9 +58,9 @@ const main = async () => {
     app.post('/complete-returber-task', completeReturberTask);
     app.post('/cancel-returber-task', cancelReturberTask);
 
-    app.post('/create-return-location', createReturnLocation);
-    app.post('/update-return-location', updateReturnLocation);
-    app.post('/mark-for-deletion-return-location', markForDeletionReturnLocation);
+    app.post('/create-return-point', createReturnPoint);
+    app.post('/update-return-point', updateReturnPoint);
+    app.post('/mark-for-deletion-return-point', markForDeletionReturnPoint);
 
     app.listen(port, () => {
         console.log(`Server started on ${port}`);
