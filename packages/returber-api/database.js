@@ -58,16 +58,17 @@ const tables = [
 );`,
 `CREATE INDEX IF NOT EXISTS nameIdx ON returberTasks (name);`,
 
-`CREATE TABLE IF NOT EXISTS returberPoints (
+`CREATE TABLE IF NOT EXISTS returnLocations (
     id TEXT NOT NULL PRIMARY KEY,
     created_at TEXT NOT NULL,
     created_by TEXT NOT NULL,
+    name TEXT NOT NULL,
     image TEXT NOT NULL,
-    location TEXT NOT NULL,
+    location_index_id INTEGER NOT NULL
     status TEXT NOT NULL,
     queue INTEGER NOT NULL,
 );`,
-`CREATE INDEX IF NOT EXISTS locationIdx ON returberPoints (location);`,
+`CREATE INDEX IF NOT EXISTS nameIdx ON returnLocations (name);`,
 ];
 
 

@@ -3,6 +3,7 @@ import { createClient } from '@libsql/client';
 
 import * as schemaUsers from './schema/users';
 import * as schemaReturberTasks from './schema/returberTasks';
+import * as schemaReturnLocation from './schema/returnLocation';
 
 
 
@@ -15,6 +16,7 @@ const database = drizzle(client, {
     schema: {
         ...schemaUsers,
         ...schemaReturberTasks,
+        ...schemaReturnLocation,
     },
 });
 

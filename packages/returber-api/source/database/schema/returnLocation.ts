@@ -7,18 +7,19 @@ import {
 
 
 
-export const returberPoints = sqliteTable(
-    'returberPoints',
+export const returnLocations = sqliteTable(
+    'returnLocations',
     {
         id: text('id').notNull().primaryKey(),
         createdAt: text('created_at').notNull(),
         createdBy: text('created_by').notNull(),
+        name: text('name').notNull(),
         image: text('image').notNull(),
-        location: text('location').notNull(),
+        locationIndexID: integer('location_index_id').notNull(),
         status: text('status').notNull(),
         queue: integer('queue').notNull(),
     },
-    (returberTasks) => ({
-        locationIdx: index('locationIdx').on(returberTasks.location),
+    (returnLocations) => ({
+        nameIdx: index('nameIdx').on(returnLocations.name),
     }),
 );
