@@ -355,6 +355,28 @@ export default function Call() {
                         />
                     ))}
 
+                    <div
+                        className="grid place-content-center mt-4 mb-12"
+                    >
+                        <Image
+                            src="/icons/multiple-icon.png"
+                            alt="add more"
+                            width={32}
+                            height={32}
+                            onClick={() => {
+                                setReturnables([
+                                    ...returnables,
+                                    {
+                                        count: 0,
+                                        multiplier: returnPrices[language] / 2,
+                                        max: returnPrices[language],
+                                    },
+                                ]);
+                            }}
+                            className="cursor-pointer"
+                        />
+                    </div>
+
                     <TimePicker
                         pickTimeType={pickTimeType}
                         setPickTimeType={setPickTimeType}
