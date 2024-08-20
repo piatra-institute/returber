@@ -23,6 +23,7 @@
         "googleapis": "^131.0.0",
         "jwt-decode": "^4.0.0",
         "local-reverse-geocoder": "^0.16.7",
+        "node-cloudflare-r2": "^0.2.3",
         "stripe": "^14.14.0",
         "typescript": "^5.3.3",
         "uuid": "^9.0.1",
