@@ -16,6 +16,7 @@ import {
 } from '@/data/index';
 
 import LanguageSelector from '@/components/LanguageSelector';
+import LinkButton from '@/components/LinkButton';
 
 
 
@@ -69,6 +70,21 @@ export default function Home() {
                     </button>
                 </Link>
             </h1>
+
+            <div
+                className="mt-12"
+            >
+                <Link
+                    href="/return"
+                    tabIndex={-1}
+                    draggable={false}
+                >
+                    <LinkButton
+                        text={localization[language].mainPageButtonReturn}
+                        onClick={() => {}}
+                    />
+                </Link>
+            </div>
         </div>
     );
 }

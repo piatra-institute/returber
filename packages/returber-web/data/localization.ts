@@ -7,6 +7,7 @@ import {
 export interface Localization {
     mainPageButtonCall: string;
     mainPageButtonCollect: string;
+    mainPageButtonReturn: string;
     callPictureReturnables: string;
     callReturnables: string;
     callPerPiece: string;
@@ -24,6 +25,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     en: {
         mainPageButtonCall: 'call returber collector',
         mainPageButtonCollect: 'collect returnable waste',
+        mainPageButtonReturn: 'return locations',
         callPictureReturnables: 'picture the returnables',
         callReturnables: 'returnables',
         callPerPiece: 'per piece out of',
@@ -39,6 +41,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     da: {
         mainPageButtonCall: 'ring returber-samleren',
         mainPageButtonCollect: 'indsamle returbare affald',
+        mainPageButtonReturn: 'retursteder',
         callPictureReturnables: 'tag billede af returbare',
         callReturnables: 'returbare',
         callPerPiece: 'per stykke ud af',
@@ -54,6 +57,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     de: {
         mainPageButtonCall: 'rufen Sie den returber-Sammler an',
         mainPageButtonCollect: 'sammeln Sie pfandfähigen Abfall',
+        mainPageButtonReturn: 'Rückgabeorte',
         callPictureReturnables: 'Bild der Pfandflaschen',
         callReturnables: 'Pfandflaschen',
         callPerPiece: 'pro Stück von',
@@ -69,6 +73,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     et: {
         mainPageButtonCall: 'kutsuge returberi koguja',
         mainPageButtonCollect: 'koguge tagastatav jäätmed',
+        mainPageButtonReturn: 'tagastuskohad',
         callPictureReturnables: 'pildistage tagastatavad',
         callReturnables: 'tagastatavad',
         callPerPiece: 'tükist',
@@ -84,6 +89,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     fi: {
         mainPageButtonCall: 'soita returber-kerääjälle',
         mainPageButtonCollect: 'kerää palautettava jäte',
+        mainPageButtonReturn: 'palautuspaikat',
         callPictureReturnables: 'ota kuva palautettavista',
         callReturnables: 'palautettavat',
         callPerPiece: 'kappaletta',
@@ -99,6 +105,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     he: {
         mainPageButtonCall: 'קרא לאספן של רטורבר',
         mainPageButtonCollect: 'אסוף פסולת מוחזרת',
+        mainPageButtonReturn: 'מיקומי החזרה',
         callPictureReturnables: 'צלם תמונה של פסולת מוחזרת',
         callReturnables: 'פסולת מוחזרת',
         callPerPiece: 'לכל חתיכה מתוך',
@@ -114,6 +121,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     hr: {
         mainPageButtonCall: 'nazovite sakupljača returber',
         mainPageButtonCollect: 'skupljajte povratni otpad',
+        mainPageButtonReturn: 'lokacije povratka',
         callPictureReturnables: 'snimite sliku povratnih',
         callReturnables: 'povratnih',
         callPerPiece: 'po komadu od',
@@ -129,6 +137,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     is: {
         mainPageButtonCall: 'hafðu samband við returber safnarann',
         mainPageButtonCollect: 'safna endurvinnanlegu úrgangi',
+        mainPageButtonReturn: 'endurvinnslustaðir',
         callPictureReturnables: 'taktu mynd af endurvinnanlegu',
         callReturnables: 'endurvinnanlegu',
         callPerPiece: 'fyrir hvern einasta',
@@ -144,6 +153,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     ko: {
         mainPageButtonCall: 'returber 수집기에 전화하세요',
         mainPageButtonCollect: '반품 가능한 폐기물 수집',
+        mainPageButtonReturn: '반품 위치',
         callPictureReturnables: '반품 가능한 사진 찍기',
         callReturnables: '반품 가능한',
         callPerPiece: '개당',
@@ -159,6 +169,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     lt: {
         mainPageButtonCall: 'paskambinkite returber surinkėjui',
         mainPageButtonCollect: 'rinkite grąžintinį atliekas',
+        mainPageButtonReturn: 'grąžinimo vietos',
         callPictureReturnables: 'padarykite nuotrauką grąžintinės',
         callReturnables: 'grąžintinės',
         callPerPiece: 'vienam gabalui iš',
@@ -174,6 +185,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     lv: {
         mainPageButtonCall: 'zvaniet atpakaļuzņēmējam returber',
         mainPageButtonCollect: 'savāciet atkārtoti izmantojamo atkritumu',
+        mainPageButtonReturn: 'atgriešanās vietas',
         callPictureReturnables: 'uzņemiet attēlu atkārtoti izmantojamā',
         callReturnables: 'atkārtoti izmantojamā',
         callPerPiece: 'par gabalu no',
@@ -189,6 +201,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     nl: {
         mainPageButtonCall: 'bel de returber-verzamelaar',
         mainPageButtonCollect: 'verzamel statiegeldafval',
+        mainPageButtonReturn: 'retourlocaties',
         callPictureReturnables: 'maak een foto van statiegeld',
         callReturnables: 'statiegeld',
         callPerPiece: 'per stuk van',
@@ -204,6 +217,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     no: {
         mainPageButtonCall: 'ring returber-samleren',
         mainPageButtonCollect: 'samle pantbart avfall',
+        mainPageButtonReturn: 'retursteder',
         callPictureReturnables: 'ta bilde av pantbart',
         callReturnables: 'pantbart',
         callPerPiece: 'per stykke av',
@@ -219,6 +233,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     pl: {
         mainPageButtonCall: 'zadzwoń do zbieracza returber',
         mainPageButtonCollect: 'zbieraj odpady zwrotne',
+        mainPageButtonReturn: 'lokaliz acje zwrotu',
         callPictureReturnables: 'zrób zdjęcie zwrotnych',
         callReturnables: 'zwrotne',
         callPerPiece: 'za sztukę z',
@@ -234,6 +249,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     ro: {
         mainPageButtonCall: 'cheamă colector returber',
         mainPageButtonCollect: 'colectează deșeuri returnabile',
+        mainPageButtonReturn: 'locuri de returnare',
         callPictureReturnables: 'pozează returnabile',
         callReturnables: 'returnabile',
         callPerPiece: 'pe bucată din',
@@ -249,6 +265,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     sk: {
         mainPageButtonCall: 'zavolajte zberača returber',
         mainPageButtonCollect: 'zbierajte vrátený odpad',
+        mainPageButtonReturn: 'miesta vrátenia',
         callPictureReturnables: 'fotografujte vrátené',
         callReturnables: 'vrátené',
         callPerPiece: 'za kus z',
@@ -264,6 +281,7 @@ export const localization: Record<typeof languages[number], Localization> = {
     sv: {
         mainPageButtonCall: 'ring returber-samlaren',
         mainPageButtonCollect: 'samla in returavfall',
+        mainPageButtonReturn: 'returplatser',
         callPictureReturnables: 'ta bild av returavfall',
         callReturnables: 'returavfall',
         callPerPiece: 'per stycke av',
