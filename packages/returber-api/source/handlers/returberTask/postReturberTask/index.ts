@@ -11,10 +11,16 @@ import database from '@/source/database';
 import {
     returberTasks,
 } from '@/source/database/schema/returberTasks';
+import {
+    returberTaskLocationIndex,
+} from '@/source/database/schema/returberTaskLocations';
 
 import {
     getReverseGeocode,
 } from '@/source/services/geocoder';
+import {
+    storeImage,
+} from '@/source/services/image';
 
 import {
     logger,
@@ -37,35 +43,50 @@ export default async function handler(
             language,
         } = request.body;
 
-
+        const id = uuid();
+        const createdAt = new Date().toISOString();
         const locationData = await getReverseGeocode(location);
-        console.log(locationData);
-
         const {
             countryCode,
         } = locationData;
+        const imageURL = await storeImage(image, id);
 
-        // await database.insert(returberTasks).values({
-        //     id: uuid(),
-        //     createdAt: new Date().toISOString(),
 
-        //     image,
-        //     pickTimeType,
-        //     customTimeText,
-        //     language,
+        const returberTaskIndexResult = await database.insert(returberTaskLocationIndex).values({
+            minX: location.longitude,
+            maxX: location.longitude,
+            minY: location.latitude,
+            maxY: location.latitude,
+        });
+        const locationIndexID = Number(returberTaskIndexResult.lastInsertRowid);
+        if (!locationIndexID) {
+            response.status(500).json({
+                status: false,
+            });
+            return;
+        }
 
-        //     createdBy: '',
-        //     name: '',
-        //     address: '',
-        //     postalCode: '',
-        //     city: '',
-        //     region: '',
-        //     country: '',
-        //     locationIndexID: location.id,
-        //     returnables,
-        //     rate: 0,
-        //     status: 'pending',
-        // });
+        await database.insert(returberTasks).values({
+            id,
+            createdAt,
+
+            image: imageURL,
+            pickTimeType,
+            customTimeText,
+            language,
+
+            createdBy: '',
+            name: '',
+            address: '',
+            postalCode: '',
+            city: '',
+            region: '',
+            country: '',
+            locationIndexID,
+            returnables,
+            rate: 0,
+            status: 'pending',
+        });
 
 
         response.json({

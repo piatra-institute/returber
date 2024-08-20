@@ -19,7 +19,7 @@ const r2 = new R2({
 export const bucket = r2.bucket(process.env.CLOUDFLARE_R2_BUCKET_NAME!);
 
 
-export const storeFile = async(
+export const storeFile = async (
     data: string | Uint8Array | Buffer | Readable | ReadStream,
     filename: string,
     contentType: string,
@@ -27,4 +27,11 @@ export const storeFile = async(
     const result = await bucket.upload(data, filename, {}, contentType);
 
     return result.uri;
+}
+
+
+export const deleteFile = async (
+    filename: string,
+): Promise<void> => {
+    await bucket.deleteObject(filename);
 }

@@ -47,7 +47,6 @@ export default async function handler(
         const createdBy = 'system';
         const locationData = await getReverseGeocode(location);
         const name = locationData.admin1Code.asciiName;
-
         const imageURL = await storeImage(image, id);
 
 
