@@ -3,9 +3,19 @@ import type {
     Response,
 } from 'express';
 
-import { sql } from 'drizzle-orm';
+import {
+    sql,
+    eq,
+} from 'drizzle-orm';
+
+import {
+    APIMarkForDeletionReturnPoint,
+} from '@/source/data/api';
 
 import database from '@/source/database';
+import {
+    returnPoints,
+} from '@/source/database/schema/returnPoints';
 
 import {
     logger,
@@ -19,7 +29,19 @@ export default async function handler(
 ) {
     try {
         const {
-        } = request.body;
+            id,
+        } = APIMarkForDeletionReturnPoint.parse(request.body);
+
+
+        await database
+            .update(returnPoints)
+            .set({
+                deletionMarks: sql`${returnPoints.deletionMarks} + 1`,
+            })
+            .where(
+                eq(returnPoints.id, id),
+            );
+
 
         response.json({
             status: true,

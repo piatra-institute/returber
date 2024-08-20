@@ -35,12 +35,10 @@ export default async function handler(
     response: Response,
 ) {
     try {
-        const data = APICreateReturnPoint.parse(request.body);
-
         const {
             image,
             location,
-        } = data;
+        } = APICreateReturnPoint.parse(request.body);
 
         const id = uuid();
         const createdAt = new Date().toISOString();
@@ -73,6 +71,7 @@ export default async function handler(
             locationIndexID,
             status: 'active',
             queue: 0,
+            deletionMarks: 0,
         });
 
 

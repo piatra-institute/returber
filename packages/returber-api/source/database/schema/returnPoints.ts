@@ -18,6 +18,7 @@ export const returnPoints = sqliteTable(
         locationIndexID: integer('location_index_id').notNull(),
         status: text('status').notNull(),
         queue: integer('queue').notNull(),
+        deletionMarks: integer('deletion_marks').notNull(),
     },
     (returnPoints) => ({
         nameIdx: index('nameIdx').on(returnPoints.name),
