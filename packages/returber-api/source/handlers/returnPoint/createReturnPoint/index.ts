@@ -20,10 +20,9 @@ import {
 import {
     getReverseGeocode,
 } from '@/source/services/geocoder';
-
 import {
-    storeFile,
-} from '@/source/services/storage';
+    storeImage,
+} from '@/source/services/image';
 
 import {
     logger,
@@ -49,7 +48,7 @@ export default async function handler(
         const locationData = await getReverseGeocode(location);
         const name = locationData.admin1Code.asciiName;
 
-        const imageURL = await storeFile(image, id + '.png', 'image/png');
+        const imageURL = await storeImage(image, id);
 
 
         const returnPointIndexResult = await database.insert(returnPointLocationIndex).values({
