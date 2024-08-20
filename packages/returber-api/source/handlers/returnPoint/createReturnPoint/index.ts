@@ -5,7 +5,9 @@ import type {
 
 import { v4 as uuid } from 'uuid';
 
-import { sql } from 'drizzle-orm';
+import {
+    APICreateReturnPoint,
+} from '@/source/data/api';
 
 import database from '@/source/database';
 import {
@@ -26,11 +28,13 @@ export default async function handler(
     response: Response,
 ) {
     try {
+        const data = APICreateReturnPoint.parse(request.body);
+
         const {
             name,
             image,
             location,
-        } = request.body;
+        } = data;
 
         const createdAt = new Date().toISOString();
         const createdBy = 'system';
