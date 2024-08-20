@@ -1,4 +1,4 @@
-export type PickTimeType = 'next-24hrs' | 'custom';
+export type PickTimeType = 'next-hrs' | 'custom';
 
 
 export interface ReturberLocation {

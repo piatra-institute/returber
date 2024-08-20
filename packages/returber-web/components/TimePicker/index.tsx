@@ -42,15 +42,15 @@ export default function TimePicker({
             </div>
 
             <button
-                className={pickTimeType === 'next-24hrs'
+                className={pickTimeType === 'next-hrs'
                     ? 'select-none lg:min-w-[250px] bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out'
                     : 'select-none py-2 px-8 font-bold rounded-full'
                 }
                 onClick={() => {
-                    setPickTimeType('next-24hrs');
+                    setPickTimeType('next-hrs');
                 }}
             >
-                {localization[language].callNext24Hours}
+                {localization[language].callNextHours}
             </button>
 
             <button

@@ -88,7 +88,7 @@ export default function Call() {
     const [
         pickTimeType,
         setPickTimeType,
-    ] = useState<PickTimeType>('next-24hrs');
+    ] = useState<PickTimeType>('next-hrs');
 
     const [
         returberErrors,
@@ -215,7 +215,7 @@ export default function Call() {
                             },
                         ]);
                         setCustomTimeText('');
-                        setPickTimeType('next-24hrs');
+                        setPickTimeType('next-hrs');
 
                         setReturberErrors('');
                         setReturberCall(false);
