@@ -18,6 +18,10 @@ import {
 } from '@/source/database/schema/returnPointLocations';
 
 import {
+    getReverseGeocode,
+} from '@/source/services/geocoder';
+
+import {
     logger,
 } from '@/source/utilities';
 
@@ -31,13 +35,15 @@ export default async function handler(
         const data = APICreateReturnPoint.parse(request.body);
 
         const {
-            name,
             image,
             location,
         } = data;
 
         const createdAt = new Date().toISOString();
         const createdBy = 'system';
+        const locationData = await getReverseGeocode(location);
+        const name = locationData.admin1Code.asciiName;
+        const imageURL = ''; // store image and get URL
 
 
         const returnPointIndexResult = await database.insert(returnPointLocationIndex).values({
@@ -58,8 +64,8 @@ export default async function handler(
             id: uuid(),
             createdBy,
             createdAt,
-            name: '',
-            image: '',
+            name,
+            image: imageURL,
             locationIndexID,
             status: 'active',
             queue: 0,

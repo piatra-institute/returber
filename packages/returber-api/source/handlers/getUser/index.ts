@@ -9,11 +9,11 @@ import {
 
 import {
     logger,
-} from '../../utilities';
+} from '@/source/utilities';
 
 import {
     getAuthCookies,
-} from '../../utilities/cookies';
+} from '@/source/utilities/cookies';
 
 
 

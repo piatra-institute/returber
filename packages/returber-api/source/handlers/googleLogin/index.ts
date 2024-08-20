@@ -7,15 +7,15 @@ import {
     jwtDecode,
 } from 'jwt-decode';
 
-import googleClient from '../../services/google';
+import googleClient from '@/source/services/google';
 
 import {
     logger,
-} from '../../utilities';
+} from '@/source/utilities';
 
 import {
     setAuthCookies,
-} from '../../utilities/cookies';
+} from '@/source/utilities/cookies';
 
 
 

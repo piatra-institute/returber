@@ -2,6 +2,10 @@ import reverseGeocoder, {
     AddressObject,
 } from 'local-reverse-geocoder';
 
+import {
+    LocationCoords,
+} from '@/source/data'
+
 
 
 export const countryCodes = [
@@ -26,7 +30,7 @@ export const countryCodes = [
 ];
 
 
-export const getReverseGeocode = async (location: any) => {
+export const getReverseGeocode = async (location: LocationCoords) => {
     const data = await new Promise<AddressObject>(
         (resolve, reject) => {
             reverseGeocoder.lookUp({
