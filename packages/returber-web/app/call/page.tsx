@@ -359,10 +359,10 @@ export default function Call() {
                         className="grid place-content-center mt-4 mb-12"
                     >
                         <Image
-                            src="/icons/multiple-icon.png"
-                            alt="add more"
-                            width={32}
-                            height={32}
+                            src="/icons/different-returnables-icon.svg"
+                            alt="different returnables"
+                            width={48}
+                            height={48}
                             onClick={() => {
                                 setReturnables([
                                     ...returnables,
