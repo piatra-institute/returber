@@ -22,6 +22,10 @@ import {
 } from '@/source/services/geocoder';
 
 import {
+    bucket,
+} from '@/source/services/storage';
+
+import {
     logger,
 } from '@/source/utilities';
 
@@ -39,11 +43,14 @@ export default async function handler(
             location,
         } = data;
 
+        const id = uuid();
         const createdAt = new Date().toISOString();
         const createdBy = 'system';
         const locationData = await getReverseGeocode(location);
         const name = locationData.admin1Code.asciiName;
-        const imageURL = ''; // store image and get URL
+
+        const upload = await bucket.upload(image, id + '.png', {}, 'image/png');
+        const imageURL = upload.uri;
 
 
         const returnPointIndexResult = await database.insert(returnPointLocationIndex).values({
@@ -61,7 +68,7 @@ export default async function handler(
         }
 
         await database.insert(returnPoints).values({
-            id: uuid(),
+            id,
             createdBy,
             createdAt,
             name,
