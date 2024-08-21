@@ -3,9 +3,20 @@ import type {
     Response,
 } from 'express';
 
-import { sql } from 'drizzle-orm';
+import { eq } from 'drizzle-orm';
+
+import {
+    APIAcceptReturberTask,
+} from '@/source/data/api';
 
 import database from '@/source/database';
+import {
+    returberTasks,
+} from '@/source/database/schema/returberTasks';
+
+import {
+    getUser,
+} from '@/source/logic/user';
 
 import {
     logger,
@@ -19,7 +30,41 @@ export default async function handler(
 ) {
     try {
         const {
-        } = request.body;
+            id,
+            location,
+        } = APIAcceptReturberTask.parse(request.body);
+
+        const user = await getUser(request, response);
+
+
+        const returberTask = await database.query.returberTasks.findFirst({
+            where: eq(returberTasks.id, id),
+        });
+        if (!returberTask) {
+            response.status(404).json({
+                status: false,
+            });
+            return;
+        }
+
+        if (returberTask.status !== 'pending') {
+            response.status(400).json({
+                status: false,
+            });
+            return;
+        }
+
+        await database
+            .update(returberTasks)
+            .set({
+                status: 'assigned',
+                assignedTo: user,
+                assignedAt: new Date().toISOString(),
+            })
+            .where(
+                eq(returberTasks.id, id),
+            );
+
 
         response.json({
             status: true,

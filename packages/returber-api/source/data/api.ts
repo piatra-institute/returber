@@ -18,6 +18,12 @@ export const APIPostReturberTask = z.object({
 }).strict();
 
 
+export const APIAcceptReturberTask = z.object({
+    id: z.string(),
+    location,
+}).strict();
+
+
 export const APICreateReturnPoint = z.object({
     image: z.string(),
     location,
