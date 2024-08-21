@@ -5,7 +5,15 @@ import type {
 
 import { sql } from 'drizzle-orm';
 
+import {
+    APIGetReturberTasks,
+} from '@/source/data/api';
+
 import database from '@/source/database';
+
+import {
+    findSquareCoordinates,
+} from '@/source/logic/coordinates'
 
 import {
     logger,
@@ -19,37 +27,42 @@ export default async function handler(
 ) {
     try {
         const {
+            location,
+        } = APIGetReturberTasks.parse(request.body);
+
+        const {
             latitude,
             longitude,
-        } = request.body;
+        } = location;
 
-        if (typeof latitude !== 'number' || typeof longitude !== 'number') {
-            response.status(400).json({
-                status: false,
+        const tasks: any[] = [];
+
+
+        const coords = findSquareCoordinates(location, 1000);
+
+        const locationsRequest = await database.query.returberTaskLocationIndex.findMany({
+            where: sql`
+                minX<=${coords.lowerLeft.longitude}
+                AND maxX>=${coords.upperLeft.longitude}
+                AND minY<=${coords.lowerLeft.latitude}
+                AND maxY>=${coords.lowerLeft.latitude};`,
+        });
+
+        for (const location of locationsRequest) {
+            const task = await database.query.returberTasks.findFirst({
+                where: sql`location_index_id = ${location.id}`,
             });
+            if (!task) {
+                continue;
+            }
 
-            return;
+            tasks.push(task);
         }
 
-        // const locations = await database.query.venueLocationIndex.findMany({
-        //     where: sql`minX<=${longitude} AND maxX>=${longitude} AND minY<=${latitude} AND maxY>=${latitude};`,
-        // });
-
-        // const venues = [];
-        // for (const location of locations) {
-        //     const venue = await database.query.venues.findFirst({
-        //         where: sql`location_index_id = ${location.id}`,
-        //     });
-        //     if (!venue) {
-        //         continue;
-        //     }
-
-        //     venues.push(venue);
-        // }
 
         response.json({
             status: true,
-            data: [],
+            data: tasks,
         });
     } catch (error) {
         logger('error', error);

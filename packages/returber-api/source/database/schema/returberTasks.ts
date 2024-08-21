@@ -25,6 +25,8 @@ export const returberTasks = sqliteTable(
         assignedTo: text('assigned_to'),
         assignedAt: text('assigned_at'),
         completedAt: text('completed_at'),
+        completedByCollector: integer('completed_by_collector'),
+        completedByUser: integer('completed_by_user'),
         cancelledAt: text('cancelled_at'),
     },
     (returberTasks) => ({

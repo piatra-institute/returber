@@ -29,6 +29,16 @@ export const APICancelReturberTask = z.object({
 }).strict();
 
 
+export const APICompleteReturberTask = z.object({
+    id: z.string(),
+}).strict();
+
+
+export const APIGetReturberTasks = z.object({
+    location,
+}).strict();
+
+
 export const APICreateReturnPoint = z.object({
     image: z.string(),
     location,
