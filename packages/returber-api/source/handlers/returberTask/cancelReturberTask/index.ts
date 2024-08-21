@@ -57,6 +57,9 @@ export default async function handler(
             .update(returberTasks)
             .set({
                 status: 'cancelled',
+                assignedAt: null,
+                assignedTo: null,
+                cancelledAt: new Date().toISOString(),
             })
             .where(
                 eq(returberTasks.id, id),
