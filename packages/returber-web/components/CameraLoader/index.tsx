@@ -21,11 +21,13 @@ import Camera from '@/components/Camera';
 
 
 export default function CameraLoader({
+    takePictureText,
     image,
     setImage,
     setLocation,
     handleImageAnalysis,
 } : {
+    takePictureText: string;
     image: string | null;
     setImage: React.Dispatch<React.SetStateAction<string | null>>;
     setLocation: React.Dispatch<React.SetStateAction<GeolocationCoordinates | null>>;
@@ -86,7 +88,7 @@ export default function CameraLoader({
                             setShowCamera(true);
                         }}
                     >
-                        {localization[language].callPictureReturnables}
+                        {takePictureText}
                     </button>
                 </div>
             )}

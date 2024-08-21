@@ -23,13 +23,11 @@ import {
     yoloClasses,
 } from '@/data/index';
 
-import {
-    closeX,
-} from '@/data/icons';
 
 import Map from '@/components/Map/dynamic';
 import MapLoader from '@/components/MapLoader';
 import CameraLoader from '@/components/CameraLoader';
+import ImageViewer from '@/components/ImageViewer';
 import ReturnablesCount from '@/components/ReturnablesCount';
 import TimePicker from '@/components/TimePicker';
 import LinkButton from '@/components/LinkButton';
@@ -226,6 +224,7 @@ export default function Call() {
             className="max-w-[320px] md:max-w-[400px] m-auto h-dvh"
         >
             <CameraLoader
+                takePictureText={localization[language].callPictureReturnables}
                 image={image}
                 setImage={setImage}
                 setLocation={setLocation}
@@ -259,28 +258,10 @@ export default function Call() {
                         <MapLoader />
                     )}
 
-                    <div
-                        className="relative mb-8 flex flex-col items-center"
-                    >
-                        <Image
-                            src={image}
-                            alt="user image"
-                            height={400}
-                            width={400}
-                            priority={false}
-                            draggable={false}
-                            className="rounded-full select-none max-h-[400px] shadow-xl w-auto"
-                        />
-
-                        <button
-                            className="select-none absolute top-0 left-[50%] -translate-x-[50%] text-2xl p-2 bg-[#f0f4ed] rounded-b-full"
-                            onClick={() => {
-                                setImage(null);
-                            }}
-                        >
-                            {closeX}
-                        </button>
-                    </div>
+                    <ImageViewer
+                        image={image}
+                        setImage={setImage}
+                    />
 
                     {returnables.map((returnable, index) => (
                         <ReturnablesCount
