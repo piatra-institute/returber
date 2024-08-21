@@ -40,19 +40,12 @@ const tables = [
 `CREATE TABLE IF NOT EXISTS returberTasks (
     id TEXT NOT NULL PRIMARY KEY,
     created_at TEXT NOT NULL,
-
+    created_by TEXT NOT NULL,
+    city TEXT NOT NULL,
     image TEXT NOT NULL,
     pick_time_type TEXT NOT NULL,
     custom_time_text TEXT NOT NULL,
     language TEXT NOT NULL,
-
-    created_by TEXT NOT NULL,
-    name TEXT NOT NULL,
-    address TEXT NOT NULL,
-    postal_code TEXT NOT NULL,
-    city TEXT NOT NULL,
-    region TEXT NOT NULL,
-    country TEXT NOT NULL,
     location_index_id INTEGER NOT NULL
     returnables INTEGER NOT NULL,
     rate INTEGER NOT NULL,
@@ -62,7 +55,7 @@ const tables = [
     cancelled_at TEXT,
     completed_at TEXT
 );`,
-`CREATE INDEX IF NOT EXISTS nameIdx ON returberTasks (name);`,
+// `CREATE INDEX IF NOT EXISTS nameIdx ON returberTasks (name);`,
 
 `CREATE TABLE IF NOT EXISTS returnPoints (
     id TEXT NOT NULL PRIMARY KEY,

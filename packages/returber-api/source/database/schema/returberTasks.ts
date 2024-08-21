@@ -12,19 +12,13 @@ export const returberTasks = sqliteTable(
     {
         id: text('id').notNull().primaryKey(),
         createdAt: text('created_at').notNull(),
-
+        createdBy: text('created_by').notNull(),
+        city: text('city').notNull(),
+        country: text('country').notNull(),
         image: text('image').notNull(),
         pickTimeType: text('pick_time_type').notNull(),
         customTimeText: text('custom_time_text').notNull(),
         language:  text('language').notNull(),
-
-        createdBy: text('created_by').notNull(),
-        name: text('name').notNull(),
-        address: text('address').notNull(),
-        postalCode: text('postal_code').notNull(),
-        city: text('city').notNull(),
-        region: text('region').notNull(),
-        country: text('country').notNull(),
         locationIndexID: integer('location_index_id').notNull(),
         returnables: integer('returnables').notNull(),
         rate: integer('country').notNull(),
@@ -35,6 +29,6 @@ export const returberTasks = sqliteTable(
         cancelledAt: text('cancelled_at'),
     },
     (returberTasks) => ({
-        nameIdx: index('nameIdx').on(returberTasks.name),
+        idIdx: index('idIdx').on(returberTasks.id),
     }),
 );

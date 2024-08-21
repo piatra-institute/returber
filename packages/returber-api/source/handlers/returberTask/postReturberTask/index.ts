@@ -23,9 +23,12 @@ import {
 } from '@/source/services/image';
 
 import {
+    getUser,
+} from '@/source/logic/user';
+
+import {
     logger,
 } from '@/source/utilities';
-
 
 
 
@@ -45,10 +48,15 @@ export default async function handler(
 
         const id = uuid();
         const createdAt = new Date().toISOString();
+        const user = await getUser(request, response);
         const locationData = await getReverseGeocode(location);
         const {
             countryCode,
+            admin1Code,
         } = locationData;
+        const {
+            asciiName: city,
+        } = admin1Code;
         const imageURL = await storeImage(image, id);
 
 
@@ -69,19 +77,13 @@ export default async function handler(
         await database.insert(returberTasks).values({
             id,
             createdAt,
-
+            createdBy: user,
+            city,
+            country: countryCode,
             image: imageURL,
             pickTimeType,
             customTimeText,
             language,
-
-            createdBy: '',
-            name: '',
-            address: '',
-            postalCode: '',
-            city: '',
-            region: '',
-            country: '',
             locationIndexID,
             returnables,
             rate: 0,
