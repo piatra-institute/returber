@@ -4,7 +4,6 @@ import type {
 } from 'express';
 
 import {
-    sql,
     eq,
 } from 'drizzle-orm';
 
@@ -15,6 +14,7 @@ import {
 import database from '@/source/database';
 import {
     returnPoints,
+    ReturnPoint,
 } from '@/source/database/schema/returnPoints';
 
 import {
@@ -35,11 +35,19 @@ export default async function handler(
         } = APIUpdateReturnPoint.parse(request.body);
 
 
+        const update: Partial<ReturnPoint> = {};
+        if (typeof status !== 'undefined') {
+            update.status = status;
+            update.statusUpdatedAt = new Date().toISOString();
+        }
+        if (typeof queue !== 'undefined') {
+            update.queue = queue;
+            update.queueUpdatedAt = new Date().toISOString();
+        }
         await database
             .update(returnPoints)
             .set({
-                status,
-                queue,
+                ...update,
             })
             .where(
                 eq(returnPoints.id, id),

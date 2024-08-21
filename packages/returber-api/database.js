@@ -64,7 +64,9 @@ const tables = [
     image TEXT NOT NULL,
     location_index_id INTEGER NOT NULL
     status TEXT NOT NULL,
+    status_updated_at TEXT NOT NULL,
     queue INTEGER NOT NULL,
+    queue_updated_at TEXT NOT NULL,
     deletion_marks INTEGER NOT NULL,
 );`,
 `CREATE INDEX IF NOT EXISTS nameIdx ON returnPoints (name);`,

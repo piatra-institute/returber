@@ -74,7 +74,9 @@ export default async function handler(
             image: imageURL,
             locationIndexID,
             status: 'active',
+            statusUpdatedAt: new Date().toISOString(),
             queue: 0,
+            queueUpdatedAt: new Date().toISOString(),
             deletionMarks: 0,
         });
 

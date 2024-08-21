@@ -31,3 +31,6 @@ export const returberTasks = sqliteTable(
         idIdx: index('idIdx').on(returberTasks.id),
     }),
 );
+
+
+export type ReturberTask = typeof returberTasks.$inferSelect;
