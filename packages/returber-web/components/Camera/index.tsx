@@ -16,10 +16,6 @@ import {
     useUnscrollable,
 } from '@/logic/hooks';
 
-import {
-    yoloClasses,
-} from '@/data/index';
-
 import * as runModelUtils from '@/logic/yolo/runModel';
 
 
@@ -29,17 +25,13 @@ export default function CameraContainer({
     cancelText,
     cancelAction,
     handleImage,
-    setReturnables,
+    handleImageAnalysis,
 } : {
     cameraLoaded: boolean;
     cancelText: string;
     cancelAction: () => void;
     handleImage: (dataUri: string) => void;
-    setReturnables: React.Dispatch<React.SetStateAction<{
-        count: number;
-        multiplier: number;
-        max: number;
-    }[]>>;
+    handleImageAnalysis?: (tensor: Tensor) => void;
 }) {
     useUnscrollable();
 
@@ -50,6 +42,10 @@ export default function CameraContainer({
 
 
     const analyzeImage = async (dataUri: string) => {
+        if (!handleImageAnalysis) {
+            return;
+        }
+
         // const modelResolution = [256, 256];
         // const modelName = 'yolov7-tiny_256x256.onnx';
 
@@ -130,27 +126,7 @@ export default function CameraContainer({
             tensor,
         );
 
-
-        let returnables = 0;
-        for (let i = 0; i < outputTensor.dims[0]; i++) {
-            const result = outputTensor.data.slice(
-                i * 7,
-                i * 7 + 7
-            );
-            const cls_id = result[5] as string;
-            const label =  (yoloClasses as any)[cls_id];
-            if (label === 'bottle') {
-                returnables += 1;
-            }
-        }
-
-
-        setReturnables(r => [
-            {
-                ...r[0],
-                count: returnables,
-            },
-        ]);
+        handleImageAnalysis(outputTensor);
     }
 
 

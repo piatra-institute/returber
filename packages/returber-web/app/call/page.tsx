@@ -9,6 +9,8 @@ import {
 
 import Image from 'next/image';
 
+import type { Tensor } from 'onnxruntime-web';
+
 import {
     LanguageContext,
 } from '@/app/context';
@@ -18,6 +20,7 @@ import {
     PickTimeType,
     returnPrices,
     environment,
+    yoloClasses,
 } from '@/data/index';
 
 import {
@@ -26,7 +29,7 @@ import {
 
 import Map from '@/components/Map/dynamic';
 import MapLoader from '@/components/MapLoader';
-import Camera from '@/components/Camera';
+import CameraLoader from '@/components/CameraLoader';
 import ReturnablesCount from '@/components/ReturnablesCount';
 import TimePicker from '@/components/TimePicker';
 import LinkButton from '@/components/LinkButton';
@@ -42,22 +45,6 @@ export default function Call() {
     const mounted = useRef(false);
     const map = useRef<any>();
 
-
-    const [
-        showCamera,
-        setShowCamera,
-    ] = useState(false);
-
-    // Only wait for camera loading once.
-    const [
-        cameraLoaded,
-        setCameraLoaded,
-    ] = useState(false);
-
-    const [
-        showLoadingCamera,
-        setShowLoadingCamera,
-    ] = useState(false);
 
     const [
         location,
@@ -149,6 +136,30 @@ export default function Call() {
         }
     }
 
+    const handleImageAnalysis = (
+        tensor: Tensor,
+    ) => {
+        let returnables = 0;
+        for (let i = 0; i < tensor.dims[0]; i++) {
+            const result = tensor.data.slice(
+                i * 7,
+                i * 7 + 7
+            );
+            const cls_id = result[5] as string;
+            const label =  (yoloClasses as any)[cls_id];
+            if (label === 'bottle') {
+                returnables += 1;
+            }
+        }
+
+        setReturnables(r => [
+            {
+                ...r[0],
+                count: returnables,
+            },
+        ]);
+    }
+
 
     useEffect(() => {
         if (mounted.current) {
@@ -167,22 +178,6 @@ export default function Call() {
         ]);
     }, [
         language,
-    ]);
-
-    useEffect(() => {
-        if (!image) {
-            return;
-        }
-
-        const loadLocation = async () => {
-            window.navigator.geolocation.getCurrentPosition((data) => {
-                setLocation(data.coords);
-            });
-        }
-
-        loadLocation();
-    }, [
-        image,
     ]);
 
 
@@ -230,55 +225,12 @@ export default function Call() {
         <div
             className="max-w-[320px] md:max-w-[400px] m-auto h-dvh"
         >
-            {!image
-            && !showLoadingCamera
-            && (
-                <div
-                    className="grid place-content-center h-dvh"
-                >
-                    <button
-                        className="min-w-[310px] lg:min-w-[400px] lg:text-3xl font-bold select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
-                        onClick={() => {
-                            setShowLoadingCamera(true);
-                            setShowCamera(true);
-                        }}
-                    >
-                        {localization[language].callPictureReturnables}
-                    </button>
-                </div>
-            )}
-
-            {showCamera && (
-                <Camera
-                    cameraLoaded={cameraLoaded}
-                    cancelText={localization[language].cancel}
-                    cancelAction={() => {
-                        setShowLoadingCamera(false);
-                        setShowCamera(false);
-
-                        setCameraLoaded(true);
-                    }}
-                    handleImage={(image) => {
-                        setImage(image);
-
-                        setShowLoadingCamera(false);
-                        setShowCamera(false);
-
-                        setCameraLoaded(true);
-                    }}
-                    setReturnables={setReturnables}
-                />
-            )}
-
-            {showLoadingCamera && (
-                <div
-                    className="grid place-content-center"
-                >
-                    <div
-                        className="mt-4 animate-spin rounded-full h-24 w-24 border-t-2 border-b-2 border-blue-300"
-                    />
-                </div>
-            )}
+            <CameraLoader
+                image={image}
+                setImage={setImage}
+                setLocation={setLocation}
+                handleImageAnalysis={handleImageAnalysis}
+            />
 
             {image && (
                 <>
