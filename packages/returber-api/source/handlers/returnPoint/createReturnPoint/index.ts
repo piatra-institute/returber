@@ -25,6 +25,10 @@ import {
 } from '@/source/services/image';
 
 import {
+    getUser,
+} from '@/source/logic/user';
+
+import {
     logger,
 } from '@/source/utilities';
 
@@ -42,7 +46,7 @@ export default async function handler(
 
         const id = uuid();
         const createdAt = new Date().toISOString();
-        const createdBy = 'system';
+        const createdBy = await getUser(request, response);
         const locationData = await getReverseGeocode(location);
         const name = locationData.admin1Code.asciiName;
         const imageURL = await storeImage(image, id);

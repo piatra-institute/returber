@@ -3,11 +3,12 @@ import type {
     Response,
 } from 'express';
 
+import {
+    COOKIE_ACCESS_TOKEN,
+    COOKIE_REFRESH_TOKEN,
+    ONE_YEAR,
+} from '@/source/data';
 
-
-const ONE_YEAR = 365 * 24 * 60 * 60 * 1000;
-export const COOKIE_ACCESS_TOKEN = 'SNCY_AT';
-export const COOKIE_REFRESH_TOKEN = 'SNCY_RT';
 
 
 export const setAuthCookies = (
