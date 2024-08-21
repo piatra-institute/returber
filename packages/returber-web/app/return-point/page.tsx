@@ -7,20 +7,16 @@ import {
     useEffect,
 } from 'react';
 
-import Link from 'next/link';
-
 import {
     LanguageContext,
 } from '@/app/context';
 
 import {
     localization,
-    ReturberLocation,
 } from '@/data/index';
 
 import Map from '@/components/Map/dynamic';
 import MapLoader from '@/components/MapLoader';
-import LinkButton from '@/components/LinkButton';
 
 
 
@@ -32,17 +28,6 @@ export default function Return() {
 
     const map = useRef<any>();
 
-
-    const [
-        locations,
-        setLocations,
-    ] = useState<ReturberLocation[]>([
-    ]);
-
-    const [
-        selectedLocation,
-        setSelectedLocation,
-    ] = useState<number | null>(null);
 
     const [
         location,
@@ -60,14 +45,10 @@ export default function Return() {
         loadLocation();
     }, []);
 
-    useEffect(() => {
-        // load locations
-    }, []);
-
 
     return (
         <div
-            className="grid place-items-center h-dvh"
+            className="max-w-[320px] md:max-w-[400px] m-auto h-dvh"
         >
             {location ? (
                 <div
@@ -83,38 +64,20 @@ export default function Return() {
                                 longitude: newLocation.lng,
                             });
                         }}
-                        draggableMarker={false}
-                        markers={locations}
-                        atMarkerClick={(index) => {
-                            setSelectedLocation(index);
-                        }}
+                        draggableMarker={true}
                     />
                 </div>
             ) : (
                 <MapLoader />
             )}
 
-            {selectedLocation !== null && (
-                <div
-                    className="grid place-items-center"
-                >
-                    <h2>
-                        {locations[selectedLocation].title}
-                    </h2>
-                </div>
-            )}
 
-            <div>
-                <Link
-                    href="/return-point"
-                    tabIndex={-1}
-                    draggable={false}
-                >
-                    <LinkButton
-                        text={localization[language].returnAddReturnLocation}
-                    />
-                </Link>
-            </div>
+            <button
+                className="mt-8 mb-24 w-full text-xl lg:text-3xl select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
+                onClick={() => {}}
+            >
+                {localization[language].returnAddReturnLocation}
+            </button>
         </div>
     );
 }
