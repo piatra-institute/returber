@@ -13,6 +13,7 @@ import {
 
 import {
     localization,
+    environment,
 } from '@/data/index';
 
 import Map from '@/components/Map/dynamic';
@@ -51,6 +52,40 @@ export default function Return() {
         queue,
         setQueue,
     ] = useState(0);
+
+
+    const createReturnPoint = async () => {
+        try {
+            if (!location || !image) {
+                return;
+            }
+
+            const data = {
+                image,
+                location,
+                activePoint,
+                queue,
+                language,
+            };
+
+            const request = await fetch(environment.API + '/create-return-point', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            const response = await request.json();
+
+            if (!response.status) {
+
+            } else {
+
+            }
+        } catch (error) {
+
+        }
+    }
 
 
     useEffect(() => {
@@ -151,7 +186,9 @@ export default function Return() {
 
                     <button
                         className="mt-8 mb-24 w-full text-xl lg:text-3xl select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
-                        onClick={() => {}}
+                        onClick={() => {
+                            createReturnPoint();
+                        }}
                     >
                         {localization[language].returnAddReturnLocation}
                     </button>
