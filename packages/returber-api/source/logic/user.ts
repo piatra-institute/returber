@@ -1,13 +1,13 @@
-import {
+import type {
     Request,
     Response,
 } from 'express';
 
-import { v4 as uuid } from 'uuid';
-
 import {
     google,
 } from 'googleapis';
+
+import { v4 as uuid } from 'uuid';
 
 import {
     COOKIE_UNAUTH_USER,

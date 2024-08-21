@@ -47,15 +47,14 @@ const tables = [
     custom_time_text TEXT NOT NULL,
     language TEXT NOT NULL,
     location_index_id INTEGER NOT NULL
-    returnables INTEGER NOT NULL,
-    rate INTEGER NOT NULL,
+    returnables TEXT NOT NULL,
     status TEXT NOT NULL,
     assigned_to TEXT,
     assigned_at TEXT,
     cancelled_at TEXT,
     completed_at TEXT
 );`,
-// `CREATE INDEX IF NOT EXISTS nameIdx ON returberTasks (name);`,
+`CREATE INDEX IF NOT EXISTS idIdx ON returberTasks (id);`,
 
 `CREATE TABLE IF NOT EXISTS returnPoints (
     id TEXT NOT NULL PRIMARY KEY,

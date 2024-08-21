@@ -3,9 +3,11 @@ import type {
     Response,
 } from 'express';
 
-import { sql } from 'drizzle-orm';
-
 import { v4 as uuid } from 'uuid';
+
+import {
+    APIPostReturberTask,
+} from '@/source/data/api';
 
 import database from '@/source/database';
 import {
@@ -44,7 +46,7 @@ export default async function handler(
             pickTimeType,
             customTimeText,
             language,
-        } = request.body;
+        } = APIPostReturberTask.parse(request.body);
 
         const id = uuid();
         const createdAt = new Date().toISOString();
@@ -86,7 +88,6 @@ export default async function handler(
             language,
             locationIndexID,
             returnables,
-            rate: 0,
             status: 'pending',
         });
 
