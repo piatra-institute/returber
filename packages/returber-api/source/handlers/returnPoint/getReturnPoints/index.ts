@@ -6,7 +6,7 @@ import type {
 import { sql } from 'drizzle-orm';
 
 import {
-    APIGetReturberTasks,
+    APIGetReturnPoints,
 } from '@/source/data/api';
 
 import database from '@/source/database';
@@ -28,14 +28,14 @@ export default async function handler(
     try {
         const {
             location,
-        } = APIGetReturberTasks.parse(request.body);
+        } = APIGetReturnPoints.parse(request.body);
 
-        const tasks: any[] = [];
+        const points: any[] = [];
 
 
         const coords = findSquareCoordinates(location, 1000);
 
-        const locationsRequest = await database.query.returberTaskLocationIndex.findMany({
+        const pointsRequest = await database.query.returnPointLocationIndex.findMany({
             where: sql`
                 minX<=${coords.lowerLeft.longitude}
                 AND maxX>=${coords.upperLeft.longitude}
@@ -43,21 +43,21 @@ export default async function handler(
                 AND maxY>=${coords.lowerLeft.latitude};`,
         });
 
-        for (const location of locationsRequest) {
-            const task = await database.query.returberTasks.findFirst({
-                where: sql`location_index_id = ${location.id}`,
+        for (const pointLocation of pointsRequest) {
+            const point = await database.query.returnPoints.findFirst({
+                where: sql`location_index_id = ${pointLocation.id}`,
             });
-            if (!task) {
+            if (!point) {
                 continue;
             }
 
-            tasks.push(task);
+            points.push(point);
         }
 
 
         response.json({
             status: true,
-            data: tasks,
+            data: points,
         });
     } catch (error) {
         logger('error', error);

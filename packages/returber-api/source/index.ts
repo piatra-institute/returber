@@ -13,6 +13,7 @@ import {
     completeReturberTask,
     cancelReturberTask,
 
+    getReturnPoints,
     createReturnPoint,
     updateReturnPoint,
     markForDeletionReturnPoint,
@@ -58,6 +59,7 @@ const main = async () => {
     app.post('/complete-returber-task', completeReturberTask);
     app.post('/cancel-returber-task', cancelReturberTask);
 
+    app.post('/get-return-points', getReturnPoints);
     app.post('/create-return-point', createReturnPoint);
     app.post('/update-return-point', updateReturnPoint);
     app.post('/mark-for-deletion-return-point', markForDeletionReturnPoint);

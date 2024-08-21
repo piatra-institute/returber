@@ -8,6 +8,19 @@ const location = z.object({
 }).strict();
 
 
+export const APIAcceptReturberTask = z.object({
+    id: z.string(),
+    location,
+}).strict();
+
+export const APICancelReturberTask = z.object({
+    id: z.string(),
+}).strict();
+
+export const APICompleteReturberTask = z.object({
+    id: z.string(),
+}).strict();
+
 export const APIPostReturberTask = z.object({
     image: z.string(),
     location,
@@ -16,23 +29,6 @@ export const APIPostReturberTask = z.object({
     customTimeText: z.string().optional().default(''),
     language: z.string().optional().default('en'),
 }).strict();
-
-
-export const APIAcceptReturberTask = z.object({
-    id: z.string(),
-    location,
-}).strict();
-
-
-export const APICancelReturberTask = z.object({
-    id: z.string(),
-}).strict();
-
-
-export const APICompleteReturberTask = z.object({
-    id: z.string(),
-}).strict();
-
 
 export const APIGetReturberTasks = z.object({
     location,
@@ -44,14 +40,16 @@ export const APICreateReturnPoint = z.object({
     location,
 }).strict();
 
-
 export const APIMarkForDeletionReturnPoint = z.object({
     id: z.string(),
 }).strict();
-
 
 export const APIUpdateReturnPoint = z.object({
     id: z.string(),
     status: z.literal('active').or(z.literal('inactive')),
     queue: z.number().optional(),
+}).strict();
+
+export const APIGetReturnPoints = z.object({
+    location,
 }).strict();
