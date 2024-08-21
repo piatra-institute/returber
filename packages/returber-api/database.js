@@ -46,7 +46,7 @@ const tables = [
     pick_time_type TEXT NOT NULL,
     custom_time_text TEXT NOT NULL,
     language TEXT NOT NULL,
-    location_index_id INTEGER NOT NULL
+    location_index_id INTEGER NOT NULL,
     returnables TEXT NOT NULL,
     status TEXT NOT NULL,
     assigned_to TEXT,
@@ -54,7 +54,7 @@ const tables = [
     completed_at TEXT
     completed_by_collector INTEGER,
     completed_by_user INTEGER,
-    cancelled_at TEXT,
+    cancelled_at TEXT
 );`,
 `CREATE INDEX IF NOT EXISTS idIdx ON returberTasks (id);`,
 
@@ -64,12 +64,12 @@ const tables = [
     created_by TEXT NOT NULL,
     name TEXT NOT NULL,
     image TEXT NOT NULL,
-    location_index_id INTEGER NOT NULL
+    location_index_id INTEGER NOT NULL,
     status TEXT NOT NULL,
     status_updated_at TEXT NOT NULL,
     queue INTEGER NOT NULL,
     queue_updated_at TEXT NOT NULL,
-    deletion_marks INTEGER NOT NULL,
+    deletion_marks INTEGER NOT NULL
 );`,
 `CREATE INDEX IF NOT EXISTS nameIdx ON returnPoints (name);`,
 ];
