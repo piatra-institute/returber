@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@redux-devtools/extension": "^3.3.0",
     "leaflet": "^1.9.4",
     "lodash": "^4.17.21",
     "ndarray": "^1.0.19",
