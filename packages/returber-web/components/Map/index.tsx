@@ -175,7 +175,7 @@ export default function Map({
                             className="grid place-items-center gap-4"
                         >
                             <h2>
-                                {marker.title}
+                                {marker.name}
                             </h2>
 
                             {MarkerRender

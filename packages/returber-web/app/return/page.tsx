@@ -109,9 +109,10 @@ export default function Return() {
 
                 const locations = data.map((location: any) => {
                     return {
+                        id: location.id,
                         latitude: location.latitude,
                         longitude: location.longitude,
-                        title: location.name,
+                        name: location.name,
                         image: location.image,
                         status: location.status,
                         queue: location.queue,
@@ -167,7 +168,7 @@ export default function Return() {
                     <h2
                         className="text-lg mb-6"
                     >
-                        {locations[selectedLocation].title}
+                        {locations[selectedLocation].name}
                     </h2>
 
                     <ImageViewer
@@ -181,12 +182,19 @@ export default function Return() {
 
             <div>
                 <Link
-                    href="/return-point"
+                    href={
+                        selectedLocation === null
+                            ? '/return-point'
+                            : `/return-point/${locations[selectedLocation].id}`
+                    }
                     tabIndex={-1}
                     draggable={false}
                 >
                     <LinkButton
-                        text={localization[language].returnAddReturnLocation}
+                        text={selectedLocation === null
+                            ? localization[language].returnAddReturnLocation
+                            : localization[language].returnEditReturnLocation
+                        }
                     />
                 </Link>
             </div>

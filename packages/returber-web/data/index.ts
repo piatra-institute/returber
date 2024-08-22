@@ -2,9 +2,10 @@ export type PickTimeType = 'next-hrs' | 'custom';
 
 
 export interface ReturberLocation {
+    id: string;
     latitude: number;
     longitude: number;
-    title: string;
+    name: string;
     image: string;
     status: 'active' | 'inactive';
     queue: number;
