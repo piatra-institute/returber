@@ -27,20 +27,17 @@ import ImageViewer from '@/components/ImageViewer';
 
 
 function MarkerRender({
+    item,
     index,
     onClick,
 } : {
+    item: any;
     index: number;
     onClick: (index: number) => void;
 }) {
     return (
         <div>
-            <LinkButton
-                text="test"
-                onClick={() => {
-                    onClick(index);
-                }}
-            />
+            {item.status + ' ' + item.queue}
         </div>
     );
 }
@@ -58,8 +55,7 @@ export default function Return() {
     const [
         locations,
         setLocations,
-    ] = useState<ReturberLocation[]>([
-    ]);
+    ] = useState<ReturberLocation[]>([]);
 
     const [
         selectedLocation,
@@ -117,6 +113,8 @@ export default function Return() {
                         longitude: location.longitude,
                         title: location.name,
                         image: location.image,
+                        status: location.status,
+                        queue: location.queue,
                     };
                 });
 
@@ -166,7 +164,9 @@ export default function Return() {
                 <div
                     className="grid place-items-center"
                 >
-                    <h2>
+                    <h2
+                        className="text-lg mb-6"
+                    >
                         {locations[selectedLocation].title}
                     </h2>
 

@@ -6,6 +6,8 @@ export interface ReturberLocation {
     longitude: number;
     title: string;
     image: string;
+    status: 'active' | 'inactive';
+    queue: number;
 }
 
 

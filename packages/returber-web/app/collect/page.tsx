@@ -20,6 +20,7 @@ function MarkerRender({
     index,
     onClick,
 } : {
+    item: any;
     index: number;
     onClick: (index: number) => void;
 }) {

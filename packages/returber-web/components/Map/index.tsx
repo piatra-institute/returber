@@ -113,7 +113,11 @@ export default function Map({
     markers?: ReturberLocation[];
     atMarkerClick?: (index: number) => void;
     MarkerRender?: React.ComponentType<
-        { index: number; onClick: (index: number) => void; }
+        {
+            item: any;
+            index: number;
+            onClick: (index: number) => void;
+        }
     >;
 }) {
     return (
@@ -178,6 +182,7 @@ export default function Map({
                             && atMarkerClick
                             && (
                                 <MarkerRender
+                                    item={marker}
                                     index={index}
                                     onClick={atMarkerClick}
                                 />
