@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@redux-devtools/extension": "^3.3.0",
+    "immer": "^10.1.1",
     "leaflet": "^1.9.4",
     "lodash": "^4.17.21",
     "ndarray": "^1.0.19",
