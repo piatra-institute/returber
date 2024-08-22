@@ -7,6 +7,8 @@ import {
     useEffect,
 } from 'react';
 
+import Link from 'next/link';
+
 import {
     LanguageContext,
 } from '@/app/context';
@@ -21,6 +23,7 @@ import MapLoader from '@/components/MapLoader';
 import CameraLoader from '@/components/CameraLoader';
 import ImageViewer from '@/components/ImageViewer';
 import Toggle from '@/components/Toggle';
+import LinkButton from '@/components/LinkButton';
 
 
 
@@ -54,7 +57,25 @@ export default function Return() {
     ] = useState(0);
 
 
+    const [
+        returnPointErrors,
+        setReturnPointErrors,
+    ] = useState('');
+
+    const [
+        returnPointCall,
+        setReturnPointCall,
+    ] = useState(false);
+
+    const [
+        returnPointSuccess,
+        setReturnPointSuccess,
+    ] = useState(false);
+
+
     const createReturnPoint = async () => {
+        setReturnPointCall(true);
+
         try {
             if (!location || !image) {
                 return;
@@ -63,9 +84,8 @@ export default function Return() {
             const data = {
                 image,
                 location,
-                activePoint,
+                status: activePoint ? 'active' : 'inactive',
                 queue,
-                language,
             };
 
             const request = await fetch(environment.API + '/create-return-point', {
@@ -78,12 +98,18 @@ export default function Return() {
             const response = await request.json();
 
             if (!response.status) {
-
+                setReturnPointErrors(
+                    localization[language].somethingWentWrongTryAgain,
+                );
+                setReturnPointSuccess(false);
             } else {
-
+                setReturnPointSuccess(true);
             }
         } catch (error) {
-
+            setReturnPointErrors(
+                localization[language].somethingWentWrongTryAgain,
+            );
+            setReturnPointSuccess(false);
         }
     }
 
@@ -98,6 +124,35 @@ export default function Return() {
         loadLocation();
     }, []);
 
+
+    if (returnPointCall) {
+        return (
+            <div
+                className="max-w-[320px] md:max-w-[400px] m-auto h-dvh grid place-content-center gap-12"
+            >
+                {returnPointErrors && (
+                    <div>
+                        {returnPointErrors}
+                    </div>
+                )}
+
+                {returnPointSuccess && (
+                    <div>
+                        {localization[language].returnPointCreatedSuccess}
+                    </div>
+                )}
+
+                <Link
+                    href="/"
+                >
+                    <LinkButton
+                        text={localization[language].home}
+                        onClick={() => {}}
+                    />
+                </Link>
+            </div>
+        );
+    }
 
     return (
         <div

@@ -82,7 +82,7 @@ export default function CameraLoader({
                     className="grid place-content-center h-dvh"
                 >
                     <button
-                        className="min-w-[310px] lg:min-w-[400px] lg:text-3xl font-bold select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
+                        className="min-w-[310px] lg:min-w-[500px] lg:text-3xl font-bold select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
                         onClick={() => {
                             setShowLoadingCamera(true);
                             setShowCamera(true);
