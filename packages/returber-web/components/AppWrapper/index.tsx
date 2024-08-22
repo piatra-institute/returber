@@ -16,6 +16,7 @@ import {
 } from '@/data/index';
 
 import LanguageSelector from '@/components/LanguageSelector';
+import Spinner from '@/components/Spinner';
 
 import useStore, {
     useVolatileStore,
@@ -82,6 +83,12 @@ export default function AppWrapper({
                 setLanguage,
             }}
         >
+            {showLoading && (
+                <Spinner
+                    absolute={true}
+                />
+            )}
+
             <div
                 className="max-w-[1600px] relative mx-auto"
             >
