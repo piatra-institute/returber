@@ -26,7 +26,7 @@ export const storeFile = async (
 ): Promise<string> => {
     const result = await bucket.upload(data, filename, {}, contentType);
 
-    return result.uri;
+    return process.env.CLOUDFLARE_R2_PUBLIC_URL_BASE! + result.objectKey;
 }
 
 

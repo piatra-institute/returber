@@ -37,9 +37,9 @@ export default async function handler(
 
         const pointsRequest = await database.query.returnPointLocationIndex.findMany({
             where: sql`
-                minX<=${coords.lowerLeft.longitude}
-                AND maxX>=${coords.upperLeft.longitude}
-                AND minY<=${coords.lowerLeft.latitude}
+                minX<=${coords.lowerRight.longitude}
+                AND maxX>=${coords.lowerLeft.longitude}
+                AND minY<=${coords.upperRight.latitude}
                 AND maxY>=${coords.lowerLeft.latitude};`,
         });
 
@@ -51,7 +51,11 @@ export default async function handler(
                 continue;
             }
 
-            points.push(point);
+            points.push({
+                ...point,
+                latitude: pointLocation.maxY,
+                longitude: pointLocation.maxX,
+            });
         }
 
 
