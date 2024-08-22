@@ -7,6 +7,7 @@ import {
     useEffect,
 } from 'react';
 
+import Image from 'next/image';
 import Link from 'next/link';
 
 import {
@@ -36,8 +37,41 @@ function MarkerRender({
     onClick: (index: number) => void;
 }) {
     return (
-        <div>
-            {item.status + ' ' + item.queue}
+        <div
+            className="flex flex-col items-center justify-center text-center"
+        >
+            <Image
+                src={item.status === 'active'
+                    ? '/icons/valid-icon.svg'
+                    : '/icons/invalid-icon.svg'
+                }
+                alt="status"
+                width={20}
+                height={20}
+                draggable={false}
+                className="select-none"
+            />
+
+            {item.status === 'active' && (
+                <div
+                    className="flex items-center justify-center mt-2"
+                >
+                    <Image
+                        src="/icons/queue-icon.svg"
+                        alt="queue"
+                        width={40}
+                        height={40}
+                        draggable={false}
+                        className="select-none"
+                    />
+
+                    <div
+                        className="text-lg"
+                    >
+                        {item.queue}
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

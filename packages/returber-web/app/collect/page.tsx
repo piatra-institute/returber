@@ -106,7 +106,7 @@ export default function Collect() {
                     className="grid place-items-center"
                 >
                     <h2>
-                        {locations[selectedLocation].title}
+                        {locations[selectedLocation].name}
                     </h2>
                 </div>
             )}
