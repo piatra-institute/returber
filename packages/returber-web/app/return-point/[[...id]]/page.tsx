@@ -49,6 +49,11 @@ export default function Return() {
 
 
     const [
+        editMode,
+        setEditMode,
+    ] = useState(false);
+
+    const [
         location,
         setLocation,
     ] = useState<GeolocationCoordinates | null>(null);
@@ -135,6 +140,32 @@ export default function Return() {
         }
     }
 
+    const editReturnPoint = async () => {
+        setShowLoading(true);
+
+        try {
+            const id = params.id[0];
+            const data = {
+                id,
+                status: activePoint ? 'active' : 'inactive',
+                queue,
+            };
+
+            const request = await fetch(environment.API + '/update-return-point', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            const response = await request.json();
+
+            setShowLoading(false);
+        } catch (error) {
+            setShowLoading(false);
+        }
+    }
+
 
     useEffect(() => {
         const loadLocation = async () => {
@@ -146,19 +177,60 @@ export default function Return() {
         loadLocation();
     }, []);
 
-
     useEffect(() => {
         if (params.id) {
-            const {
-                id,
-            } = params;
+            setEditMode(true);
 
-            // set editing mode
+            const loadReturnPoint = async () => {
+                try {
+                    const id = params.id[0];
 
-            // get data from id
+                    const request = await fetch(environment.API + '/get-return-point-by-id', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            id,
+                        }),
+                    });
+                    const response = await request.json();
+
+                    if (!response.status) {
+                    } else {
+                        const {
+                            image,
+                            latitude,
+                            longitude,
+                            status,
+                            queue,
+                        } = response.data;
+
+                        setImage(image);
+                        setLocation({
+                            latitude,
+                            longitude,
+                            accuracy: 0,
+                            altitude: 0,
+                            altitudeAccuracy: 0,
+                            heading: 0,
+                            speed: 0,
+                        });
+                        setActivePoint(status === 'active');
+                        setQueue(queue);
+                    }
+
+                    setShowLoading(false);
+                } catch (error) {
+                    setShowLoading(false);
+                }
+            }
+
+            loadReturnPoint();
         }
     }, [
         params,
+        setShowLoading,
     ]);
 
 
@@ -280,10 +352,17 @@ export default function Return() {
                     <button
                         className="mt-8 mb-24 w-full text-xl lg:text-3xl select-none bg-gradient-to-r from-blue-400 to-green-500 hover:from-blue-500 hover:to-green-600 text-white font-bold py-2 px-8 rounded-full shadow-xl hover:shadow-lg transition duration-200 ease-in-out"
                         onClick={() => {
-                            createReturnPoint();
+                            if (editMode) {
+                                editReturnPoint();
+                            } else {
+                                createReturnPoint();
+                            }
                         }}
                     >
-                        {localization[language].returnAddReturnLocation}
+                        {editMode
+                            ? localization[language].returnEditReturnLocation
+                            : localization[language].returnAddReturnLocation
+                        }
                     </button>
                 </>
             )}
