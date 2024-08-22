@@ -23,7 +23,6 @@ import MapLoader from '@/components/MapLoader';
 import CameraLoader from '@/components/CameraLoader';
 import ImageViewer from '@/components/ImageViewer';
 import Toggle from '@/components/Toggle';
-import LinkButton from '@/components/LinkButton';
 
 
 
@@ -83,7 +82,10 @@ export default function Return() {
 
             const data = {
                 image,
-                location,
+                location: {
+                    latitude: location.latitude,
+                    longitude: location.longitude,
+                },
                 status: activePoint ? 'active' : 'inactive',
                 queue,
             };
@@ -143,12 +145,13 @@ export default function Return() {
                 )}
 
                 <Link
-                    href="/"
+                    href="/return"
                 >
-                    <LinkButton
-                        text={localization[language].home}
-                        onClick={() => {}}
-                    />
+                    <div
+                        className="text-center font-bold"
+                    >
+                        {localization[language].home}
+                    </div>
                 </Link>
             </div>
         );

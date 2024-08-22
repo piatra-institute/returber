@@ -16,12 +16,34 @@ import {
 import {
     localization,
     ReturberLocation,
+    environment,
 } from '@/data/index';
 
 import Map from '@/components/Map/dynamic';
 import MapLoader from '@/components/MapLoader';
 import LinkButton from '@/components/LinkButton';
+import ImageViewer from '@/components/ImageViewer';
 
+
+
+function MarkerRender({
+    index,
+    onClick,
+} : {
+    index: number;
+    onClick: (index: number) => void;
+}) {
+    return (
+        <div>
+            <LinkButton
+                text="test"
+                onClick={() => {
+                    onClick(index);
+                }}
+            />
+        </div>
+    );
+}
 
 
 export default function Return() {
@@ -61,8 +83,53 @@ export default function Return() {
     }, []);
 
     useEffect(() => {
-        // load locations
-    }, []);
+        const loadLocations = async () => {
+            try {
+                if (!location) {
+                    return;
+                }
+
+                const response = await fetch(environment.API + '/get-return-points', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        location: {
+                            latitude: location.latitude,
+                            longitude: location.longitude,
+                        },
+                    }),
+                });
+                const request = await response.json();
+
+                if (!request.status) {
+                    return;
+                }
+
+                const {
+                    data,
+                } = request;
+
+                const locations = data.map((location: any) => {
+                    return {
+                        latitude: location.latitude,
+                        longitude: location.longitude,
+                        title: location.name,
+                        image: location.image,
+                    };
+                });
+
+                setLocations(locations);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        loadLocations();
+    }, [
+        location,
+    ]);
 
 
     return (
@@ -88,6 +155,7 @@ export default function Return() {
                         atMarkerClick={(index) => {
                             setSelectedLocation(index);
                         }}
+                        MarkerRender={MarkerRender}
                     />
                 </div>
             ) : (
@@ -101,6 +169,13 @@ export default function Return() {
                     <h2>
                         {locations[selectedLocation].title}
                     </h2>
+
+                    <ImageViewer
+                        image={locations[selectedLocation].image}
+                        setImage={() => {
+                            setSelectedLocation(null);
+                        }}
+                    />
                 </div>
             )}
 

@@ -12,7 +12,26 @@ import {
 
 import Map from '@/components/Map/dynamic';
 import MapLoader from '@/components/MapLoader';
+import LinkButton from '@/components/LinkButton';
 
+
+
+function MarkerRender({
+    index,
+    onClick,
+} : {
+    index: number;
+    onClick: (index: number) => void;
+}) {
+    return (
+        <LinkButton
+            text="collect"
+            onClick={() => {
+                onClick(index);
+            }}
+        />
+    );
+}
 
 
 export default function Collect() {
@@ -74,6 +93,7 @@ export default function Collect() {
                         atMarkerClick={(index) => {
                             setSelectedLocation(index);
                         }}
+                        MarkerRender={MarkerRender}
                     />
                 </div>
             ) : (

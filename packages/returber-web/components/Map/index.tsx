@@ -18,8 +18,6 @@ import {
     ReturberLocation,
 } from '@/data/index';
 
-import LinkButton from '@/components/LinkButton';
-
 
 
 const markerIcon = L.icon({
@@ -106,6 +104,7 @@ export default function Map({
     draggableMarker,
     markers,
     atMarkerClick,
+    MarkerRender,
 }: {
     location: GeolocationCoordinates;
     map: React.RefObject<L.Map>;
@@ -113,6 +112,9 @@ export default function Map({
     draggableMarker?: boolean;
     markers?: ReturberLocation[];
     atMarkerClick?: (index: number) => void;
+    MarkerRender?: React.ComponentType<
+        { index: number; onClick: (index: number) => void; }
+    >;
 }) {
     return (
         <MapContainer
@@ -154,6 +156,15 @@ export default function Map({
                         lng: marker.longitude,
                     }}
                     icon={markerCollectIcon}
+                    eventHandlers={{
+                        click: () => {
+                            if (!atMarkerClick) {
+                                return;
+                            }
+
+                            atMarkerClick(index);
+                        },
+                    }}
                 >
                     <Popup>
                         <div
@@ -163,16 +174,14 @@ export default function Map({
                                 {marker.title}
                             </h2>
 
-                            <LinkButton
-                                text="collect"
-                                onClick={() => {
-                                    if (!atMarkerClick) {
-                                        return;
-                                    }
-
-                                    atMarkerClick(index);
-                                }}
-                            />
+                            {MarkerRender
+                            && atMarkerClick
+                            && (
+                                <MarkerRender
+                                    index={index}
+                                    onClick={atMarkerClick}
+                                />
+                            )}
                         </div>
                     </Popup>
                 </Marker>

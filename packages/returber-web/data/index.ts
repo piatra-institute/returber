@@ -5,6 +5,7 @@ export interface ReturberLocation {
     latitude: number;
     longitude: number;
     title: string;
+    image: string;
 }
 
 
