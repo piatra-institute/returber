@@ -7,6 +7,8 @@ const location = z.object({
     longitude: z.number(),
 }).strict();
 
+const returnPointStatus = z.literal('active').or(z.literal('inactive'));
+
 
 export const APIAcceptReturberTask = z.object({
     id: z.string(),
@@ -38,6 +40,8 @@ export const APIGetReturberTasks = z.object({
 export const APICreateReturnPoint = z.object({
     image: z.string(),
     location,
+    status: returnPointStatus,
+    queue: z.number().nonnegative(),
 }).strict();
 
 export const APIMarkForDeletionReturnPoint = z.object({
@@ -46,8 +50,8 @@ export const APIMarkForDeletionReturnPoint = z.object({
 
 export const APIUpdateReturnPoint = z.object({
     id: z.string(),
-    status: z.literal('active').or(z.literal('inactive')),
-    queue: z.number().optional(),
+    status: returnPointStatus,
+    queue: z.number().nonnegative().optional(),
 }).strict();
 
 export const APIGetReturnPoints = z.object({

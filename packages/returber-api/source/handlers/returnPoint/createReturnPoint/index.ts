@@ -42,6 +42,8 @@ export default async function handler(
         const {
             image,
             location,
+            queue,
+            status,
         } = APICreateReturnPoint.parse(request.body);
 
         const id = uuid();
@@ -73,9 +75,9 @@ export default async function handler(
             name,
             image: imageURL,
             locationIndexID,
-            status: 'active',
+            status,
             statusUpdatedAt: new Date().toISOString(),
-            queue: 0,
+            queue,
             queueUpdatedAt: new Date().toISOString(),
             deletionMarks: 0,
         });
