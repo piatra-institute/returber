@@ -13,7 +13,7 @@ import database from '@/source/database';
 
 import {
     findSquareCoordinates,
-} from '@/source/logic/coordinates'
+} from '@/source/logic/coordinates';
 
 import {
     logger,
@@ -53,8 +53,6 @@ export default async function handler(
 
             points.push({
                 ...point,
-                latitude: pointLocation.maxY,
-                longitude: pointLocation.maxX,
             });
         }
 

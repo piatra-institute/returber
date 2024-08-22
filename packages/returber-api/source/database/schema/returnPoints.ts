@@ -3,6 +3,7 @@ import {
     text,
     index,
     integer,
+    real,
 } from 'drizzle-orm/sqlite-core';
 
 
@@ -16,6 +17,8 @@ export const returnPoints = sqliteTable(
         name: text('name').notNull(),
         image: text('image').notNull(),
         locationIndexID: integer('location_index_id').notNull(),
+        latitude: real('latitude').notNull(),
+        longitude: real('longitude').notNull(),
         status: text('status').notNull(),
         statusUpdatedAt: text('status_updated_at').notNull(),
         queue: integer('queue').notNull(),

@@ -10,6 +10,7 @@ import completeReturberTask from './returberTask/completeReturberTask';
 import cancelReturberTask from './returberTask/cancelReturberTask';
 
 import getReturnPoints from './returnPoint/getReturnPoints';
+import getReturnPointByID from './returnPoint/getReturnPointByID';
 import createReturnPoint from './returnPoint/createReturnPoint';
 import updateReturnPoint from './returnPoint/updateReturnPoint';
 import markForDeletionReturnPoint from './returnPoint/markForDeletionReturnPoint';
@@ -29,6 +30,7 @@ export {
     cancelReturberTask,
 
     getReturnPoints,
+    getReturnPointByID,
     createReturnPoint,
     updateReturnPoint,
     markForDeletionReturnPoint,

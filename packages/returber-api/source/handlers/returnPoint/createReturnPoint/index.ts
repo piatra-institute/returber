@@ -75,6 +75,8 @@ export default async function handler(
             name,
             image: imageURL,
             locationIndexID,
+            latitude: location.latitude,
+            longitude: location.longitude,
             status,
             statusUpdatedAt: new Date().toISOString(),
             queue,

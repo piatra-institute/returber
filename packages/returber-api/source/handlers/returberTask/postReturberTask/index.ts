@@ -87,6 +87,8 @@ export default async function handler(
             customTimeText,
             language,
             locationIndexID,
+            latitude: location.latitude,
+            longitude: location.longitude,
             returnables,
             status: 'pending',
         });

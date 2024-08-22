@@ -3,6 +3,7 @@ import {
     text,
     index,
     integer,
+    real,
 } from 'drizzle-orm/sqlite-core';
 
 
@@ -20,6 +21,8 @@ export const returberTasks = sqliteTable(
         customTimeText: text('custom_time_text').notNull(),
         language:  text('language').notNull(),
         locationIndexID: integer('location_index_id').notNull(),
+        latitude: real('latitude').notNull(),
+        longitude: real('longitude').notNull(),
         returnables: text('returnables').notNull(),
         status: text('status').notNull(),
         assignedTo: text('assigned_to'),

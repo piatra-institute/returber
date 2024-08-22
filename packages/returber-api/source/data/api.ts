@@ -57,3 +57,7 @@ export const APIUpdateReturnPoint = z.object({
 export const APIGetReturnPoints = z.object({
     location,
 }).strict();
+
+export const APIGetReturnPointByID = z.object({
+    id: z.string(),
+}).strict();
