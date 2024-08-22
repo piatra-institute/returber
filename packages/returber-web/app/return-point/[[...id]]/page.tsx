@@ -8,6 +8,7 @@ import {
 } from 'react';
 
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
 import {
     LanguageContext,
@@ -30,6 +31,9 @@ export default function Return() {
     const {
         language,
     } = useContext(LanguageContext);
+
+
+    const params = useParams();
 
 
     const map = useRef<any>();
@@ -125,6 +129,21 @@ export default function Return() {
 
         loadLocation();
     }, []);
+
+
+    useEffect(() => {
+        if (params.id) {
+            const {
+                id,
+            } = params;
+
+            // set editing mode
+
+            // get data from id
+        }
+    }, [
+        params,
+    ]);
 
 
     if (returnPointCall) {

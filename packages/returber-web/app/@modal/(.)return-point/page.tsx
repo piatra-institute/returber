@@ -1,7 +1,7 @@
 'use client';
 
 import Modal from '@/components/Modal';
-import ReturnPointPage from '@/app/return-point/page';
+import ReturnPointPage from '@/app/return-point/[[...id]]/page';
 
 
 
