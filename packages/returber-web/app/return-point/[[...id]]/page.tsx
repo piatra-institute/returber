@@ -25,6 +25,10 @@ import CameraLoader from '@/components/CameraLoader';
 import ImageViewer from '@/components/ImageViewer';
 import Toggle from '@/components/Toggle';
 
+import {
+    useVolatileStore,
+} from '@/store';
+
 
 
 export default function Return() {
@@ -37,6 +41,11 @@ export default function Return() {
 
 
     const map = useRef<any>();
+
+
+    const {
+        setShowLoading,
+    } = useVolatileStore();
 
 
     const [
@@ -77,10 +86,13 @@ export default function Return() {
 
 
     const createReturnPoint = async () => {
+        setShowLoading(true);
+
         setReturnPointCall(true);
 
         try {
             if (!location || !image) {
+                setShowLoading(false);
                 return;
             }
 
@@ -111,11 +123,15 @@ export default function Return() {
             } else {
                 setReturnPointSuccess(true);
             }
+
+            setShowLoading(false);
         } catch (error) {
             setReturnPointErrors(
                 localization[language].somethingWentWrongTryAgain,
             );
             setReturnPointSuccess(false);
+
+            setShowLoading(false);
         }
     }
 
