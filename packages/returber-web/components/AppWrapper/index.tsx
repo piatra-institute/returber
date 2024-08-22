@@ -17,6 +17,10 @@ import {
 
 import LanguageSelector from '@/components/LanguageSelector';
 
+import useStore, {
+    useVolatileStore,
+} from '@/store';
+
 
 
 export default function AppWrapper({
@@ -32,6 +36,15 @@ export default function AppWrapper({
         languageSet,
         setLanguageSet,
     ] = useState(false);
+
+    const {
+        user: storeUser,
+        setUser,
+    } = useStore();
+
+    const {
+        showLoading,
+    } = useVolatileStore();
 
 
     useEffect(() => {
