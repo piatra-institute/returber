@@ -18,8 +18,8 @@ const r2 = new R2({
 const bucket = r2.bucket(process.env.CLOUDFLARE_R2_BUCKET_NAME);
 
 
-const objects = await bucket.listObjects();
+const objectsRequest = await bucket.listObjects();
 
-for (const object of objects) {
+for (const object of objectsRequest.objects) {
     await bucket.deleteObject(object.key);
 }
