@@ -25,6 +25,10 @@ import MapLoader from '@/components/MapLoader';
 import LinkButton from '@/components/LinkButton';
 import ImageViewer from '@/components/ImageViewer';
 
+import {
+    formatIsoString,
+} from '@/logic/time';
+
 
 
 function MarkerRender({
@@ -52,24 +56,38 @@ function MarkerRender({
                 className="select-none"
             />
 
-            {item.status === 'active' && (
-                <div
-                    className="flex items-center justify-center mt-2"
-                >
-                    <Image
-                        src="/icons/queue-icon.svg"
-                        alt="queue"
-                        width={40}
-                        height={40}
-                        draggable={false}
-                        className="select-none"
-                    />
+            {item.status === 'active' ? (
+                <>
+                    <div
+                        className="flex items-center justify-center mt-2"
+                    >
+                        <Image
+                            src="/icons/queue-icon.svg"
+                            alt="queue"
+                            width={40}
+                            height={40}
+                            draggable={false}
+                            className="select-none"
+                        />
+
+                        <div
+                            className="text-lg"
+                        >
+                            {item.queue}
+                        </div>
+                    </div>
 
                     <div
-                        className="text-lg"
+                        className="mt-2"
                     >
-                        {item.queue}
+                        @ {formatIsoString(item.queueUpdatedAt)}
                     </div>
+                </>
+            ) : (
+                <div
+                    className="mt-2"
+                >
+                    @ {formatIsoString(item.statusUpdatedAt)}
                 </div>
             )}
         </div>
@@ -141,19 +159,7 @@ export default function Return() {
                     data,
                 } = request;
 
-                const locations = data.map((location: any) => {
-                    return {
-                        id: location.id,
-                        latitude: location.latitude,
-                        longitude: location.longitude,
-                        name: location.name,
-                        image: location.image,
-                        status: location.status,
-                        queue: location.queue,
-                    };
-                });
-
-                setLocations(locations);
+                setLocations(data);
             } catch (error) {
                 console.error(error);
             }
