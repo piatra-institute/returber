@@ -253,7 +253,9 @@ export default function Call() {
         <div
             className="max-w-[320px] md:max-w-[400px] m-auto h-dvh"
         >
-            <ReturberHome />
+            <ReturberHome
+                absolute={!image}
+            />
 
             <CameraLoader
                 takePictureText={localization[language].callPictureReturnables}
@@ -265,10 +267,6 @@ export default function Call() {
 
             {image && (
                 <>
-                    <div
-                        className="h-14"
-                    />
-
                     {location ? (
                         <div
                             className="grid place-content-center mb-12"

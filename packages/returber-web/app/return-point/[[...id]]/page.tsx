@@ -22,6 +22,7 @@ import {
     ROUTES,
 } from '@/data/index';
 
+import ReturberHome from '@/components/ReturberHome';
 import Map from '@/components/Map/dynamic';
 import MapLoader from '@/components/MapLoader';
 import CameraLoader from '@/components/CameraLoader';
@@ -248,14 +249,20 @@ export default function Return() {
             <div
                 className="max-w-[320px] md:max-w-[400px] m-auto h-dvh grid place-content-center gap-12"
             >
+                <ReturberHome />
+
                 {returnPointErrors && (
-                    <div>
+                    <div
+                        className="text-center"
+                    >
                         {returnPointErrors}
                     </div>
                 )}
 
                 {returnPointSuccess && (
-                    <div>
+                    <div
+                        className="text-center"
+                    >
                         {localization[language].returnPointCreatedSuccess}
                     </div>
                 )}
@@ -274,6 +281,10 @@ export default function Return() {
         <div
             className="max-w-[320px] md:max-w-[400px] m-auto h-dvh"
         >
+            <ReturberHome
+                absolute={!image}
+            />
+
             <CameraLoader
                 takePictureText={localization[language].returnPointPicturePoint}
                 image={image}
