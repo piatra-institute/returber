@@ -26,7 +26,13 @@ export const APICompleteReturberTask = z.object({
 export const APIPostReturberTask = z.object({
     image: z.string(),
     location,
-    returnables: z.string(),
+    returnables: z.array(
+        z.object({
+            count: z.number().nonnegative(),
+            multiplier: z.number().nonnegative(),
+            max: z.number().nonnegative(),
+        }).strict(),
+    ),
     pickTimeType: z.literal('next-hrs').or(z.literal('custom')).optional().default('next-hrs'),
     customTimeText: z.string().optional().default(''),
     language: z.string().optional().default('en'),

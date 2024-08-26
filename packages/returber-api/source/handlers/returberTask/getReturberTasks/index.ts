@@ -51,7 +51,10 @@ export default async function handler(
                 continue;
             }
 
-            tasks.push(task);
+            tasks.push({
+                ...task,
+                returnables: JSON.parse(task.returnables),
+            });
         }
 
 

@@ -89,7 +89,7 @@ export default async function handler(
             locationIndexID,
             latitude: location.latitude,
             longitude: location.longitude,
-            returnables,
+            returnables: JSON.stringify(returnables),
             status: 'pending',
         });
 
