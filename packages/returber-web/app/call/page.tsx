@@ -33,6 +33,10 @@ import ReturnablesCount from '@/components/ReturnablesCount';
 import TimePicker from '@/components/TimePicker';
 import LinkButton from '@/components/LinkButton';
 
+import {
+    useVolatileStore,
+} from '@/store';
+
 
 
 export default function Call() {
@@ -46,6 +50,11 @@ export default function Call() {
 
     const mounted = useRef(false);
     const map = useRef<any>();
+
+
+    const {
+        setShowLoading,
+    } = useVolatileStore();
 
 
     const [
@@ -103,6 +112,7 @@ export default function Call() {
                 return;
             }
 
+            setShowLoading(true);
 
             const data = {
                 image,
@@ -133,11 +143,14 @@ export default function Call() {
             } else {
                 setReturberSuccess(true);
             }
+
+            setShowLoading(false);
         } catch (error) {
             setReturberErrors(
                 localization[language].somethingWentWrongTryAgain,
             );
             setReturberSuccess(false);
+            setShowLoading(false);
         }
     }
 
@@ -223,14 +236,12 @@ export default function Call() {
                     }}
                 />
 
-                <div
-                    className="text-center font-bold"
+                <LinkButton
+                    text={localization[language].home}
                     onClick={() => {
                         router.back();
                     }}
-                >
-                    {localization[language].home}
-                </div>
+                />
             </div>
         );
     }

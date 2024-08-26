@@ -19,6 +19,14 @@ export interface User {
 }
 
 
+export const ROUTES = {
+    call: '/call',
+    collect: '/collect',
+    return: '/return',
+    returnPoint: '/return-point',
+};
+
+
 
 export * from './currency';
 export * from './environment';

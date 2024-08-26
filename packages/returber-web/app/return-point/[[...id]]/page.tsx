@@ -19,6 +19,7 @@ import {
 import {
     localization,
     environment,
+    ROUTES,
 } from '@/data/index';
 
 import Map from '@/components/Map/dynamic';
@@ -26,6 +27,7 @@ import MapLoader from '@/components/MapLoader';
 import CameraLoader from '@/components/CameraLoader';
 import ImageViewer from '@/components/ImageViewer';
 import Toggle from '@/components/Toggle';
+import LinkButton from '@/components/LinkButton';
 
 import {
     useVolatileStore,
@@ -164,6 +166,10 @@ export default function Return() {
             const response = await request.json();
 
             setShowLoading(false);
+
+            if (response.status) {
+                router.push(ROUTES.return);
+            }
         } catch (error) {
             setShowLoading(false);
         }
@@ -254,14 +260,12 @@ export default function Return() {
                     </div>
                 )}
 
-                <div
-                    className="text-center font-bold"
+                <LinkButton
+                    text={localization[language].home}
                     onClick={() => {
                         router.back();
                     }}
-                >
-                    {localization[language].home}
-                </div>
+                />
             </div>
         );
     }
@@ -297,7 +301,7 @@ export default function Return() {
                                         longitude: newLocation.lng,
                                     });
                                 }}
-                                draggableMarker={true}
+                                draggableMarker={editMode ? false : true}
                             />
                         </div>
                     ) : (
