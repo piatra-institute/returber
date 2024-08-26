@@ -37,9 +37,9 @@ export default async function handler(
 
         const locationsRequest = await database.query.returberTaskLocationIndex.findMany({
             where: sql`
-                minX<=${coords.lowerLeft.longitude}
-                AND maxX>=${coords.upperLeft.longitude}
-                AND minY<=${coords.lowerLeft.latitude}
+                minX<=${coords.lowerRight.longitude}
+                AND maxX>=${coords.lowerLeft.longitude}
+                AND minY<=${coords.upperRight.latitude}
                 AND maxY>=${coords.lowerLeft.latitude};`,
         });
 
