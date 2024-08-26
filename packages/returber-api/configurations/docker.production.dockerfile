@@ -1,5 +1,5 @@
 # Stage 0
-FROM node:18.16.0-alpine AS builder
+FROM node:22-alpine AS builder
 ARG NPM_TOKEN
 ARG NPM_REGISTRY=npm.plurid.cloud
 ENV PORT 8080
@@ -19,7 +19,7 @@ RUN npm prune --production
 
 
 # Stage 1
-FROM node:18.16.0-alpine
+FROM node:22-alpine
 ENV PORT 8080
 ENV HOST 0.0.0.0
 ENV NODE_ENV production
