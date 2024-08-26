@@ -14,6 +14,7 @@ import {
 import Map from '@/components/Map/dynamic';
 import MapLoader from '@/components/MapLoader';
 import LinkButton from '@/components/LinkButton';
+import ImageViewer from '@/components/ImageViewer';
 
 import {
     formatIsoString,
@@ -41,7 +42,7 @@ function MarkerRender({
             </div>
 
             <LinkButton
-                text="collect"
+                text="view"
                 onClick={() => {
                     onClick(index);
                 }}
@@ -156,9 +157,26 @@ export default function Collect() {
                 <div
                     className="grid place-items-center"
                 >
-                    <h2>
-                        {locations[selectedLocation].name}
-                    </h2>
+                    <ImageViewer
+                        image={locations[selectedLocation].image}
+                        setImage={() => {
+                            setSelectedLocation(null);
+                        }}
+                    />
+
+                    <LinkButton
+                        text="collect"
+                        onClick={() => {
+                            const {
+                                latitude,
+                                longitude,
+                            } = locations[selectedLocation];
+
+                            window.open(
+                                `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`,
+                            );
+                        }}
+                    />
                 </div>
             )}
         </div>
