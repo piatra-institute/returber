@@ -21,6 +21,7 @@ import {
     returnPrices,
     environment,
     yoloClasses,
+    closeX,
 } from '@/data/index';
 
 
@@ -285,11 +286,12 @@ export default function Call() {
                                 setReturnables(newReturnables);
                             }}
                             type={returnables.length > 1 ? `#${index + 1}` : undefined}
+                            multiples={returnables.length > 1}
                         />
                     ))}
 
                     <div
-                        className="grid place-content-center mt-4 mb-12"
+                        className="flex items-center justify-center mt-4 mb-12"
                     >
                         <Image
                             src="/icons/different-returnables-icon.svg"
@@ -308,6 +310,16 @@ export default function Call() {
                             }}
                             className="cursor-pointer"
                         />
+
+                        {returnables.length > 1 && (
+                            <div
+                                onClick={() => {
+                                    setReturnables(returnables.slice(0, -1));
+                                }}
+                            >
+                                {closeX}
+                            </div>
+                        )}
                     </div>
 
                     <TimePicker

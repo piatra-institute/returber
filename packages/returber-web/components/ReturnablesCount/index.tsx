@@ -23,6 +23,7 @@ export default function ReturnablesCount({
     returnablesMultiplier,
     setReturnablesMultiplier,
     type,
+    multiples,
 } : {
     returnables: number;
     setReturnables: (value: number) => void;
@@ -31,6 +32,7 @@ export default function ReturnablesCount({
     returnablesMultiplier: number;
     setReturnablesMultiplier: (value: number) => void;
     type?: string;
+    multiples?: boolean;
 }) {
     const {
         language,
@@ -103,7 +105,7 @@ export default function ReturnablesCount({
             />
 
             <div
-                className="text-xl"
+                className={multiples ? 'text-md' : 'text-xl'}
             >
                 {new Intl.NumberFormat(language).format(
                     (returnables * returnablesMultiplier)
