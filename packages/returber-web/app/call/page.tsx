@@ -24,7 +24,6 @@ import {
     closeX,
 } from '@/data/index';
 
-
 import Map from '@/components/Map/dynamic';
 import MapLoader from '@/components/MapLoader';
 import CameraLoader from '@/components/CameraLoader';
@@ -312,13 +311,14 @@ export default function Call() {
                         />
 
                         {returnables.length > 1 && (
-                            <div
+                            <button
                                 onClick={() => {
                                     setReturnables(returnables.slice(0, -1));
                                 }}
+                                className="cursor-pointer ml-2"
                             >
                                 {closeX}
-                            </div>
+                            </button>
                         )}
                     </div>
 
