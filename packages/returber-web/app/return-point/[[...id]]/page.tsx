@@ -7,7 +7,7 @@ import {
     useEffect,
 } from 'react';
 
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useParams } from 'next/navigation';
 
 import {
@@ -32,12 +32,13 @@ import {
 
 
 export default function Return() {
+    const router = useRouter();
+    const params = useParams();
+
+
     const {
         language,
     } = useContext(LanguageContext);
-
-
-    const params = useParams();
 
 
     const map = useRef<any>();
@@ -251,15 +252,14 @@ export default function Return() {
                     </div>
                 )}
 
-                <Link
-                    href="/return"
+                <div
+                    className="text-center font-bold"
+                    onClick={() => {
+                        router.back();
+                    }}
                 >
-                    <div
-                        className="text-center font-bold"
-                    >
-                        {localization[language].home}
-                    </div>
-                </Link>
+                    {localization[language].home}
+                </div>
             </div>
         );
     }
