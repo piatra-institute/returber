@@ -40,13 +40,6 @@ function MarkerRender({
             <div>
                 {item.returnables.reduce((acc: any, item: any) => item.count + acc, 0)} items
             </div>
-
-            <LinkButton
-                text="view"
-                onClick={() => {
-                    onClick(index);
-                }}
-            />
         </>
     );
 }
