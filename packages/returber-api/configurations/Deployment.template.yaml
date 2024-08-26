@@ -1,0 +1,78 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: piatra-institute-returber-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: piatra-institute-returber-api
+  template:
+    metadata:
+      labels:
+        app: piatra-institute-returber-api
+    spec:
+      containers:
+      - name: piatra-institute-returber-api
+        image: hypod.cloud/piatra-institute/production/returber-api:COMMIT_SHA
+        ports:
+        - containerPort: 8080
+        env:
+        - name: COOKIE_DOMAIN
+          valueFrom:
+            secretKeyRef:
+              name: plurid-app-apps-api-returber-com
+              key: COOKIE_DOMAIN
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: plurid-app-apps-api-returber-com
+              key: DATABASE_URL
+        - name: DATABASE_AUTH_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: plurid-app-apps-api-returber-com
+              key: DATABASE_AUTH_TOKEN
+        - name: GOOGLE_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: plurid-app-apps-api-returber-com
+              key: GOOGLE_CLIENT_ID
+        - name: GOOGLE_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: plurid-app-apps-api-returber-com
+              key: GOOGLE_CLIENT_SECRET
+        - name: STRIPE_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: plurid-app-apps-api-returber-com
+              key: STRIPE_SECRET_KEY
+        - name: CLOUDFLARE_R2_ACCOUNT_ID
+          valueFrom:
+            secretKeyRef:
+              name: plurid-app-apps-api-returber-com
+              key: CLOUDFLARE_R2_ACCOUNT_ID
+        - name: CLOUDFLARE_R2_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: plurid-app-apps-api-returber-com
+              key: CLOUDFLARE_R2_ACCESS_KEY_ID
+        - name: CLOUDFLARE_R2_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: plurid-app-apps-api-returber-com
+              key: CLOUDFLARE_R2_SECRET_ACCESS_KEY
+        - name: CLOUDFLARE_R2_BUCKET_NAME
+          valueFrom:
+            secretKeyRef:
+              name: plurid-app-apps-api-returber-com
+              key: CLOUDFLARE_R2_BUCKET_NAME
+        - name: CLOUDFLARE_R2_PUBLIC_URL_BASE
+          valueFrom:
+            secretKeyRef:
+              name: plurid-app-apps-api-returber-com
+              key: CLOUDFLARE_R2_PUBLIC_URL_BASE
+      imagePullSecrets:
+      - name: hypod-cloud-registry
