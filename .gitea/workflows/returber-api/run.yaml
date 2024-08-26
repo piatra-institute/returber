@@ -1,0 +1,54 @@
+name: Build plurid-xxx/backends/servers/api/gateway
+on: workflow_dispatch
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: catthehacker/ubuntu:act-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Set Variables
+        id: vars
+        run: |
+          shortSHA=$(git rev-parse --short ${{ gitea.sha }})
+          basePath=./packages/returber-api/
+          echo "imagene=hypod.cloud/piatra-institute/production/returber-api:${shortSHA}" >> $GITHUB_OUTPUT
+          echo "dockerfile=${basePath}configurations/docker.production.dockerfile" >> $GITHUB_OUTPUT
+          echo "dockercontext=$basePath" >> $GITHUB_OUTPUT
+          echo "deployment=${basePath}configurations/Deployment.template.yaml" >> $GITHUB_OUTPUT
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to Hypod
+        uses: docker/login-action@v2
+        with:
+          registry: hypod.cloud
+          username: ${{ secrets.HYPOD_IDENTONYM }}
+          password: ${{ secrets.HYPOD_TOKEN }}
+      - name: Build Imagene
+        run: |
+          docker build \
+            -f ${{ steps.vars.outputs.dockerfile }} \
+            --build-arg="NPM_TOKEN=${{ secrets.NPM_TOKEN }}" \
+            -t ${{ steps.vars.outputs.imagene }} \
+            ${{ steps.vars.outputs.dockercontext }}
+      - name: Push Imagene
+        run: docker push ${{ steps.vars.outputs.imagene }}
+      - name: Cleanup Imagene
+        run: docker rmi -f ${{ steps.vars.outputs.imagene }}
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v2.0
+      - name: Set kubectl Context
+        uses: azure/k8s-set-context@v2
+        with:
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+      - name: Deploy to Kubernetes
+        uses: azure/k8s-deploy@v4
+        with:
+          manifests: |
+            ${{ steps.vars.outputs.deployment }}
+          images: ${{ steps.vars.outputs.imagene }}
