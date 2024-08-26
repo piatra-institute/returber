@@ -102,7 +102,10 @@ export default function Call() {
 
             const data = {
                 image,
-                location,
+                location: {
+                    latitude: location.latitude,
+                    longitude: location.longitude,
+                },
                 returnables,
                 pickTimeType,
                 customTimeText,
