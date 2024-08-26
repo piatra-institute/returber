@@ -25,6 +25,7 @@ import {
     closeX,
 } from '@/data/index';
 
+import ReturberHome from '@/components/ReturberHome';
 import Map from '@/components/Map/dynamic';
 import MapLoader from '@/components/MapLoader';
 import CameraLoader from '@/components/CameraLoader';
@@ -204,6 +205,8 @@ export default function Call() {
             <div
                 className="max-w-[320px] md:max-w-[400px] m-auto h-dvh grid place-content-center gap-12"
             >
+                <ReturberHome />
+
                 {returberErrors && (
                     <div>
                         {returberErrors}
@@ -250,6 +253,8 @@ export default function Call() {
         <div
             className="max-w-[320px] md:max-w-[400px] m-auto h-dvh"
         >
+            <ReturberHome />
+
             <CameraLoader
                 takePictureText={localization[language].callPictureReturnables}
                 image={image}

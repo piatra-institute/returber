@@ -82,7 +82,7 @@ export default function Home() {
                     <LinkButton
                         text={localization[language].mainPageButtonReturn}
                         onClick={() => {}}
-                        className="lg:text-2xl font-bold"
+                        className="lg:text-2xl font-bold select-none"
                     />
                 </Link>
             </div>

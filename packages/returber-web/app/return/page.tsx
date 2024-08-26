@@ -20,6 +20,7 @@ import {
     environment,
 } from '@/data/index';
 
+import ReturberHome from '@/components/ReturberHome';
 import Map from '@/components/Map/dynamic';
 import MapLoader from '@/components/MapLoader';
 import LinkButton from '@/components/LinkButton';
@@ -175,6 +176,8 @@ export default function Return() {
         <div
             className="grid place-items-center h-dvh"
         >
+            <ReturberHome />
+
             {location ? (
                 <div
                     className="grid place-content-center mb-12"
