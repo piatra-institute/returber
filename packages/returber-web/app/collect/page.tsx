@@ -8,15 +8,21 @@ import {
 
 import {
     ReturberLocation,
+    environment,
 } from '@/data/index';
 
 import Map from '@/components/Map/dynamic';
 import MapLoader from '@/components/MapLoader';
 import LinkButton from '@/components/LinkButton';
 
+import {
+    formatIsoString,
+} from '@/logic/time';
+
 
 
 function MarkerRender({
+    item,
     index,
     onClick,
 } : {
@@ -25,12 +31,22 @@ function MarkerRender({
     onClick: (index: number) => void;
 }) {
     return (
-        <LinkButton
-            text="collect"
-            onClick={() => {
-                onClick(index);
-            }}
-        />
+        <>
+            <div>
+                @ {formatIsoString(item.createdAt)}
+            </div>
+
+            <div>
+                {item.returnables.reduce((acc: any, item: any) => item.count + acc, 0)} items
+            </div>
+
+            <LinkButton
+                text="collect"
+                onClick={() => {
+                    onClick(index);
+                }}
+            />
+        </>
     );
 }
 
@@ -67,8 +83,43 @@ export default function Collect() {
     }, []);
 
     useEffect(() => {
-        // load locations
-    }, []);
+        const loadLocations = async () => {
+            try {
+                if (!location) {
+                    return;
+                }
+
+                const response = await fetch(environment.API + '/get-returber-tasks', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        location: {
+                            latitude: location.latitude,
+                            longitude: location.longitude,
+                        },
+                    }),
+                });
+                const request = await response.json();
+
+                if (!request.status) {
+                    return;
+                }
+
+                const {
+                    data,
+                } = request;
+
+                setLocations(data);
+            } catch (error) {
+            }
+        }
+
+        loadLocations();
+    }, [
+        location,
+    ]);
 
 
     return (
