@@ -54,11 +54,7 @@ export default async function handler(
         const locationData = await getReverseGeocode(location);
         const {
             countryCode,
-            admin1Code,
         } = locationData;
-        const {
-            asciiName: city,
-        } = admin1Code;
         const imageURL = await storeImage(image, id);
 
 
@@ -80,7 +76,7 @@ export default async function handler(
             id,
             createdAt,
             createdBy: user,
-            city,
+            city: locationData.name,
             country: countryCode,
             image: imageURL,
             pickTimeType,

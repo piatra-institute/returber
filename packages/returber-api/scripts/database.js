@@ -54,7 +54,7 @@ const tables = [
     status TEXT NOT NULL,
     assigned_to TEXT,
     assigned_at TEXT,
-    completed_at TEXT
+    completed_at TEXT,
     completed_by_collector INTEGER,
     completed_by_user INTEGER,
     cancelled_at TEXT
