@@ -19,7 +19,7 @@ export const returberTasks = sqliteTable(
         image: text('image').notNull(),
         pickTimeType: text('pick_time_type').notNull(),
         customTimeText: text('custom_time_text').notNull(),
-        language:  text('language').notNull(),
+        language: text('language').notNull(),
         locationIndexID: integer('location_index_id').notNull(),
         latitude: real('latitude').notNull(),
         longitude: real('longitude').notNull(),

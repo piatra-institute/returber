@@ -42,6 +42,7 @@ const tables = [
     created_at TEXT NOT NULL,
     created_by TEXT NOT NULL,
     city TEXT NOT NULL,
+    country TEXT NOT NULL,
     image TEXT NOT NULL,
     pick_time_type TEXT NOT NULL,
     custom_time_text TEXT NOT NULL,
