@@ -8,7 +8,6 @@ import {
 } from 'react';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 import type { Tensor } from 'onnxruntime-web';
 
@@ -41,9 +40,6 @@ import {
 
 
 export default function Call() {
-    const router = useRouter();
-
-
     const {
         language,
     } = useContext(LanguageContext);
@@ -236,13 +232,6 @@ export default function Call() {
                         setReturberErrors('');
                         setReturberCall(false);
                         setReturberSuccess(false);
-                    }}
-                />
-
-                <LinkButton
-                    text={localization[language].home}
-                    onClick={() => {
-                        router.back();
                     }}
                 />
             </div>

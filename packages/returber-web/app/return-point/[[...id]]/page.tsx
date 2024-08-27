@@ -28,7 +28,6 @@ import MapLoader from '@/components/MapLoader';
 import CameraLoader from '@/components/CameraLoader';
 import ImageViewer from '@/components/ImageViewer';
 import Toggle from '@/components/Toggle';
-import LinkButton from '@/components/LinkButton';
 
 import {
     useVolatileStore,
@@ -266,13 +265,6 @@ export default function Return() {
                         {localization[language].returnPointCreatedSuccess}
                     </div>
                 )}
-
-                <LinkButton
-                    text={localization[language].home}
-                    onClick={() => {
-                        router.back();
-                    }}
-                />
             </div>
         );
     }
@@ -350,6 +342,9 @@ export default function Return() {
                             type="number"
                             inputMode="numeric"
                             lang="en"
+                            onFocus={(e) => {
+                                e.target.select();
+                            }}
                             onChange={(e) => {
                                 const value = parseInt(e.target.value);
                                 if (isNaN(value)) {

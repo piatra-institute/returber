@@ -47,6 +47,9 @@ export default function ReturnablesCount({
                 type="number"
                 inputMode="numeric"
                 min="0"
+                onFocus={(e) => {
+                    e.target.select();
+                }}
                 onChange={(e) => {
                     const value = parseInt(e.target.value);
                     if (isNaN(value)) {

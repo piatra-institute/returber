@@ -126,6 +126,7 @@ export default function Map({
             zoom={20}
             scrollWheelZoom={true}
             zoomControl={false}
+            minZoom={12}
             className="shadow-xl h-[300px] w-[300px] md:h-[400px] md:w-[400px] rounded-full"
             ref={map}
         >

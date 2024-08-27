@@ -1,14 +1,21 @@
 'use client';
 
 import {
+    useContext,
     useRef,
     useState,
     useEffect,
 } from 'react';
 
 import {
+    LanguageContext,
+} from '@/app/context';
+
+import {
     ReturberLocation,
     environment,
+    localization,
+    currencyMap,
 } from '@/data/index';
 
 import ReturberHome from '@/components/ReturberHome';
@@ -32,6 +39,10 @@ function MarkerRender({
     index: number;
     onClick: (index: number) => void;
 }) {
+    const {
+        language,
+    } = useContext(LanguageContext);
+
     return (
         <>
             <div>
@@ -39,7 +50,19 @@ function MarkerRender({
             </div>
 
             <div>
-                {item.returnables.reduce((acc: any, item: any) => item.count + acc, 0)} items
+                {
+                    item.returnables
+                        .reduce((acc: any, item: any) => item.count + acc, 0)
+                } {localization[language].callReturnables}
+            </div>
+
+            <div>
+                {
+                    new Intl.NumberFormat(language).format(
+                        item.returnables
+                            .reduce((acc: any, item: any) => item.count * item.max - item.count * item.multiplier + acc, 0)
+                    )
+                } {currencyMap[language]}
             </div>
         </>
     );
@@ -47,6 +70,11 @@ function MarkerRender({
 
 
 export default function Collect() {
+    const {
+        language,
+    } = useContext(LanguageContext);
+
+
     const map = useRef<any>();
 
 
@@ -160,19 +188,23 @@ export default function Collect() {
                         }}
                     />
 
-                    <LinkButton
-                        text="collect"
-                        onClick={() => {
-                            const {
-                                latitude,
-                                longitude,
-                            } = locations[selectedLocation];
+                    <div
+                        className="mb-14"
+                    >
+                        <LinkButton
+                            text={localization[language].collect}
+                            onClick={() => {
+                                const {
+                                    latitude,
+                                    longitude,
+                                } = locations[selectedLocation];
 
-                            window.open(
-                                `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`,
-                            );
-                        }}
-                    />
+                                window.open(
+                                    `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`,
+                                );
+                            }}
+                        />
+                    </div>
                 </div>
             )}
         </div>

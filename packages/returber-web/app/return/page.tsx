@@ -223,7 +223,9 @@ export default function Return() {
                 </div>
             )}
 
-            <div>
+            <div
+                className="pb-14"
+            >
                 <Link
                     href={
                         selectedLocation === null

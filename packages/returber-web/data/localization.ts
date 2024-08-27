@@ -27,6 +27,7 @@ export interface Localization {
     queue: string;
     people: string;
     home: string;
+    collect: string;
     somethingWentWrongTryAgain: string;
 }
 
@@ -54,6 +55,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         queue: 'queue',
         people: 'people',
         home: 'home',
+        collect: 'collect',
         somethingWentWrongTryAgain: 'something went wrong, try again',
     },
     da: {
@@ -79,6 +81,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         queue: 'kø',
         people: 'mennesker',
         home: 'hjem',
+        collect: 'indsamle',
         somethingWentWrongTryAgain: 'noget gik galt, prøv igen',
     },
     de: {
@@ -104,6 +107,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         queue: 'Warteschlange',
         people: 'Menschen',
         home: 'Zuhause',
+        collect: 'sammeln',
         somethingWentWrongTryAgain: 'etwas ist schief gelaufen, versuchen Sie es erneut',
     },
     et: {
@@ -129,6 +133,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         queue: 'järjekord',
         people: 'inimesed',
         home: 'kodu',
+        collect: 'koguma',
         somethingWentWrongTryAgain: 'midagi läks valesti, proovige uuesti',
     },
     fi: {
@@ -154,6 +159,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         queue: 'jono',
         people: 'ihmiset',
         home: 'koti',
+        collect: 'kerätä',
         somethingWentWrongTryAgain: 'jotain meni pieleen, yritä uudelleen',
     },
     he: {
@@ -179,6 +185,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         queue: 'תור',
         people: 'אנשים',
         home: 'בית',
+        collect: 'לְאָסוֹף',
         somethingWentWrongTryAgain: 'משהו השתבש, נסה שוב',
     },
     hr: {
@@ -204,6 +211,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         queue: 'red',
         people: 'ljudi',
         home: 'dom',
+        collect: 'skupiti',
         somethingWentWrongTryAgain: 'nešto je pošlo po zlu, pokušajte ponovo',
     },
     is: {
@@ -229,6 +237,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         queue: 'biðröð',
         people: 'fólk',
         home: 'heimili',
+        collect: 'safna',
         somethingWentWrongTryAgain: 'eitthvað fór úrskeiðis, reyndu aftur',
     },
     ko: {
@@ -254,6 +263,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         queue: '대기열',
         people: '사람들',
         home: '집',
+        collect: '수집',
         somethingWentWrongTryAgain: '문제가 발생했습니다. 다시 시도하세요',
     },
     lt: {
@@ -279,6 +289,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         queue: 'eilė',
         people: 'žmonės',
         home: 'namai',
+        collect: 'rinkti',
         somethingWentWrongTryAgain: 'kažkas nepavyko, bandykite dar kartą',
     },
     lv: {
@@ -304,6 +315,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         queue: 'rinda',
         people: 'cilvēki',
         home: 'mājas',
+        collect: 'savākt',
         somethingWentWrongTryAgain: 'kas nogāja greizi, mēģiniet vēlreiz',
     },
     nl: {
@@ -329,6 +341,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         queue: 'wachtrij',
         people: 'mensen',
         home: 'huis',
+        collect: 'verzamelen',
         somethingWentWrongTryAgain: 'er is iets misgegaan, probeer opnieuw',
     },
     no: {
@@ -354,6 +367,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         queue: 'kø',
         people: 'mennesker',
         home: 'hjem',
+        collect: 'samle',
         somethingWentWrongTryAgain: 'noe gikk galt, prøv igjen',
     },
     pl: {
@@ -379,6 +393,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         queue: 'kolejka',
         people: 'osoby',
         home: 'dom',
+        collect: 'zbierać',
         somethingWentWrongTryAgain: 'coś poszło nie tak, spróbuj ponownie',
     },
     ro: {
@@ -404,6 +419,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         queue: 'coadă',
         people: 'persoane',
         home: 'acasă',
+        collect: 'colectează',
         somethingWentWrongTryAgain: 'ceva nu a mers bine, încearcă din nou',
     },
     sk: {
@@ -429,6 +445,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         queue: 'fronta',
         people: 'ľudia',
         home: 'domov',
+        collect: 'zbierať',
         somethingWentWrongTryAgain: 'niečo sa pokazilo, skúste to znova',
     },
     sv: {
@@ -454,6 +471,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         queue: 'kö',
         people: 'människor',
         home: 'hem',
+        collect: 'samla in',
         somethingWentWrongTryAgain: 'något gick fel, försök igen',
     },
 };
