@@ -23,6 +23,9 @@ ENV PORT 8080
 ENV HOST 0.0.0.0
 ENV NODE_ENV production
 ENV ENV_MODE production
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
 WORKDIR /app
 COPY --from=builder /app/.npmrc ./
 COPY --from=builder /app/package.json ./
