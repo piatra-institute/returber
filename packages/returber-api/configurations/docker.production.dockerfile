@@ -14,7 +14,7 @@ COPY package.json ./
 RUN ( echo "cat <<EOF" ; cat ./configurations/.npmrcx ; echo EOF ) | sh > ./.npmrc
 RUN yarn install --production false --network-timeout 1000000
 COPY . .
-RUN yarn run build.production verbose
+RUN yarn run build
 RUN npm prune --production
 
 
