@@ -1,7 +1,3 @@
-'use client';
-
-import { useRouter } from 'next/navigation';
-
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -12,17 +8,12 @@ export default function ReturberHome({
 } : {
     absolute?: boolean;
 }) {
-    const router = useRouter();
-
     return (
         <Link
             href="/"
             className={
                 `${absolute ? 'absolute top-0 left-1/2 transform -translate-x-1/2' : ''} flex justify-center items-center`
             }
-            onClick={() => {
-                router.back();
-            }}
         >
             <Image
                 src="/returber-logo.png"
