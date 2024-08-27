@@ -250,20 +250,32 @@ export default function Return() {
             >
                 <ReturberHome />
 
-                {returnPointErrors && (
+                {returnPointErrors ? (
                     <div
                         className="text-center"
                     >
                         {returnPointErrors}
                     </div>
+                ) : (
+                    <div
+                        style={{
+                            height: '24px',
+                        }}
+                    />
                 )}
 
-                {returnPointSuccess && (
+                {returnPointSuccess ? (
                     <div
                         className="text-center"
                     >
                         {localization[language].returnPointCreatedSuccess}
                     </div>
+                ) : (
+                    <div
+                        style={{
+                            height: '24px',
+                        }}
+                    />
                 )}
             </div>
         );
