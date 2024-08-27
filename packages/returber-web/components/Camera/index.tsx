@@ -188,6 +188,10 @@ export default function CameraContainer({
                 isFullscreen={false}
                 isSilentMode={true}
                 sizeFactor={0.5}
+                idealResolution={{
+                    width: 1920,
+                    height: 1080,
+                }}
             />
         </div>
     );
