@@ -1,21 +1,20 @@
 # Stage 0
 FROM node:22-alpine AS builder
-ARG NPM_TOKEN
-ARG NPM_REGISTRY=npm.plurid.cloud
 ENV PORT 8080
 ENV HOST 0.0.0.0
 ENV NODE_ENV production
 ENV ENV_MODE production
-ENV NPM_TOKEN $NPM_TOKEN
-ENV NPM_REGISTRY $NPM_REGISTRY
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
 WORKDIR /app
 COPY configurations ./configurations
 COPY package.json ./
-RUN ( echo "cat <<EOF" ; cat ./configurations/.npmrcx ; echo EOF ) | sh > ./.npmrc
-RUN yarn install --production false --network-timeout 1000000
+COPY pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
 COPY . .
-RUN yarn run build
-RUN npm prune --production
+RUN pnpm run build
+RUN pnpm prune --prod
 
 
 # Stage 1
@@ -30,4 +29,4 @@ COPY --from=builder /app/package.json ./
 COPY --from=builder /app/build ./build
 COPY --from=builder /app/scripts ./scripts
 COPY --from=builder /app/node_modules ./node_modules
-CMD [ "yarn", "start" ]
+CMD [ "pnpm", "start" ]

@@ -1,17 +1,18 @@
 {
-    "name": "sonocracy-api",
+    "name": "returber-api",
     "version": "0.0.1",
-    "description": "sonocracy API",
+    "description": "returber API",
     "private": true,
     "license": "MPL-2.0",
     "main": "index.js",
     "type": "module",
     "scripts": {
-        "clean": "rimraf ./build",
+        "clean": "rm -rf ./build",
         "build": "pnpm clean && node ./scripts/build.js",
         "dev": "pnpm build && concurrently \"nodemon --env-file=.env ./build/index.js\" \"node --max-old-space-size=2000 ./scripts/watch.js\"",
         "start": "node ./build/index.js",
-        "db.push": "node database.js"
+        "db.start": "node ./scripts/database.js",
+        "db.xreset": "node ./scripts/xreset.js"
     },
     "dependencies": {
         "@libsql/client": "0.4.0-pre.7",
