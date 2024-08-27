@@ -204,13 +204,17 @@ export default function Call() {
                 <ReturberHome />
 
                 {returberErrors && (
-                    <div>
+                    <div
+                        className="text-center"
+                    >
                         {returberErrors}
                     </div>
                 )}
 
                 {returberSuccess && (
-                    <div>
+                    <div
+                        className="text-center"
+                    >
                         {localization[language].callReturberSuccess}
                     </div>
                 )}
