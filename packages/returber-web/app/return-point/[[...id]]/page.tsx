@@ -250,18 +250,12 @@ export default function Return() {
             >
                 <ReturberHome />
 
-                {returnPointErrors ? (
+                {returnPointErrors && (
                     <div
                         className="text-center"
                     >
                         {returnPointErrors}
                     </div>
-                ) : (
-                    <div
-                        style={{
-                            height: '24px',
-                        }}
-                    />
                 )}
 
                 {returnPointSuccess ? (

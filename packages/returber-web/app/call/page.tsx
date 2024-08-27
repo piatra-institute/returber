@@ -203,18 +203,12 @@ export default function Call() {
             >
                 <ReturberHome />
 
-                {returberErrors ? (
+                {returberErrors && (
                     <div
                         className="text-center"
                     >
                         {returberErrors}
                     </div>
-                ) : (
-                    <div
-                        style={{
-                            height: '24px',
-                        }}
-                    />
                 )}
 
                 {returberSuccess ? (
