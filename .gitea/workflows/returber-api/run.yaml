@@ -1,5 +1,11 @@
 name: Build plurid-xxx/backends/servers/api/gateway
-on: workflow_dispatch
+# on: workflow_dispatch
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.gitea/workflows/trigger/release'
 
 
 jobs:
