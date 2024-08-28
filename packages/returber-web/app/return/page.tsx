@@ -116,6 +116,11 @@ export default function Return() {
     ] = useState<number | null>(null);
 
     const [
+        userNearSelectedLocation,
+        setUserNearSelectedLocation,
+    ] = useState(false);
+
+    const [
         location,
         setLocation,
     ] = useState<GeolocationCoordinates | null>(null);
@@ -223,26 +228,39 @@ export default function Return() {
                 </div>
             )}
 
-            <div
-                className="pb-14"
-            >
-                <Link
-                    href={
-                        selectedLocation === null
-                            ? '/return-point'
-                            : `/return-point/${locations[selectedLocation].id}`
-                    }
-                    tabIndex={-1}
-                    draggable={false}
+            {selectedLocation === null && (
+                <div
+                    className="pb-14"
                 >
-                    <LinkButton
-                        text={selectedLocation === null
-                            ? localization[language].returnAddReturnLocation
-                            : localization[language].returnEditReturnLocation
-                        }
-                    />
-                </Link>
-            </div>
+                    <Link
+                        href="/return-point"
+                        tabIndex={-1}
+                        draggable={false}
+                    >
+                        <LinkButton
+                            text={localization[language].returnAddReturnLocation}
+                        />
+                    </Link>
+                </div>
+            )}
+
+            {selectedLocation !== null
+            && userNearSelectedLocation
+            &&  (
+                <div
+                    className="grid place-items-center"
+                >
+                    <Link
+                        href={`/return-point/${locations[selectedLocation].id}`}
+                        tabIndex={-1}
+                        draggable={false}
+                    >
+                        <LinkButton
+                            text={localization[language].returnEditReturnLocation}
+                        />
+                    </Link>
+                </div>
+            )}
         </div>
     );
 }
