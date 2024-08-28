@@ -29,6 +29,7 @@ export interface Localization {
     people: string;
     home: string;
     collect: string;
+    noCalls: string;
     somethingWentWrongTryAgain: string;
 }
 
@@ -58,6 +59,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         people: 'people',
         home: 'home',
         collect: 'collect',
+        noCalls: 'no calls',
         somethingWentWrongTryAgain: 'something went wrong, try again',
     },
     da: {
@@ -85,6 +87,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         people: 'mennesker',
         home: 'hjem',
         collect: 'indsamle',
+        noCalls: 'ingen opkald',
         somethingWentWrongTryAgain: 'noget gik galt, prøv igen',
     },
     de: {
@@ -112,6 +115,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         people: 'Menschen',
         home: 'Zuhause',
         collect: 'sammeln',
+        noCalls: 'keine Anrufe',
         somethingWentWrongTryAgain: 'etwas ist schief gelaufen, versuchen Sie es erneut',
     },
     et: {
@@ -139,6 +143,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         people: 'inimesed',
         home: 'kodu',
         collect: 'koguma',
+        noCalls: 'pole kõnesid',
         somethingWentWrongTryAgain: 'midagi läks valesti, proovige uuesti',
     },
     fi: {
@@ -166,6 +171,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         people: 'ihmiset',
         home: 'koti',
         collect: 'kerätä',
+        noCalls: 'ei puheluita',
         somethingWentWrongTryAgain: 'jotain meni pieleen, yritä uudelleen',
     },
     he: {
@@ -193,6 +199,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         people: 'אנשים',
         home: 'בית',
         collect: 'לְאָסוֹף',
+        noCalls: 'אין שיחות',
         somethingWentWrongTryAgain: 'משהו השתבש, נסה שוב',
     },
     hr: {
@@ -220,6 +227,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         people: 'ljudi',
         home: 'dom',
         collect: 'skupiti',
+        noCalls: 'nema poziva',
         somethingWentWrongTryAgain: 'nešto je pošlo po zlu, pokušajte ponovo',
     },
     is: {
@@ -247,6 +255,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         people: 'fólk',
         home: 'heimili',
         collect: 'safna',
+        noCalls: 'engin símtöl',
         somethingWentWrongTryAgain: 'eitthvað fór úrskeiðis, reyndu aftur',
     },
     ko: {
@@ -274,6 +283,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         people: '사람들',
         home: '집',
         collect: '수집',
+        noCalls: '전화 없음',
         somethingWentWrongTryAgain: '문제가 발생했습니다. 다시 시도하세요',
     },
     lt: {
@@ -301,6 +311,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         people: 'žmonės',
         home: 'namai',
         collect: 'rinkti',
+        noCalls: 'nėra skambučių',
         somethingWentWrongTryAgain: 'kažkas nepavyko, bandykite dar kartą',
     },
     lv: {
@@ -328,6 +339,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         people: 'cilvēki',
         home: 'mājas',
         collect: 'savākt',
+        noCalls: 'nav zvanu',
         somethingWentWrongTryAgain: 'kas nogāja greizi, mēģiniet vēlreiz',
     },
     nl: {
@@ -355,6 +367,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         people: 'mensen',
         home: 'huis',
         collect: 'verzamelen',
+        noCalls: 'geen oproepen',
         somethingWentWrongTryAgain: 'er is iets misgegaan, probeer opnieuw',
     },
     no: {
@@ -382,6 +395,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         people: 'mennesker',
         home: 'hjem',
         collect: 'samle',
+        noCalls: 'ingen an rop',
         somethingWentWrongTryAgain: 'noe gikk galt, prøv igjen',
     },
     pl: {
@@ -409,6 +423,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         people: 'osoby',
         home: 'dom',
         collect: 'zbierać',
+        noCalls: 'brak połączeń',
         somethingWentWrongTryAgain: 'coś poszło nie tak, spróbuj ponownie',
     },
     ro: {
@@ -436,6 +451,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         people: 'persoane',
         home: 'acasă',
         collect: 'colectează',
+        noCalls: 'fără curse',
         somethingWentWrongTryAgain: 'ceva nu a mers bine, încearcă din nou',
     },
     sk: {
@@ -463,6 +479,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         people: 'ľudia',
         home: 'domov',
         collect: 'zbierať',
+        noCalls: 'žiadne hovory',
         somethingWentWrongTryAgain: 'niečo sa pokazilo, skúste to znova',
     },
     sv: {
@@ -490,6 +507,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         people: 'människor',
         home: 'hem',
         collect: 'samla in',
+        noCalls: 'inga samtal',
         somethingWentWrongTryAgain: 'något gick fel, försök igen',
     },
 };

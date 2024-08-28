@@ -19,6 +19,13 @@ export interface User {
 }
 
 
+export interface UserCall {
+    id: string;
+    type: 'caller' | 'collector';
+    data: any;
+}
+
+
 export const ROUTES = {
     call: '/call',
     collect: '/collect',
