@@ -32,6 +32,22 @@ export default function Home() {
         >
             <LanguageSelector />
 
+            <div
+                className="mb-12"
+            >
+                <Link
+                    href="/calls"
+                    tabIndex={-1}
+                    draggable={false}
+                >
+                    <LinkButton
+                        text={localization[language].mainPageButtonCalls}
+                        onClick={() => {}}
+                        className="lg:text-2xl font-bold select-none"
+                    />
+                </Link>
+            </div>
+
             <h1
                 className="lg:text-3xl font-bold"
             >

@@ -5,6 +5,7 @@ import {
 
 
 export interface Localization {
+    mainPageButtonCalls: string;
     mainPageButtonCall: string;
     mainPageButtonCollect: string;
     mainPageButtonReturn: string;
@@ -33,6 +34,7 @@ export interface Localization {
 
 export const localization: Record<typeof languages[number], Localization> = {
     en: {
+        mainPageButtonCalls: 'returnable calls',
         mainPageButtonCall: 'call returber collector',
         mainPageButtonCollect: 'collect returnable waste',
         mainPageButtonReturn: 'return locations',
@@ -59,6 +61,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         somethingWentWrongTryAgain: 'something went wrong, try again',
     },
     da: {
+        mainPageButtonCalls: 'returbare opkald',
         mainPageButtonCall: 'ring returber-samleren',
         mainPageButtonCollect: 'indsamle returbare affald',
         mainPageButtonReturn: 'retursteder',
@@ -85,6 +88,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         somethingWentWrongTryAgain: 'noget gik galt, prøv igen',
     },
     de: {
+        mainPageButtonCalls: 'rückrufbare Anrufe',
         mainPageButtonCall: 'rufen Sie den returber-Sammler an',
         mainPageButtonCollect: 'sammeln Sie pfandfähigen Abfall',
         mainPageButtonReturn: 'Rückgabeorte',
@@ -111,6 +115,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         somethingWentWrongTryAgain: 'etwas ist schief gelaufen, versuchen Sie es erneut',
     },
     et: {
+        mainPageButtonCalls: 'tagastatavad kõned',
         mainPageButtonCall: 'kutsuge returberi koguja',
         mainPageButtonCollect: 'koguge tagastatav jäätmed',
         mainPageButtonReturn: 'tagastuskohad',
@@ -137,6 +142,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         somethingWentWrongTryAgain: 'midagi läks valesti, proovige uuesti',
     },
     fi: {
+        mainPageButtonCalls: 'palautett avat puhelut',
         mainPageButtonCall: 'soita returber-kerääjälle',
         mainPageButtonCollect: 'kerää palautettava jäte',
         mainPageButtonReturn: 'palautuspaikat',
@@ -163,6 +169,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         somethingWentWrongTryAgain: 'jotain meni pieleen, yritä uudelleen',
     },
     he: {
+        mainPageButtonCalls: 'שיחות מוחזרות',
         mainPageButtonCall: 'קרא לאספן של רטורבר',
         mainPageButtonCollect: 'אסוף פסולת מוחזרת',
         mainPageButtonReturn: 'מיקומי החזרה',
@@ -189,6 +196,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         somethingWentWrongTryAgain: 'משהו השתבש, נסה שוב',
     },
     hr: {
+        mainPageButtonCalls: 'povratni pozivi',
         mainPageButtonCall: 'nazovite sakupljača returber',
         mainPageButtonCollect: 'skupljajte povratni otpad',
         mainPageButtonReturn: 'lokacije povratka',
@@ -215,6 +223,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         somethingWentWrongTryAgain: 'nešto je pošlo po zlu, pokušajte ponovo',
     },
     is: {
+        mainPageButtonCalls: 'endurvinnanlegar símtölur',
         mainPageButtonCall: 'hafðu samband við returber safnarann',
         mainPageButtonCollect: 'safna endurvinnanlegu úrgangi',
         mainPageButtonReturn: 'endurvinnslustaðir',
@@ -241,6 +250,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         somethingWentWrongTryAgain: 'eitthvað fór úrskeiðis, reyndu aftur',
     },
     ko: {
+        mainPageButtonCalls: '반품 가능한 전화',
         mainPageButtonCall: 'returber 수집기에 전화하세요',
         mainPageButtonCollect: '반품 가능한 폐기물 수집',
         mainPageButtonReturn: '반품 위치',
@@ -267,6 +277,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         somethingWentWrongTryAgain: '문제가 발생했습니다. 다시 시도하세요',
     },
     lt: {
+        mainPageButtonCalls: 'grąžinimo skambučiai',
         mainPageButtonCall: 'paskambinkite returber surinkėjui',
         mainPageButtonCollect: 'rinkite grąžintinį atliekas',
         mainPageButtonReturn: 'grąžinimo vietos',
@@ -293,6 +304,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         somethingWentWrongTryAgain: 'kažkas nepavyko, bandykite dar kartą',
     },
     lv: {
+        mainPageButtonCalls: 'atgriežamie zvani',
         mainPageButtonCall: 'zvaniet atpakaļuzņēmējam returber',
         mainPageButtonCollect: 'savāciet atkārtoti izmantojamo atkritumu',
         mainPageButtonReturn: 'atgriešanās vietas',
@@ -319,6 +331,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         somethingWentWrongTryAgain: 'kas nogāja greizi, mēģiniet vēlreiz',
     },
     nl: {
+        mainPageButtonCalls: 'statiegeldoproepen',
         mainPageButtonCall: 'bel de returber-verzamelaar',
         mainPageButtonCollect: 'verzamel statiegeldafval',
         mainPageButtonReturn: 'retourlocaties',
@@ -345,6 +358,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         somethingWentWrongTryAgain: 'er is iets misgegaan, probeer opnieuw',
     },
     no: {
+        mainPageButtonCalls: 'panteoppringninger',
         mainPageButtonCall: 'ring returber-samleren',
         mainPageButtonCollect: 'samle pantbart avfall',
         mainPageButtonReturn: 'retursteder',
@@ -371,6 +385,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         somethingWentWrongTryAgain: 'noe gikk galt, prøv igjen',
     },
     pl: {
+        mainPageButtonCalls: 'połączenia zwrotne',
         mainPageButtonCall: 'zadzwoń do zbieracza returber',
         mainPageButtonCollect: 'zbieraj odpady zwrotne',
         mainPageButtonReturn: 'lokaliz acje zwrotu',
@@ -397,6 +412,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         somethingWentWrongTryAgain: 'coś poszło nie tak, spróbuj ponownie',
     },
     ro: {
+        mainPageButtonCalls: 'curse returnabile',
         mainPageButtonCall: 'cheamă colector returber',
         mainPageButtonCollect: 'colectează deșeuri returnabile',
         mainPageButtonReturn: 'locuri de returnare',
@@ -423,6 +439,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         somethingWentWrongTryAgain: 'ceva nu a mers bine, încearcă din nou',
     },
     sk: {
+        mainPageButtonCalls: 'volania na vrátenie',
         mainPageButtonCall: 'zavolajte zberača returber',
         mainPageButtonCollect: 'zbierajte vrátený odpad',
         mainPageButtonReturn: 'miesta vrátenia',
@@ -449,6 +466,7 @@ export const localization: Record<typeof languages[number], Localization> = {
         somethingWentWrongTryAgain: 'niečo sa pokazilo, skúste to znova',
     },
     sv: {
+        mainPageButtonCalls: 'returbartelefonsamtal',
         mainPageButtonCall: 'ring returber-samlaren',
         mainPageButtonCollect: 'samla in returavfall',
         mainPageButtonReturn: 'returplatser',
