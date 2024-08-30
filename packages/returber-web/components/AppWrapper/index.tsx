@@ -5,6 +5,8 @@ import React, {
     useEffect,
 } from 'react';
 
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
 import {
     LanguageContext,
 } from '@/app/context';
@@ -13,6 +15,7 @@ import {
     Language,
     languages,
     countryToLanguage,
+    environment,
 } from '@/data/index';
 
 import LanguageSelector from '@/components/LanguageSelector';
@@ -77,25 +80,29 @@ export default function AppWrapper({
     }
 
     return (
-        <LanguageContext.Provider
-            value={{
-                language,
-                setLanguage,
-            }}
+        <GoogleOAuthProvider
+            clientId={environment.GOOGLE_LOGIN}
         >
-            {showLoading && (
-                <Spinner
-                    absolute={true}
-                />
-            )}
-
-            <div
-                className="max-w-[1600px] relative mx-auto"
+            <LanguageContext.Provider
+                value={{
+                    language,
+                    setLanguage,
+                }}
             >
-                <LanguageSelector />
-            </div>
+                {showLoading && (
+                    <Spinner
+                        absolute={true}
+                    />
+                )}
 
-            {children}
-        </LanguageContext.Provider>
+                <div
+                    className="max-w-[1600px] relative mx-auto"
+                >
+                    <LanguageSelector />
+                </div>
+
+                {children}
+            </LanguageContext.Provider>
+        </GoogleOAuthProvider>
     );
 }
