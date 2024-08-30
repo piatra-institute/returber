@@ -25,7 +25,7 @@ import {
 } from '@/source/services/image';
 
 import {
-    getUser,
+    getTokensUser,
 } from '@/source/logic/user';
 
 import {
@@ -46,9 +46,21 @@ export default async function handler(
             status,
         } = APICreateReturnPoint.parse(request.body);
 
+
+        const tokensUser = await getTokensUser(request, response);
+        if (!tokensUser) {
+            logger('warn', 'User not found');
+
+            response.status(404).json({
+                status: false,
+            });
+            return;
+        }
+
+
         const id = uuid();
         const createdAt = new Date().toISOString();
-        const createdBy = await getUser(request, response);
+        const createdBy = typeof tokensUser === 'string' ? tokensUser : tokensUser.email;
         const locationData = await getReverseGeocode(location);
         const name = locationData.name + ' ' + uuid().slice(0, 4).toUpperCase();
         const imageURL = await storeImage(image, id);

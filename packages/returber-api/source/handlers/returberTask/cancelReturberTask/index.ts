@@ -15,7 +15,7 @@ import {
 } from '@/source/database/schema/returberTasks';
 
 import {
-    getUser,
+    getTokensUser,
 } from '@/source/logic/user';
 
 import {
@@ -33,7 +33,17 @@ export default async function handler(
             id,
         } = APICancelReturberTask.parse(request.body);
 
-        const user = await getUser(request, response);
+
+        const tokensUser = await getTokensUser(request, response);
+        if (!tokensUser) {
+            logger('warn', 'User not found');
+
+            response.status(404).json({
+                status: false,
+            });
+            return;
+        }
+        const user = typeof tokensUser === 'string' ? tokensUser : tokensUser.email;
 
 
         const returberTask = await database.query.returberTasks.findFirst({
