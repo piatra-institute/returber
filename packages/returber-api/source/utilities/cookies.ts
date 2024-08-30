@@ -4,8 +4,11 @@ import type {
 } from 'express';
 
 import {
+    UserTokens,
+
     COOKIE_ACCESS_TOKEN,
     COOKIE_REFRESH_TOKEN,
+    COOKIE_UNAUTH_USER,
     ONE_YEAR,
 } from '@/source/data';
 
@@ -13,10 +16,7 @@ import {
 
 export const setAuthCookies = (
     response: Response,
-    tokens: {
-        accessToken: string;
-        refreshToken: string;
-    },
+    tokens: UserTokens,
 ) => {
     response.cookie(COOKIE_ACCESS_TOKEN, tokens.accessToken, {
         httpOnly: true,
@@ -36,6 +36,7 @@ export const setAuthCookies = (
 export const clearAuthCookies = (
     response: Response,
 ) => {
+    response.clearCookie(COOKIE_UNAUTH_USER);
     response.clearCookie(COOKIE_ACCESS_TOKEN);
     response.clearCookie(COOKIE_REFRESH_TOKEN);
 }
@@ -43,7 +44,7 @@ export const clearAuthCookies = (
 
 export const getAuthCookies = (
     request: Request,
-) => {
+): UserTokens => {
     const accessToken = request.cookies[COOKIE_ACCESS_TOKEN] || '';
     const refreshToken = request.cookies[COOKIE_REFRESH_TOKEN] || '';
 

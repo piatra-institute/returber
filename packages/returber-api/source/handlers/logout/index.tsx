@@ -14,7 +14,7 @@ import {
 
 
 export default async function handler(
-    request: Request,
+    _request: Request,
     response: Response,
 ) {
     try {

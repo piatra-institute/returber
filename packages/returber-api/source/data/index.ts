@@ -9,6 +9,18 @@ export type LocationCoords = {
 };
 
 
+export interface GoogleUser {
+    email: string;
+    name: string;
+    picture: string;
+}
+
+export interface UserTokens {
+    accessToken: string;
+    refreshToken: string;
+}
+
+
 
 export const ONE_YEAR = 365 * 24 * 60 * 60 * 1000;
 export const COOKIE_ACCESS_TOKEN = 'RTBR_AT';

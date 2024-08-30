@@ -22,6 +22,9 @@ export default async function handler(
                 //     default:
                 //         throw new Error('Invalid plan type');
                 // }
+                if (!priceID) {
+                    throw new Error('Invalid plan type');
+                }
 
                 const session = await stripe.checkout.sessions.create({
                     ui_mode: 'embedded',

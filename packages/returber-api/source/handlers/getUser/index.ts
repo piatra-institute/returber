@@ -4,16 +4,13 @@ import type {
 } from 'express';
 
 import {
-    google,
-} from 'googleapis';
+    getTokensUser,
+    getDatabaseUser,
+} from '@/source/logic/user';
 
 import {
     logger,
 } from '@/source/utilities';
-
-import {
-    getAuthCookies,
-} from '@/source/utilities/cookies';
 
 
 
@@ -22,40 +19,31 @@ export default async function handler(
     response: Response,
 ) {
     try {
-        const tokens = getAuthCookies(request);
+        const tokensUser = await getTokensUser(request, response);
+        if (!tokensUser) {
+            logger('warn', 'User not found');
 
-        if (!tokens.accessToken || !tokens.refreshToken) {
             response.status(200).json({
                 status: false,
             });
             return;
         }
 
-        const oauth2Client = new google.auth.OAuth2();
-        oauth2Client.setCredentials({
-            access_token: tokens.accessToken,
-            refresh_token: tokens.refreshToken,
-        });
-
-        let result: any = null;
-
-        try {
-            result = await oauth2Client.getTokenInfo(tokens.accessToken);
-        } catch (error) {
-            result = await new Promise((resolve, _reject) => {
-                oauth2Client.refreshAccessToken(async (error, tokens) => {
-                    if (error) {
-                        resolve(null);
-                        return;
-                    }
-
-                    const data = await oauth2Client.getTokenInfo(tokens?.access_token || '');
-                    resolve(data);
-                });
+        if (typeof tokensUser === 'string') {
+            response.json({
+                status: true,
+                data: {
+                    type: 'unauthenticated',
+                    unauthID: tokensUser,
+                },
             });
+            return;
         }
 
-        if (!result) {
+        const databaseUser = await getDatabaseUser(tokensUser);
+        if (!databaseUser) {
+            logger('warn', 'Database user not found');
+
             response.status(200).json({
                 status: false,
             });
@@ -65,7 +53,9 @@ export default async function handler(
         response.json({
             status: true,
             data: {
-                email: result.email,
+                type: 'authenticated',
+                ...databaseUser,
+                payments: JSON.parse(databaseUser.payments),
             },
         });
     } catch (error) {

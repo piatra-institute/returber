@@ -28,6 +28,7 @@ import {
 
 import {
     setAuthCookies,
+    clearAuthCookies,
 } from '@/source/utilities/cookies';
 
 
@@ -54,6 +55,8 @@ export default async function handler(
             picture,
         } = decoded;
 
+
+        clearAuthCookies(response);
         setAuthCookies(response, {
             accessToken: tokens.access_token,
             refreshToken: tokens.refresh_token,
