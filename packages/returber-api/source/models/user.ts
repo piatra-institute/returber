@@ -17,6 +17,7 @@ export const NewUser = (
     name,
     picture,
     payments: JSON.stringify([]),
+    activeTasks: 0,
     collectedTasks: 0,
     failedTasks: 0,
     cancelledTasks: 0,

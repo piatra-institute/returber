@@ -35,6 +35,7 @@ const tables = [
     email TEXT NOT NULL,
     picture TEXT NOT NULL,
     payments TEXT NOT NULL,
+    active_tasks INTEGER NOT NULL,
     collected_tasks INTEGER NOT NULL,
     failed_tasks INTEGER NOT NULL,
     cancelled_tasks INTEGER NOT NULL,

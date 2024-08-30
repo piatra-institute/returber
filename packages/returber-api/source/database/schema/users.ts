@@ -16,6 +16,7 @@ export const users = sqliteTable(
         email: text('email').notNull(),
         picture: text('picture').notNull(),
         payments: text('payments').notNull(),
+        activeTasks: integer('active_tasks').notNull(),
         collectedTasks: integer('collected_tasks').notNull(),
         failedTasks: integer('failed_tasks').notNull(),
         cancelledTasks: integer('cancelled_tasks').notNull(),
